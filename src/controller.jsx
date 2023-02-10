@@ -2,7 +2,7 @@ import axios from "axios";
 
 const backend = "http://localhost:8080";
 
-async function signUp(data) {
+const signUp = async (data) => {
   const url = backend + "/user/signup";
 
   const headers = {
@@ -12,18 +12,18 @@ async function signUp(data) {
   let result;
   console.log(`회원가입 입력값: ${JSON.stringify(data)}`); //debug
 
-  axios
+  await axios
     .post(url, JSON.stringify(data), { headers })
-    .then(function (response) {
-      console.log(`회원가입 반환값: ${response.data}`); //debug
-      result = response.data;
+    .then((response) => {
+      result = JSON.stringify(response.data);
+      console.log(`회원가입 반환값: ${result}`); //debug
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(`회원가입 오류: ${error}`); //debug
       result = error;
     });
 
   return result;
-}
+};
 
 export { signUp };
