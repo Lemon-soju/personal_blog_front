@@ -17,7 +17,7 @@ function Login() {
       return window.location.reload();
     } else {
       window.alert("로그인 성공");
-      return navigate("/");
+      return navigate("/main");
     }
   };
 
