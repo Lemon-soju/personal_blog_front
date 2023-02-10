@@ -13,8 +13,13 @@ function SignUp() {
     event.preventDefault();
     const data = { uid, pwd, name };
     let response = await signUp(data);
-    // console.log(response);
-    return navigate("/");
+    if (response.status === 400) {
+      window.alert("회원가입 실패");
+      return window.location.reload();
+    } else {
+      window.alert("회원가입 성공");
+      return navigate("/");
+    }
   };
 
   return (
