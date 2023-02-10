@@ -3,7 +3,7 @@ import axios from "axios";
 const backend = "http://localhost:8080";
 
 const signUp = async (data) => {
-  const url = backend + "/user/signup";
+  const url = backend + "/signup";
 
   const headers = {
     "Content-Type": "application/json",
