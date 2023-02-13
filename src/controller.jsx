@@ -50,4 +50,28 @@ const login = async (data) => {
   return result;
 };
 
-export { signUp, login };
+const writePost = async (data) => {
+  const url = backend + "/user/post";
+
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  let result;
+  console.log(`글쓰기 입력값: ${JSON.stringify(data)}`); //debug
+
+  await axios
+    .post(url, JSON.stringify(data), { headers })
+    .then((response) => {
+      result = JSON.stringify(response.data);
+      console.log(`글쓰기 반환값: ${result}`); //debug
+    })
+    .catch((error) => {
+      console.log(`글쓰기 오류: ${error}`); //debug
+      result = error;
+    });
+
+  return result;
+};
+
+export { signUp, login, writePost };
