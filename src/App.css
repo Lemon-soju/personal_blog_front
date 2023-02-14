@@ -1,0 +1,30 @@
+.login-button{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.signup-button{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+}
+
+.logo-section{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-list{
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+}
+.menu-list li{
+    padding: 10px;
+}
+
+.search-section{
+    display: flex;
+    justify-content: flex-end;
+}
