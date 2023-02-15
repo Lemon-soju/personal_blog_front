@@ -2,21 +2,22 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import "./App.css";
 import logo from "./logo.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const menuList = ["About", "Home", "토이 프로젝트"];
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <>
-      <div className="login-button">
+      <div className="login-button" onClick={goToLogin}>
         <FontAwesomeIcon icon={faUser} />
-        <Link to="/login">로그인</Link>
-      </div>
-      <div className="signup-button">
-        <Link to="/signup">회원가입</Link> <br />
+        <div>로그인</div>
       </div>
       <div className="logo-section">
         <img width={200} src={logo} alt="logo"></img>
@@ -24,7 +25,7 @@ const Navbar = () => {
       <div>
         <ul className="menu-list">
           {menuList.map((menu) => (
-            <li>{menu}</li>
+            <li key={menu}>{menu}</li>
           ))}
         </ul>
         <div className="search-section">
