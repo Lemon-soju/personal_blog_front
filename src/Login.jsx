@@ -8,16 +8,20 @@ function Login() {
 
   const navigate = useNavigate();
 
+  const goToSignUp = () => {
+    navigate("/signup");
+  };
+
   const loginSubmit = async (event) => {
     event.preventDefault();
     const data = { uid, pwd };
     let response = await login(data);
-    if (response.status === 400) {
-      window.alert("로그인 실패");
-      return window.location.reload();
-    } else {
+    if (response.status === 200) {
       window.alert("로그인 성공");
       return navigate("/main");
+    } else {
+      window.alert("로그인 실패");
+      return window.location.reload();
     }
   };
 
@@ -52,6 +56,10 @@ function Login() {
           <button type="submit">제출</button>
         </div>
       </form>
+      <div className="signup-button" onClick={goToSignUp}>
+        <div>회원가입</div>
+        <br />
+      </div>
     </>
   );
 }

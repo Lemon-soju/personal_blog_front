@@ -15,8 +15,8 @@ const signUp = async (data) => {
   await axios
     .post(url, JSON.stringify(data), { headers })
     .then((response) => {
-      result = JSON.stringify(response.data);
-      console.log(`회원가입 반환값: ${result}`); //debug
+      console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
+      result = response;
     })
     .catch((error) => {
       console.log(`회원가입 오류: ${error}`); //debug
@@ -39,8 +39,8 @@ const login = async (data) => {
   await axios
     .post(url, JSON.stringify(data), { headers })
     .then((response) => {
-      result = JSON.stringify(response.data);
-      console.log(`로그인 반환값: ${result}`); //debug
+      console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
+      result = response;
     })
     .catch((error) => {
       console.log(`로그인 오류: ${error}`); //debug
