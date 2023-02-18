@@ -1,12 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Post from "./Post";
 
 // 로그인 후 화면
 const Main = () => {
+  const navigate = useNavigate();
+  const goToCreatePost = () => {
+    navigate("/post/new");
+  };
+
   return (
     <>
       <div>Main</div>
-      <Link to="/write">글 작성</Link> <br />
+      <div onClick={goToCreatePost}>
+        <div>글쓰기</div>
+      </div>
+      <Post />
     </>
   );
 };
