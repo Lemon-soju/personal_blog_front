@@ -76,4 +76,27 @@ const writePost = async (data, accessToken) => {
   return result;
 };
 
-export { signUp, login, writePost };
+const getPosts = async (accessToken) => {
+  const url = backend + "/user/post";
+
+  let result;
+
+  await axios
+    .get(url, {
+      headers: {
+        accessToken: accessToken,
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      result = response;
+    })
+    .catch((error) => {
+      console.log(`글 가져오기 오류: ${error}`); //debug
+      result = error;
+    });
+
+  return result;
+};
+
+export { signUp, login, writePost, getPosts };

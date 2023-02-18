@@ -16,7 +16,7 @@ const PostCreate = () => {
 
     if (response.status === 200) {
       window.alert("글쓰기 성공");
-      return navigate("/main");
+      return navigate("/");
     } else {
       window.alert("글쓰기 실패");
       return window.location.reload();

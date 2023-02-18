@@ -21,7 +21,7 @@ function Login() {
       window.alert("로그인 성공");
       localStorage.setItem("uid", uid);
       localStorage.setItem("accessToken", accessToken);
-      return navigate("/main");
+      return navigate("/");
     } else {
       window.alert("로그인 실패");
       return window.location.reload();
