@@ -16,8 +16,11 @@ function Login() {
     event.preventDefault();
     const data = { uid, pwd };
     let response = await login(data);
+    const accessToken = response.data.accessToken;
     if (response.status === 200) {
       window.alert("로그인 성공");
+      localStorage.setItem("uid", uid);
+      localStorage.setItem("accessToken", accessToken);
       return navigate("/main");
     } else {
       window.alert("로그인 실패");

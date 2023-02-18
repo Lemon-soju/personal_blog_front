@@ -5,7 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Main from "./Main";
 import SignUp from "./SignUp";
-import Write from "./Write";
+import PostCreate from "./PostCreate";
 import Navbar from "./Navbar";
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
-        <Route path="/write" element={<Write />} />
+        <Route path="/write" element={<PostCreate />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </div>

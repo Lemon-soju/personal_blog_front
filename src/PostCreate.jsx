@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { writePost } from "./controller";
 
-const Write = () => {
+const PostCreate = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -11,13 +11,15 @@ const Write = () => {
   const postSubmit = async (e) => {
     e.preventDefault();
     const data = { title, content };
-    let response = await writePost(data);
-    if (response.status === 400) {
-      window.alert("글쓰기 실패");
-      return window.location.reload();
-    } else {
+    let accessToken = localStorage.getItem("accessToken");
+    let response = await writePost(data, accessToken);
+
+    if (response.status === 200) {
       window.alert("글쓰기 성공");
       return navigate("/main");
+    } else {
+      window.alert("글쓰기 실패");
+      return window.location.reload();
     }
   };
 
@@ -53,4 +55,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default PostCreate;
