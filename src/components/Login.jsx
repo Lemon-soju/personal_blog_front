@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "./controller";
+import { login } from "../controller/controller";
 
 function Login() {
   const [uid, setUid] = useState("");

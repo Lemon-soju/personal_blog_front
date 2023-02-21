@@ -1,0 +1,13 @@
+.login-button{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.signup-button{
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+    cursor: pointer;
+}

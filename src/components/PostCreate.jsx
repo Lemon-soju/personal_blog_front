@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { writePost } from "./controller";
+import { writePost } from "../controller/controller";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
