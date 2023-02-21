@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPosts } from "./controller";
+import { getPosts } from "../controller/controller";
 
 const Post = () => {
   const [data, setData] = useState([]);
