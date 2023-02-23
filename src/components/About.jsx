@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -95,6 +97,7 @@ const About = () => {
             />
           </NavLink>
           <img
+            onClick={() => navigate("/netflix")}
             alt="netflix"
             src={process.env.PUBLIC_URL + "/netflix.png"}
             style={{

@@ -14,6 +14,7 @@ const Navigation = () => {
     navigate("/login");
   };
 
+  if (window.location.pathname.startsWith("/netflix")) return null;
   return (
     <>
       <Navbar bg="light" expand="lg">
