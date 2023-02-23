@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const About = () => {
   return (
@@ -14,7 +15,7 @@ const About = () => {
           alt="sketch"
           src={process.env.PUBLIC_URL + "/sketch.png"}
           style={{
-            width: "10vw",
+            width: "9vw",
             minWidth: "100px",
             float: "left",
             marginLeft: "20px",
@@ -57,9 +58,9 @@ const About = () => {
         data-ke-style="style5"
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px" }}>
+      <div class="subhead_1" style={{ marginTop: "100px", marginLeft: "20px" }}>
         Introduce.
-        <div class="normal_1" style={{ marginTop: "50px" }}>
+        <div class="normal_1" style={{ marginTop: "100px" }}>
           <p>
             자바 스프링 백엔드 개발자를 준비하고 있는 취업 준비생입니다. 어릴
             적부터 혼자 생각하고 무언가 만드는 것을 좋아했습니다.
@@ -78,28 +79,31 @@ const About = () => {
         style={{ marginTop: "100px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px" }}>
+      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
         Project Experience.
-        <div
-          style={{
-            fontSize: "1.75rem",
-            marginTop: "100px",
-            color: "#7e7e7e",
-            textDecoration: "underline",
-          }}
-        >
-          <a href="https://lemon-soju.tistory.com/40">
-            시나리오 기반 모의해킹 프로젝트
-          </a>
-        </div>{" "}
-        <div class="normal_1" style={{ marginTop: "30px" }}>
-          보안프로젝트 모의해킹 실무 과정 30기 팀원들과 함께 시나리오를 구성하여
-          모의해킹 및 침해대응
-        </div>
-        <div class="normal_1" style={{ float: "left" }}>
-          <p style={{ marginTop: "20px" }}>환경구축</p>
-          <p style={{ marginTop: "20px" }}>공격 시나리오 구성 및 공격 수행</p>
-          <p style={{ marginTop: "20px" }}>침해 대응 및 분석</p>
+        <div style={{ marginTop: "100px" }}>
+          <NavLink to={"https://lemon-soju.tistory.com/40"}>
+            <img
+              alt="ransomware"
+              src={process.env.PUBLIC_URL + "/ransomware.jpg"}
+              style={{
+                width: "17vw",
+                minWidth: "100px",
+                float: "left",
+                marginLeft: "20px",
+              }}
+            />
+          </NavLink>
+          <img
+            alt="netflix"
+            src={process.env.PUBLIC_URL + "/netflix.png"}
+            style={{
+              width: "17vw",
+              minWidth: "100px",
+              float: "left",
+              marginLeft: "20px",
+            }}
+          />
         </div>
       </div>
 
@@ -107,13 +111,13 @@ const About = () => {
         contenteditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
-        style={{ marginTop: "200px" }}
+        style={{ marginTop: "300px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px" }}>
+      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
         Skill.
         <div class="normal_1" style={{ marginTop: "50px" }}>
-          <p>Front-End: Vue.js</p>
+          <p>Front-End: React.js</p>
           <p>Back-End: Spring Boot</p>
           <p>Database: PostgreSQL</p>
         </div>
@@ -126,7 +130,7 @@ const About = () => {
         style={{ marginTop: "100px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px" }}>
+      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
         Education.
         <div class="normal_1" style={{ marginTop: "30px" }}>
           고려대학교 컴퓨터학과 4학년 휴학 중
@@ -137,7 +141,3 @@ const About = () => {
 };
 
 export default About;
-
-// {
-/**/
-// }
