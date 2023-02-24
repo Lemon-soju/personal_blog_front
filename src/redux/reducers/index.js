@@ -1,3 +1,6 @@
 import { combineReducers } from "redux";
+import netflixMovieReducer from "./netflixMovieReducer";
 
-export default combineReducers({});
+export default combineReducers({
+  netflixMovie: netflixMovieReducer,
+});
