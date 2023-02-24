@@ -15,7 +15,7 @@ const About = () => {
       <div style={{ marginTop: "50px" }}>
         <img
           alt="sketch"
-          src={process.env.PUBLIC_URL + "/sketch.png"}
+          src={"/sketch.png"}
           style={{
             width: "9vw",
             minWidth: "100px",
@@ -87,7 +87,7 @@ const About = () => {
           <NavLink to={"https://lemon-soju.tistory.com/40"}>
             <img
               alt="ransomware"
-              src={process.env.PUBLIC_URL + "/ransomware.jpg"}
+              src={"/ransomware.jpg"}
               style={{
                 width: "17vw",
                 minWidth: "100px",
@@ -99,7 +99,7 @@ const About = () => {
           <img
             onClick={() => navigate("/netflix")}
             alt="netflix"
-            src={process.env.PUBLIC_URL + "/netflix.png"}
+            src={"/netflix.png"}
             style={{
               width: "17vw",
               minWidth: "100px",
