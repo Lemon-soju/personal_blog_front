@@ -31,7 +31,7 @@ const About = () => {
       >
         <div>
           Contact.
-          <div class="normal_2">
+          <div className="normal_2">
             <p>Email. yckk980320@naver.com</p>
             <p>Phone. 010-****-****</p>
           </div>
@@ -39,7 +39,7 @@ const About = () => {
 
         <div style={{ marginTop: "50px" }}>
           Channel.
-          <div class="normal_2">
+          <div className="normal_2">
             <p>
               <a href="http://lemon-soju.tistory.com">
                 Blog. https://lemon-soju.tistory.com/
@@ -55,14 +55,17 @@ const About = () => {
       </div>
 
       <hr
-        contenteditable="false"
+        contentEditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
       />
 
-      <div class="subhead_1" style={{ marginTop: "100px", marginLeft: "20px" }}>
+      <div
+        className="subhead_1"
+        style={{ marginTop: "100px", marginLeft: "20px" }}
+      >
         Introduce.
-        <div class="normal_1" style={{ marginTop: "100px" }}>
+        <div className="normal_1" style={{ marginTop: "100px" }}>
           <p>
             자바 스프링 백엔드 개발자를 준비하고 있는 취업 준비생입니다. 어릴
             적부터 혼자 생각하고 무언가 만드는 것을 좋아했습니다.
@@ -75,13 +78,16 @@ const About = () => {
       </div>
 
       <hr
-        contenteditable="false"
+        contentEditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
         style={{ marginTop: "100px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
+      <div
+        className="subhead_1"
+        style={{ marginTop: "150px", marginLeft: "20px" }}
+      >
         Project Experience.
         <div style={{ marginTop: "100px" }}>
           <NavLink to={"https://lemon-soju.tistory.com/40"}>
@@ -111,15 +117,18 @@ const About = () => {
       </div>
 
       <hr
-        contenteditable="false"
+        contentEditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
         style={{ marginTop: "300px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
+      <div
+        className="subhead_1"
+        style={{ marginTop: "150px", marginLeft: "20px" }}
+      >
         Skill.
-        <div class="normal_1" style={{ marginTop: "50px" }}>
+        <div className="normal_1" style={{ marginTop: "50px" }}>
           <p>Front-End: React.js</p>
           <p>Back-End: Spring Boot</p>
           <p>Database: PostgreSQL</p>
@@ -127,15 +136,18 @@ const About = () => {
       </div>
 
       <hr
-        contenteditable="false"
+        contentEditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
         style={{ marginTop: "100px" }}
       />
 
-      <div class="subhead_1" style={{ marginTop: "150px", marginLeft: "20px" }}>
+      <div
+        className="subhead_1"
+        style={{ marginTop: "150px", marginLeft: "20px" }}
+      >
         Education.
-        <div class="normal_1" style={{ marginTop: "30px" }}>
+        <div className="normal_1" style={{ marginTop: "30px" }}>
           고려대학교 컴퓨터학과 4학년 휴학 중
         </div>
       </div>
