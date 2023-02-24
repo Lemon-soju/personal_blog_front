@@ -7,21 +7,21 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NetflixNavigation from "../ToyProject/Netflix/NetflixNavigation";
+import { Link } from "react-router-dom";
 
-const Navigation = () => {
+const NetflixNavigation = () => {
   const navigate = useNavigate();
   const goToLogin = () => {
     navigate("/login");
   };
 
-  if (window.location.pathname.startsWith("/netflix"))
-    return <NetflixNavigation />;
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">Lemon Soju의 블로그</Navbar.Brand>
+          <Navbar.Brand href="#">
+            <img width={100} src="/netflix.png" alt="netflix logo" />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -29,8 +29,15 @@ const Navigation = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/">Home</Nav.Link>
+              <Link to="/netflix/about" className="nav-item">
+                About
+              </Link>
+              <Link to="/netflix" className="nav-item">
+                Home
+              </Link>
+              <Link to="/netflix/movies" className="nav-item">
+                Movies
+              </Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
@@ -39,7 +46,7 @@ const Navigation = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-danger">Search</Button>
             </Form>
             <div className="login-button" onClick={goToLogin}>
               <FontAwesomeIcon icon={faUser} />
@@ -52,4 +59,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NetflixNavigation;

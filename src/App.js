@@ -13,6 +13,8 @@ import Netflix from "./ToyProject/Netflix/Netflix";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/About.css";
 import "./css/App.css";
+import "./css/Netflix.css";
+import NetflixAbout from "./ToyProject/Netflix/NetflixAbout";
 
 // api_key = "f013d2d7ff387dc6cb5e16d7550eacab";
 
@@ -32,6 +34,7 @@ const App = () => {
         <Route path="/netflix" element={<Netflix />} />
         <Route path="/netflix/movies" element={<Movies />} />
         <Route path="/netflix/movies/:id" element={<MovieDetail />} />
+        <Route path="/netflix/about" element={<NetflixAbout />} />
       </Routes>
     </div>
   );
