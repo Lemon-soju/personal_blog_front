@@ -41,13 +41,13 @@ const Navigation = () => {
               />
               <Button variant="outline-success">Search</Button>
             </Form>
-            <div className="login-button" onClick={goToLogin}>
-              <FontAwesomeIcon icon={faUser} />
-              <div>로그인</div>
-            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <div className="login-button" onClick={goToLogin}>
+        <FontAwesomeIcon icon={faUser} />
+        <div>로그인</div>
+      </div>
     </>
   );
 };

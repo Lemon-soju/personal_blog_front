@@ -12,44 +12,48 @@ const About = () => {
       >
         신입 개발자 윤창규입니다.
       </div>
-      <div style={{ marginTop: "50px" }}>
-        <img
-          alt="sketch"
-          src={"/sketch.png"}
-          style={{
-            width: "9vw",
-            minWidth: "100px",
-            float: "left",
-            marginLeft: "20px",
-          }}
-        />
-      </div>
-
-      <div
-        className="subhead_2"
-        style={{ marginLeft: "250px", marginBottom: "100px" }}
-      >
+      <div style={{ display: "flex", marginTop: "20px" }}>
         <div>
-          Contact.
-          <div className="normal_2">
-            <p>Email. yckk980320@naver.com</p>
-            <p>Phone. 010-****-****</p>
-          </div>
+          <img
+            alt="sketch"
+            src={"/sketch.png"}
+            style={{
+              width: "175px",
+              minWidth: "100px",
+              float: "left",
+              marginLeft: "20px",
+            }}
+          />
         </div>
+        <div
+          className="subhead_2"
+          style={{
+            marginLeft: "75px",
+            marginBottom: "100px",
+          }}
+        >
+          <div>
+            Contact.
+            <div className="normal_2">
+              <p>Email. yckk980320@naver.com</p>
+              <p>Phone. 010-****-****</p>
+            </div>
+          </div>
 
-        <div style={{ marginTop: "50px" }}>
-          Channel.
-          <div className="normal_2">
-            <p>
-              <a href="http://lemon-soju.tistory.com">
-                Blog. https://lemon-soju.tistory.com/
-              </a>
-            </p>
-            <p>
-              <a href="https://github.com/Lemon-soju">
-                GitHub. https://github.com/Lemon-soju
-              </a>
-            </p>
+          <div style={{ marginTop: "50px" }}>
+            Channel.
+            <div className="normal_2">
+              <p>
+                <a href="http://lemon-soju.tistory.com">
+                  Blog. https://lemon-soju.tistory.com/
+                </a>
+              </p>
+              <p>
+                <a href="https://github.com/Lemon-soju">
+                  GitHub. https://github.com/Lemon-soju
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -86,49 +90,37 @@ const About = () => {
 
       <div
         className="subhead_1"
-        style={{ marginTop: "150px", marginLeft: "20px" }}
+        style={{ marginTop: "100px", marginLeft: "20px" }}
       >
         Project Experience.
-        <div style={{ marginTop: "100px" }}>
+        <div style={{ marginTop: "20px" }}>
           <NavLink to={"https://lemon-soju.tistory.com/40"}>
             <img
+              className="project-card"
               alt="ransomware"
               src={"/ransomware.jpg"}
-              style={{
-                width: "17vw",
-                minWidth: "100px",
-                float: "left",
-                marginLeft: "20px",
-              }}
             />
           </NavLink>
           <img
+            className="project-card"
             onClick={() => navigate("/netflix")}
             alt="netflix"
             src={"/netflix.png"}
-            style={{
-              width: "17vw",
-              minWidth: "100px",
-              float: "left",
-              marginLeft: "20px",
-            }}
           />
         </div>
       </div>
-
       <hr
         contentEditable="false"
         data-ke-type="horizontalRule"
         data-ke-style="style5"
         style={{ marginTop: "300px" }}
       />
-
       <div
         className="subhead_1"
-        style={{ marginTop: "150px", marginLeft: "20px" }}
+        style={{ marginTop: "100px", marginLeft: "20px" }}
       >
         Skill.
-        <div className="normal_1" style={{ marginTop: "50px" }}>
+        <div className="normal_1" style={{ marginTop: "20px" }}>
           <p>Front-End: React.js</p>
           <p>Back-End: Spring Boot</p>
           <p>Database: PostgreSQL</p>
