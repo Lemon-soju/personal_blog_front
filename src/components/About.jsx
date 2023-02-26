@@ -69,10 +69,14 @@ const About = () => {
         style={{ marginTop: "100px", marginLeft: "20px" }}
       >
         Introduce.
-        <div className="normal_1" style={{ marginTop: "100px" }}>
+        <div
+          className="normal_1"
+          style={{ marginTop: "100px", maxWidth: "1000px" }}
+        >
           <p>
-            자바 스프링 백엔드 개발자를 준비하고 있는 취업 준비생입니다. 어릴
-            적부터 혼자 생각하고 무언가 만드는 것을 좋아했습니다.
+            자바 스프링 백엔드 개발자를 준비하고 있는 신입 개발자입니다.
+            카페에서 코딩하는 것을 즐기며 이것저것 만들어보면서 백앤드 뿐만
+            아니라 프론트엔드도 같이 공부하고 있습니다.
           </p>
           <p>
             다른 사람들이 제가 만든 프로그램을 사용한다는 상상을 하면 더욱 더
@@ -136,7 +140,7 @@ const About = () => {
 
       <div
         className="subhead_1"
-        style={{ marginTop: "150px", marginLeft: "20px" }}
+        style={{ marginTop: "100px", marginLeft: "20px" }}
       >
         Education.
         <div className="normal_1" style={{ marginTop: "30px" }}>

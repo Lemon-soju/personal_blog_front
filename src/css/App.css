@@ -11,3 +11,35 @@
     margin: 20px;
     cursor: pointer;
 }
+
+.post-table {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border-spacing: 0;
+    margin-top: 50px
+  }
+
+.post-table-row {
+    font-size: 1.1rem;
+    color: #383838;
+    text-decoration: none;
+}
+ 
+.post-table-row:hover {
+    background-color: #eceaea;
+    cursor: pointer;
+    text-decoration: underline;
+ }
+
+.post-table-column {
+    padding: 10px 5px;
+}
+
+.post-table-header {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0;
+    font-size: 16px;
+    padding: 10px 5px;
+    font-weight: bold;
+}

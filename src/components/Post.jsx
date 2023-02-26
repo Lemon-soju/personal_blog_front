@@ -13,11 +13,13 @@ const Post = () => {
         id: e.postId,
         title: e.title,
         content: e.content,
+        writer: e.writer,
+        createDate: e.createDate.substr(0, 10),
       };
     });
 
     setData(initData);
-    console.log("게시글 목록 불러오기 성공");
+    // console.log("게시글 목록 불러오기 성공", initData);
   };
 
   useEffect(() => {
@@ -26,12 +28,29 @@ const Post = () => {
 
   return (
     <>
-      <div>게시글 목록</div>
-      <div>
-        {data.map((e) => {
-          return <div>제목: {e.title}</div>;
-        })}
-      </div>
+      <h2 style={{ textAlign: "center", marginTop: "50px" }}> 게시판 </h2>
+      <table className="post-table">
+        <thead className="post-table-header">
+          <tr>
+            <th>글 번호</th>
+            <th>제목</th>
+            <th>등록일</th>
+            <th>작성자</th>
+          </tr>
+        </thead>
+        <tbody className="post-table-column">
+          {data.map((e) => {
+            return (
+              <tr className="post-table-row" key={e.id}>
+                <td> {e.id}</td>
+                <td> {e.title}</td>
+                <td> {e.createDate}</td>
+                <td> {e.writer}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 };

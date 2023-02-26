@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Post from "./components/Post";
+import Post from "./Post";
 
 // 로그인 후 화면
 const Main = () => {
