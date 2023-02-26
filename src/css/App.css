@@ -5,6 +5,20 @@
     cursor: pointer;
 }
 
+.write-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.manage-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15vw;
+    cursor: pointer;
+}
+
 .signup-button{
     display: flex;
     justify-content: flex-start;
@@ -34,6 +48,7 @@
 
 .post-table-column {
     padding: 10px 5px;
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .post-table-header {

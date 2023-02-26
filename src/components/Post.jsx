@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getPosts } from "../controller/controller";
 
 const Post = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const getData = async () => {
     let accessToken = localStorage.getItem("accessToken");
@@ -25,6 +27,10 @@ const Post = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const goToCreatePost = () => {
+    navigate("/post/new");
+  };
 
   return (
     <>
@@ -51,6 +57,20 @@ const Post = () => {
           })}
         </tbody>
       </table>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: "20px",
+        }}
+      >
+        <div className="write-button" onClick={goToCreatePost}>
+          <button>글쓰기</button>
+        </div>
+        <div className="manage-button">
+          <button>관리</button>
+        </div>
+      </div>
     </>
   );
 };
