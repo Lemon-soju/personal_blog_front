@@ -77,7 +77,7 @@ const writePost = async (data, accessToken) => {
 };
 
 const getPosts = async (accessToken) => {
-  const url = backend + "/user/post";
+  const url = backend + "/post";
 
   let result;
 
