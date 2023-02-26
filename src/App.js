@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
-import Main from "./Main";
+import Main from "./components/Main";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import PostCreate from "./components/PostCreate";
