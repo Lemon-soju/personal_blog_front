@@ -12,7 +12,7 @@ const NetflixHome = () => {
 
   useEffect(() => {
     dispatch(netflixMovieAction.getMovies());
-  }, []);
+  }, [dispatch]);
   if (loading) {
     return (
       <div className="loading">

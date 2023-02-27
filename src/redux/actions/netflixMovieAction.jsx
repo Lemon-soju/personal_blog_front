@@ -37,6 +37,20 @@ const getMovies = () => {
   };
 };
 
+const getMovieDetail = (movie_id) => {
+  return async (dispatch) => {
+    const movieDetailApi = await netflixApi.get(
+      `/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+    );
+    dispatch({
+      type: "GET_MOVIE_DETAIL",
+      payload: { movieDetail: movieDetailApi.data },
+    });
+    console.log("movieDetail reducer", movieDetailApi);
+  };
+};
+
 export const netflixMovieAction = {
   getMovies,
+  getMovieDetail,
 };

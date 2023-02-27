@@ -54,3 +54,21 @@
     height: 100%;
 }
 
+.movie-detail{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-detail-poster{
+    margin: 50px;
+    height: 30%;
+    width: 25%;
+}
+
+.movie-detail-description{
+    margin: 50px;
+    height: 50%;
+    color: white;
+    width: 30%;
+}
