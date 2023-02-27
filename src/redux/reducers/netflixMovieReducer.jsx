@@ -4,6 +4,7 @@ let initialState = {
   upComingMovies: {},
   loading: true,
   genreList: [],
+  movieDetail: {},
 };
 
 const netflixMovieReducer = (state = initialState, action) => {
@@ -27,6 +28,11 @@ const netflixMovieReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case "GET_MOVIE_DETAIL":
+      return {
+        ...state,
+        movieDetail: payload.movieDetail,
       };
     default:
       return { ...state };

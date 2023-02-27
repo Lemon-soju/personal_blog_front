@@ -7,7 +7,6 @@ import SignUp from "./components/SignUp";
 import PostCreate from "./components/PostCreate";
 import Navigation from "./components/Navigation";
 import About from "./components/About";
-import Movies from "./ToyProject/Netflix/Movies";
 import MovieDetail from "./ToyProject/Netflix/MovieDetail";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/About.css";
@@ -30,7 +29,6 @@ const App = () => {
 
         {/* Netflix */}
         <Route path="/netflix" element={<NetflixHome />} />
-        <Route path="/netflix/movies" element={<Movies />} />
         <Route path="/netflix/movies/:id" element={<MovieDetail />} />
         <Route path="/netflix/about" element={<NetflixAbout />} />
       </Routes>
