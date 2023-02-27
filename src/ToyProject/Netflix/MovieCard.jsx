@@ -28,7 +28,18 @@ const MovieCard = ({ item }) => {
         </div>
         <div>
           <span style={{ margin: "10px" }}>Score: {item.vote_average}</span>
-          <span>{item.adult ? "청불" : "Under 18"}</span>
+          <span>
+            {item.adult ? (
+              <img
+                width={20}
+                src="/+18.png"
+                alt="+18"
+                style={{ marginLeft: "10px" }}
+              />
+            ) : (
+              ""
+            )}
+          </span>
         </div>
       </div>
     </div>
