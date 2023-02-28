@@ -31,7 +31,12 @@ const MovieSlide = ({ movies }) => {
   // console.log("movies", movies);
   return (
     <div>
-      <Carousel responsive={responsive}>
+      <Carousel
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        responsive={responsive}
+      >
         {movies.results.map((item) => (
           <div key={item.id}>
             <MovieCard item={item} />
