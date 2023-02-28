@@ -71,7 +71,9 @@ const Post = () => {
               </tr>
             ))
           ) : (
-            <div>게시물이 없습니다.</div>
+            <tr>
+              <td>게시물이 없습니다.</td>
+            </tr>
           )}
         </tbody>
       </table>
@@ -82,13 +84,16 @@ const Post = () => {
         style={{
           display: "flex",
           justifyContent: "flex-end",
-          marginTop: "20px",
         }}
       >
-        <div className="write-button" onClick={goToCreatePost}>
+        <div
+          className="write-button"
+          style={{ marginBottom: "50px" }}
+          onClick={goToCreatePost}
+        >
           <button>글쓰기</button>
         </div>
-        <div className="manage-button">
+        <div className="manage-button" style={{ marginBottom: "50px" }}>
           <button>관리</button>
         </div>
       </div>
