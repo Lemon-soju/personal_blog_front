@@ -19,7 +19,7 @@ const NetflixNavigation = () => {
     <>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/netflix">
             <img width={100} src="/netflix.png" alt="netflix logo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
