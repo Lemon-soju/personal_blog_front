@@ -25,13 +25,10 @@ const NetflixNavigation = () => {
                 About
               </Link>
               <Link to="/netflix" className="nav-item">
-                Home
-              </Link>
-              {/* <Link to="/netflix/movies" className="nav-item">
                 Movies
-              </Link> */}
+              </Link>
               <Link to="/" className="nav-item">
-                Blog
+                Home
               </Link>
             </Nav>
             <Form className="d-flex">

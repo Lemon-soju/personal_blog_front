@@ -21,7 +21,7 @@ const Navigation = () => {
     <>
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">창규의 블로그</Navbar.Brand>
+          <Navbar.Brand href="/">창규's 블로그</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

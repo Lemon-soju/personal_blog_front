@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/About.css";
 import "./css/App.css";
 import "./css/Netflix.css";
+import './css/Paging.css';
 import NetflixAbout from "./ToyProject/Netflix/NetflixAbout";
 import NetflixHome from "./ToyProject/Netflix/NetflixHome";
 import Developing from "./components/Developing";
