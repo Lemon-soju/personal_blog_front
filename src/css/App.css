@@ -4,13 +4,16 @@
     content: "";
     background-image: url(/public/background.jpg);
     background-size: 100% 100%;
+    background-repeat: no-repeat;
     opacity: 0.6;
     position: absolute;
     top: 0px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
+    bottom: -75%;
     z-index: -1;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 .login-button{
     display: flex;
