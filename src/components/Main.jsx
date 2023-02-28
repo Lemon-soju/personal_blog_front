@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center", marginTop: "15vh" }}>
-        창규's Toy Project
+        창규's 토이 프로젝트
       </h1>
       <ToyProjectSlide />
       <Post />

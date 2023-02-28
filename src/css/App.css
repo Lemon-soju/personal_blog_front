@@ -1,4 +1,17 @@
-
+.body{
+}
+.body::before{
+    content: "";
+    background-image: url(/public/background.jpg);
+    background-size: 100% 100%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
 .login-button{
     display: flex;
     justify-content: flex-end;

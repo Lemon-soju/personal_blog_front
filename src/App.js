@@ -14,10 +14,11 @@ import "./css/App.css";
 import "./css/Netflix.css";
 import NetflixAbout from "./ToyProject/Netflix/NetflixAbout";
 import NetflixHome from "./ToyProject/Netflix/NetflixHome";
+import Developing from "./components/Developing";
 
 const App = () => {
   return (
-    <div>
+    <div className="body">
       <Navigation />
       <Routes>
         {/* Main */}
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/post/new" element={<PostCreate />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
+        <Route path="/developing" element={<Developing />} />
 
         {/* Netflix */}
         <Route path="/netflix" element={<NetflixHome />} />

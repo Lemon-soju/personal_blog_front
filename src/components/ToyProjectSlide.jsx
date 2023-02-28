@@ -54,16 +54,19 @@ const ToyProjectSlide = () => {
         />
         <img
           className="home-project-card"
+          onClick={() => navigate("/developing")}
           alt="developing1"
           src={"/개발중1.png"}
         />
         <img
           className="home-project-card"
+          onClick={() => navigate("/developing")}
           alt="developing2"
           src={"/개발중2.png"}
         />
         <img
           className="home-project-card"
+          onClick={() => navigate("/developing")}
           alt="developing1"
           src={"/개발중1.png"}
         />
