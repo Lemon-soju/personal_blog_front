@@ -1,4 +1,4 @@
-.body::before{
+.main-body::before{
     content: "";
     background-image: url(/public/background.jpg);
     background-size: 100% 100%;
@@ -42,16 +42,15 @@
 }
 
 .post-body{
-    background-color: #e8e8e8;
+    background-color: rgba( 255, 255, 255, 0.5 );
     margin: 150px;
-    opacity: 0.6;
 }
 .post-table {
     width: 80%;
     margin: 0 auto;
     text-align: center;
     border-spacing: 0;
-    margin-top: 50px
+    margin-top: 50px;
   }
 
 .post-table-row {
