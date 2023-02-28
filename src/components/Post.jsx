@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getPosts } from "../controller/controller";
+import Paging from "./Paging";
 
 const Post = () => {
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1); //현재페이지
+  const [postPerPage] = useState(20); //페이지당 아이템 개수
+
+  const [indexOfLastPost, setIndexOfLastPost] = useState(0);
+  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState(0);
+
+  const setPage = (e) => {
+    setCurrentPage(e);
+  };
 
   const getData = async () => {
     let accessToken = localStorage.getItem("accessToken");
     const res = await getPosts(accessToken);
 
-    const initData = res.data.slice(0, 20).map((e) => {
+    const initData = res.data.map((e) => {
       return {
         id: e.postId,
         title: e.title,
@@ -26,14 +38,18 @@ const Post = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+    setCount(data.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(data.slice(indexOfFirstPost, indexOfLastPost));
+  }, [currentPage, indexOfFirstPost, indexOfLastPost, data, postPerPage]);
 
   const goToCreatePost = () => {
     navigate("/post/new");
   };
 
   return (
-    <>
+    <div className="post-body">
       <h2 style={{ textAlign: "center", marginTop: "50px" }}> 게시판 </h2>
       <table className="post-table">
         <thead className="post-table-header">
@@ -45,18 +61,23 @@ const Post = () => {
           </tr>
         </thead>
         <tbody className="post-table-column">
-          {data.map((e) => {
-            return (
+          {currentPosts && currentPosts.length > 0 ? (
+            currentPosts.map((e) => (
               <tr className="post-table-row" key={e.id}>
-                <td> {e.id}</td>
-                <td> {e.title}</td>
-                <td> {e.createDate}</td>
-                <td> {e.writer}</td>
+                <td>{e.id}</td>
+                <td>{e.title}</td>
+                <td>{e.createDate}</td>
+                <td>{e.writer}</td>
               </tr>
-            );
-          })}
+            ))
+          ) : (
+            <div>게시물이 없습니다.</div>
+          )}
         </tbody>
       </table>
+
+      <Paging page={currentPage} count={count} setPage={setPage} />
+
       <div
         style={{
           display: "flex",
@@ -71,7 +92,7 @@ const Post = () => {
           <button>관리</button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

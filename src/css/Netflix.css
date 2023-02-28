@@ -58,13 +58,14 @@
 
 .movie-detail{
     background-color: black;
+    height: 200vh;
     display: flex;
     justify-content: center;
 }
 
 .movie-detail-poster{
     margin: 50px;
-    height: 30%;
+    height: 37%;
     width: 25%;
     min-width: 300px;
 }
