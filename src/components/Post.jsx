@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getPosts } from "../controller/controller";
 import Paging from "./Paging";
+import { homeAction } from "../redux/actions/homeAction";
 
 const Post = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); //현재페이지
   const [postPerPage] = useState(20); //페이지당 아이템 개수
@@ -18,31 +20,25 @@ const Post = () => {
     setCurrentPage(e);
   };
 
-  const getData = async () => {
-    let accessToken = localStorage.getItem("accessToken");
-    const res = await getPosts(accessToken);
-
-    const initData = res.data.map((e) => {
-      return {
-        id: e.postId,
-        title: e.title,
-        content: e.content,
-        writer: e.writer,
-        createDate: e.createDate.substr(0, 10),
-      };
-    });
-
-    setData(initData);
-    // console.log("게시글 목록 불러오기 성공", initData);
-  };
+  const { postData } = useSelector((state) => state.home);
 
   useEffect(() => {
-    getData();
-    setCount(data.length);
-    setIndexOfLastPost(currentPage * postPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postPerPage);
-    setCurrentPosts(data.slice(indexOfFirstPost, indexOfLastPost));
-  }, [currentPage, indexOfFirstPost, indexOfLastPost, data, postPerPage]);
+    if (postData.length === 0) {
+      dispatch(homeAction.getPosts());
+    } else {
+      setCount(postData.length);
+      setIndexOfLastPost(currentPage * postPerPage);
+      setIndexOfFirstPost(indexOfLastPost - postPerPage);
+      setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
+    }
+  }, [
+    dispatch,
+    currentPage,
+    indexOfFirstPost,
+    indexOfLastPost,
+    postPerPage,
+    postData,
+  ]);
 
   const goToCreatePost = () => {
     navigate("/post/new");
@@ -64,7 +60,7 @@ const Post = () => {
           {currentPosts && currentPosts.length > 0 ? (
             currentPosts.map((e) => (
               <tr className="post-table-row" key={e.id}>
-                <td>{e.id}</td>
+                <td>{e.postId}</td>
                 <td>{e.title}</td>
                 <td>{e.createDate}</td>
                 <td>{e.writer}</td>
