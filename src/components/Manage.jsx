@@ -13,6 +13,18 @@ const Manage = () => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState(0);
+  const [checkedInputs, setCheckedInputs] = useState([]);
+
+  const changeHandler = async (id) => {
+    let checked = checkedInputs.includes(id) ? true : false;
+
+    if (!checked) {
+      setCheckedInputs([...checkedInputs, id]);
+    } else {
+      // 체크 해제
+      setCheckedInputs(checkedInputs.filter((el) => el !== id));
+    }
+  };
 
   const setPage = (e) => {
     setCurrentPage(e);
@@ -60,7 +72,15 @@ const Manage = () => {
                   <td>{e.title}</td>
                   <td>{e.createDate}</td>
                   <td>{e.writer}</td>
-                  <input type={"checkbox"} />
+                  <td>
+                    {" "}
+                    <input
+                      type={"checkbox"}
+                      onChange={() => {
+                        changeHandler(e.postId);
+                      }}
+                    />
+                  </td>
                 </tr>
               ))
             ) : (
@@ -70,7 +90,7 @@ const Manage = () => {
             )}
           </tbody>
         </table>
-
+        <button onClick={()=> console.log("delete",checkedInputs)}>삭제</button>
         <Paging page={currentPage} count={count} setPage={setPage} />
       </div>
     </div>
