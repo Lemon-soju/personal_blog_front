@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const netflixApi = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+const homeApi = axios.create({
+  baseURL: "http://localhost:8080",
   headers: { "Content-type": "application/json" },
 });
 
 // Add a request interceptor
-netflixApi.interceptors.request.use(
+homeApi.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    console.log("request: ", config);
+    // console.log("request: ", config);
     return config;
   },
   function (error) {
@@ -20,7 +20,7 @@ netflixApi.interceptors.request.use(
 );
 
 // Add a response interceptor
-netflixApi.interceptors.response.use(
+homeApi.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -35,4 +35,4 @@ netflixApi.interceptors.response.use(
   }
 );
 
-export default netflixApi;
+export default homeApi;
