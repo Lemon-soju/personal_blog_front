@@ -58,8 +58,8 @@ const Post = () => {
         </thead>
         <tbody className="post-table-column">
           {currentPosts && currentPosts.length > 0 ? (
-            currentPosts.map((e) => (
-              <tr className="post-table-row" key={e.id}>
+            currentPosts.map((e, index) => (
+              <tr className="post-table-row" key={index}>
                 <td>{e.postId}</td>
                 <td>{e.title}</td>
                 <td>{e.createDate}</td>
@@ -89,8 +89,18 @@ const Post = () => {
         >
           <button>글쓰기</button>
         </div>
-        <div className="manage-button" style={{ marginBottom: "50px" }}>
-          <button>관리</button>
+        <div
+          className="manage-button"
+          style={{ marginBottom: "50px", marginLeft: "10px" }}
+        >
+          <img
+            width="30"
+            alt="manage"
+            src={"/manage.png"}
+            onClick={() => {
+              navigate("/manage");
+            }}
+          />
         </div>
       </div>
     </div>
