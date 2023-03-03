@@ -18,8 +18,8 @@ const Navigation = () => {
   if (window.location.pathname.startsWith("/netflix"))
     return <NetflixNavigation />;
   return (
-    <>
-      <Navbar bg="light" expand="lg">
+    <div style={{ display: "flex" }}>
+      <Navbar style={{ flexBasis: "100%" }} bg="light" expand="lg">
         <Container fluid>
           <Navbar.Brand href="/">창규's 블로그</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -43,12 +43,14 @@ const Navigation = () => {
             </Form>
           </Navbar.Collapse>
         </Container>
+        <div className="login-button" onClick={goToLogin}>
+          <div>
+            <FontAwesomeIcon icon={faUser} />
+          </div>
+          <div style={{ marginRight: "3vh", whiteSpace: "nowrap" }}>로그인</div>
+        </div>
       </Navbar>
-      <div className="login-button" onClick={goToLogin}>
-        <FontAwesomeIcon icon={faUser} />
-        <div>로그인</div>
-      </div>
-    </>
+    </div>
   );
 };
 

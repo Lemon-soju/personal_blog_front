@@ -13,6 +13,7 @@ import "./css/About.css";
 import "./css/App.css";
 import "./css/Netflix.css";
 import "./css/Paging.css";
+import "./css/Post.css";
 import NetflixAbout from "./ToyProject/Netflix/NetflixAbout";
 import NetflixHome from "./ToyProject/Netflix/NetflixHome";
 import Developing from "./components/Developing";
