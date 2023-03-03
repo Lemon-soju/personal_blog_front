@@ -76,27 +76,28 @@ const writePost = async (data, accessToken) => {
   return result;
 };
 
-// const getPosts = async (accessToken) => {
-//   const url = backend + "/post";
+const deletePosts = async (data, accessToken) => {
+  const url = backend + "/user/post/delete";
 
-//   let result;
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
 
-//   await axios
-//     .get(url, {
-//       headers: {
-//         accessToken: accessToken,
-//         "Content-Type": "application/json",
-//       },
-//     })
-//     .then((response) => {
-//       result = response;
-//     })
-//     .catch((error) => {
-//       console.log(`글 가져오기 오류: ${error}`); //debug
-//       result = error;
-//     });
+  let result;
+  console.log(`글삭제 데이터: ${JSON.stringify(data)}`); //debug
 
-//   return result;
-// };
+  await axios
+    .post(url, JSON.stringify(data), { headers })
+    .then((response) => {
+      result = response;
+    })
+    .catch((error) => {
+      console.log(`글삭제 오류: ${error}`); //debug
+      result = error;
+    });
 
-export { signUp, login, writePost };
+  return result;
+};
+
+export { signUp, login, writePost, deletePosts };

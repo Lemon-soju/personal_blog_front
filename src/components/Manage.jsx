@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
+import { deletePosts } from "../controller/controller";
 
 const Manage = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,20 @@ const Manage = () => {
 
   const setPage = (e) => {
     setCurrentPage(e);
+  };
+
+  const deleteSubmit = async (e) => {
+    let accessToken = localStorage.getItem("accessToken");
+    const data = { checkedInputs };
+    let response = await deletePosts(data, accessToken);
+
+    if (response.status === 200) {
+      window.alert("글삭제 성공");
+      return window.location.reload();
+    } else {
+      window.alert("글삭제 실패");
+      return window.location.reload();
+    }
   };
 
   const { postData } = useSelector((state) => state.home);
@@ -90,7 +105,17 @@ const Manage = () => {
             )}
           </tbody>
         </table>
-        <button onClick={()=> console.log("delete",checkedInputs)}>삭제</button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginRight: "15vh",
+            marginTop: "4vh",
+          }}
+        >
+          <button onClick={() => deleteSubmit(checkedInputs)}>삭제</button>
+        </div>
+
         <Paging page={currentPage} count={count} setPage={setPage} />
       </div>
     </div>
