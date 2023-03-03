@@ -24,7 +24,7 @@ const PostCreate = () => {
   };
 
   return (
-    <>
+    <div className="main-body">
       <form onSubmit={(e) => postSubmit(e)}>
         <div className="form">
           <div>
@@ -51,7 +51,7 @@ const PostCreate = () => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

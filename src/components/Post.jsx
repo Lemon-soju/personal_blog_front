@@ -62,7 +62,7 @@ const Post = () => {
               <tr className="post-table-row" key={index}>
                 <td>{e.postId}</td>
                 <td>{e.title}</td>
-                <td>{e.createDate}</td>
+                <td>{e.createDate.slice(0, 10)}</td>
                 <td>{e.writer}</td>
               </tr>
             ))

@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <div style={{ backgroundColor: "white", height: "100vh" }}>
       <div
         className="normal_1"
-        style={{ marginTop: "70px", marginLeft: "20px" }}
+        style={{ marginLeft: "20px", marginTop: "20px" }}
       >
         신입 개발자 윤창규입니다.
       </div>
@@ -147,7 +147,7 @@ const About = () => {
           고려대학교 컴퓨터학과 4학년 휴학 중
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
