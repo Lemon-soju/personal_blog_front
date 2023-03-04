@@ -69,7 +69,7 @@ const Manage = () => {
   return (
     <div className="main-body">
       <div className="post-body">
-        <h2 style={{ textAlign: "center", marginTop: "50px" }}> 글 관리 </h2>
+        <h2 style={{ textAlign: "center", marginTop: "50px" }}> 내가 쓴 글 </h2>
         <table className="post-table">
           <thead className="post-table-header">
             <tr>

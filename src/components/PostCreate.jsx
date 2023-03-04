@@ -16,7 +16,8 @@ const PostCreate = () => {
 
     if (response.status === 200) {
       window.alert("글쓰기 성공");
-      return navigate("/");
+      navigate("/");
+      return window.location.reload(); // 최신 글 바로 적용
     } else {
       window.alert("글쓰기 실패");
       return window.location.reload();
@@ -26,28 +27,33 @@ const PostCreate = () => {
   return (
     <div className="main-body">
       <form onSubmit={(e) => postSubmit(e)}>
-        <div className="form">
-          <div>
-            <input
-              id="title"
-              type="text"
-              placeholder="제목을 입력해주세요."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-
+        <div className="post-create">
+          <input
+            className="post-create-title"
+            type="text"
+            placeholder="제목을 입력해주세요."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <div
-            id="content"
-            className="mt-2"
+            style={{ marginTop: "2vh" }}
             value={content}
             onChange={(e) => setContent(e.target.value)}
           >
-            <textarea rows="15"></textarea>
+            <textarea
+              className="post-create-content"
+              placeholder="내용을 입력해주세요."
+              rows={15}
+            ></textarea>
           </div>
-
-          <div className="mt-2">
-            <button>글 작성완료</button>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: "26%",
+            }}
+          >
+            <button>완료</button>
           </div>
         </div>
       </form>

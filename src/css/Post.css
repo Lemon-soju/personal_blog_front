@@ -34,3 +34,17 @@
     padding: 10px 5px;
     font-weight: bold;
 }
+
+.post-create{
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.post-create-title{
+    width: 50%;
+}
+
+.post-create-content{
+    width: 50%;
+    height: 50vh;
+}
