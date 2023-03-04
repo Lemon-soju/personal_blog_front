@@ -5,14 +5,20 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <div style={{ backgroundColor: "white", height: "100vh" }}>
+    <div
+      style={{ backgroundColor: "white", height: "100vh", marginLeft: "2.5vw" }}
+    >
       <div
-        className="normal_1"
-        style={{ marginLeft: "20px", marginTop: "20px" }}
+        style={{
+          marginLeft: "20px",
+          marginTop: "10vh",
+          fontSize: "1.3rem",
+          color: "#090809",
+        }}
       >
         신입 개발자 윤창규입니다.
       </div>
-      <div style={{ display: "flex", marginTop: "20px" }}>
+      <div style={{ display: "flex", marginTop: "4vh" }}>
         <div>
           <img
             alt="sketch"
@@ -34,20 +40,20 @@ const About = () => {
         >
           <div>
             Contact.
-            <div className="normal_2">
-              <p>Email. yckk980320@naver.com</p>
+            <div className="normal_2" style={{ marginTop: "2vh" }}>
+              <span>Email. yckk980320@naver.com</span>
               <p>Phone. 010-****-****</p>
             </div>
           </div>
 
           <div style={{ marginTop: "50px" }}>
             Channel.
-            <div className="normal_2">
-              <p>
+            <div className="normal_2" style={{ marginTop: "2vh" }}>
+              <span>
                 <a href="http://lemon-soju.tistory.com">
                   Blog. https://lemon-soju.tistory.com/
                 </a>
-              </p>
+              </span>
               <p>
                 <a href="https://github.com/Lemon-soju">
                   GitHub. https://github.com/Lemon-soju
