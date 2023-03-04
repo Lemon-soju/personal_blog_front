@@ -29,11 +29,11 @@ function Login() {
   };
 
   return (
-    <>
-      <h3>Login</h3>
+    <div className="main-body">
       <form onSubmit={(e) => loginSubmit(e)}>
-        <div className="form">
-          <div className="form-el">
+        <div className="login-form">
+          <h3>Login</h3>
+          <div>
             <label htmlFor="uid">아이디</label>
             <br />
             <input
@@ -45,25 +45,25 @@ function Login() {
               }}
             />
           </div>
-          <div className="form-el">
+          <div>
             <label htmlFor="pwd">비밀번호</label> <br />
             <input
               id="pwd"
-              type="text"
+              type="password"
               value={pwd}
               onChange={(event) => {
                 setPwd(event.target.value);
               }}
             />
           </div>
-          <button type="submit">제출</button>
+          <button style={{ marginTop: "2vh" }} type="submit">
+            로그인
+          </button>
+          <p />
+          <button onClick={goToSignUp}>회원가입</button>
         </div>
       </form>
-      <div className="signup-button" onClick={goToSignUp}>
-        <div>회원가입</div>
-        <br />
-      </div>
-    </>
+    </div>
   );
 }
 export default Login;

@@ -20,6 +20,10 @@
     cursor: pointer;
 }
 
+.login-form{
+    margin:7vh;
+}
+
 .write-button{
     display: flex;
     justify-content: flex-end;
@@ -39,6 +43,10 @@
     justify-content: flex-start;
     margin: 20px;
     cursor: pointer;
+}
+
+.signup-form{
+    margin:7vh;
 }
 
 
