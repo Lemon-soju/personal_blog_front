@@ -22,11 +22,20 @@
     color: #7e7e7e;
 }
 .project-card{
-    width: 17vw;
+    width: 15vw;
     min-width: 200px;
     float: left;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin: 20px;
     cursor: pointer;
-    height: 100px;
+    height: 17vh;
+}
+
+.divide-line {
+    margin-top: 30vh; 
+}
+
+@media screen and (max-width: 499px) {
+    .divide-line {
+        margin-top: 50vh; 
+    }
 }

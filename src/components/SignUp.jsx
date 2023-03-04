@@ -24,11 +24,11 @@ function SignUp() {
   };
 
   return (
-    <>
-      <h3>Sign Up</h3>
+    <div className="main-body">
       <form onSubmit={(e) => signUpSubmit(e)}>
-        <div className="form">
-          <div className="form-el">
+        <div className="signup-form">
+          <h3>Sign Up</h3>
+          <div>
             <label htmlFor="uid">아이디</label>
             <br />
             <input
@@ -40,7 +40,7 @@ function SignUp() {
               }}
             />
           </div>
-          <div className="form-el">
+          <div>
             <label htmlFor="pwd">비밀번호</label> <br />
             <input
               id="pwd"
@@ -51,7 +51,7 @@ function SignUp() {
               }}
             />
           </div>
-          <div className="form-el">
+          <div>
             <label htmlFor="name">이름</label> <br />
             <input
               id="name"
@@ -62,10 +62,12 @@ function SignUp() {
               }}
             />
           </div>
-          <button type="submit">제출</button>
+          <button style={{ marginTop: "2vh" }} type="submit">
+            회원가입
+          </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 

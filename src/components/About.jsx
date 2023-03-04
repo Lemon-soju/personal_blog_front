@@ -113,12 +113,7 @@ const About = () => {
           />
         </div>
       </div>
-      <hr
-        contentEditable="false"
-        data-ke-type="horizontalRule"
-        data-ke-style="style5"
-        style={{ marginTop: "300px" }}
-      />
+      <hr className="divide-line" />
       <div
         className="subhead_1"
         style={{ marginTop: "100px", marginLeft: "20px" }}
@@ -131,12 +126,7 @@ const About = () => {
         </div>
       </div>
 
-      <hr
-        contentEditable="false"
-        data-ke-type="horizontalRule"
-        data-ke-style="style5"
-        style={{ marginTop: "100px" }}
-      />
+      <hr />
 
       <div
         className="subhead_1"

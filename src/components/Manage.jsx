@@ -51,7 +51,8 @@ const Manage = () => {
     if (postData.length === 0) {
       dispatch(homeAction.getPosts());
     } else {
-      let myPostData = postData.filter((e) => e.writer === "admin");
+      let uid = localStorage.getItem("uid");
+      let myPostData = postData.filter((e) => e.writer === uid);
       setCount(myPostData.length);
       setIndexOfLastPost(currentPage * postPerPage);
       setIndexOfFirstPost(indexOfLastPost - postPerPage);
