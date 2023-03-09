@@ -18,6 +18,7 @@ import NetflixAbout from "./ToyProject/Netflix/NetflixAbout";
 import NetflixHome from "./ToyProject/Netflix/NetflixHome";
 import Developing from "./components/Developing";
 import Manage from "./components/Manage";
+import PostDetail from "./components/PostDetail";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/post/new" element={<PostCreate />} />
+        <Route path="/post/:id" element={<PostDetail />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/developing" element={<Developing />} />

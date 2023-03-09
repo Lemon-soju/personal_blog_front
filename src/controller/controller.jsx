@@ -100,4 +100,29 @@ const deletePosts = async (data, accessToken) => {
   return result;
 };
 
-export { signUp, login, writePost, deletePosts };
+const readPost = async (data) => {
+  const url = backend + "/post/detail";
+  let accessToken = localStorage.getItem("accessToken");
+
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
+
+  let result;
+
+  await axios
+    .get(url + "?id=" + data, { headers })
+    .then((response) => {
+      // console.log(`글 detail 읽기 반환값: ${JSON.stringify(response.data)}`); //debug
+      result = response;
+    })
+    .catch((error) => {
+      console.log(`글 detail 불러오기 오류: ${error}`); //debug
+      result = error;
+    });
+
+  return result;
+};
+
+export { signUp, login, writePost, deletePosts, readPost };

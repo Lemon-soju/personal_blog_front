@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
 import { deletePosts } from "../controller/controller";
 
 const Manage = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [count, setCount] = useState(0);
@@ -85,8 +87,10 @@ const Manage = () => {
               currentPosts.map((e, index) => (
                 <tr className="post-table-row" key={index}>
                   <td>{e.postId}</td>
-                  <td>{e.title}</td>
-                  <td>{e.createDate}</td>
+                  <td onClick={() => navigate(`/post/${e.postId}`)}>
+                    {e.title}
+                  </td>
+                  <td>{e.createDate.slice(0, 10)}</td>
                   <td>{e.writer}</td>
                   <td>
                     {" "}
