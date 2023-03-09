@@ -59,7 +59,11 @@ const Post = () => {
         <tbody className="post-table-column">
           {currentPosts && currentPosts.length > 0 ? (
             currentPosts.map((e, index) => (
-              <tr className="post-table-row" key={index}>
+              <tr
+                className="post-table-row"
+                key={index}
+                onClick={() => navigate(`/post/${e.postId}`)}
+              >
                 <td>{e.postId}</td>
                 <td>{e.title}</td>
                 <td>{e.createDate.slice(0, 10)}</td>
