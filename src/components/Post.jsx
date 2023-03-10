@@ -64,10 +64,12 @@ const Post = () => {
                 key={index}
                 onClick={() => navigate(`/post/${e.postId}`)}
               >
-                <td>{e.postId}</td>
-                <td>{e.title}</td>
-                <td>{e.createDate.slice(0, 10)}</td>
-                <td>{e.writer}</td>
+                <td className="post-number">{e.postId}</td>
+                <td style={{ textAlign: "left", width: "40vw" }}>
+                  {e.title.slice(0, 26)}
+                </td>
+                <td className="post-date">{e.createDate.slice(0, 10)}</td>
+                <td className="post-writer">{e.writer}</td>
               </tr>
             ))
           ) : (

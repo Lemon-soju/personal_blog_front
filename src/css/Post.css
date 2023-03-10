@@ -30,7 +30,7 @@
 .post-table-header {
     border-bottom: 1px solid #e8e8e8;
     padding: 0;
-    font-size: 16px;
+    font-size: 1.2rem;
     padding: 10px 5px;
     font-weight: bold;
 }
@@ -65,3 +65,58 @@
     margin-top: 7%;
     margin-left: 20%;
 }
+
+.post-date{
+   width: 10vw;
+}
+
+.post-writer{
+    width: 6vw;
+ }
+
+ .post-number{
+   width: 7vw;
+ }
+
+@media screen and (max-width: 1023px) {
+    .post-date{
+        width: 9vw;
+     }
+     .post-table-row {
+        font-size: 0.7rem;
+    }
+
+    .post-table-header {
+        font-size: 1.0rem;
+    }
+    .post-writer{
+        width: 7vw;
+     }
+}
+
+@media screen and (max-width: 767px) {
+    .post-table-row {
+        font-size: 0.5rem;
+    }
+
+    .post-table {
+        width: 90%;
+    }
+    .post-date{
+        width: 10vw;
+     }
+    .post-table-header {
+        font-size: 0.6rem;
+    }
+    .post-body{
+        margin: 1vh;
+    }
+    .post-number{
+        width: 8vw;
+    }
+    .post-writer{
+        width: 8vw;
+    }
+}
+
+
