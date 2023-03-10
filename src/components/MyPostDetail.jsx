@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { readPost } from "../controller/controller";
+import { useNavigate } from "react-router-dom";
 
-const PostDetail = () => {
+const MyPostDetail = () => {
   const params = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const navigate = useNavigate();
 
   const getPost = useCallback(async () => {
     let post = await readPost(params.id);
@@ -30,9 +33,22 @@ const PostDetail = () => {
           marginRight: "20%",
           marginTop: "8vh",
         }}
-      ></div>
+      >
+        <button
+          onClick={(e) =>
+            navigate(`/post/edit/${params.id}`, {
+              state: {
+                title: title,
+                content: content,
+              },
+            })
+          }
+        >
+          수정
+        </button>
+      </div>
     </div>
   );
 };
 
-export default PostDetail;
+export default MyPostDetail;

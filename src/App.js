@@ -20,6 +20,7 @@ import Developing from "./components/Developing";
 import Manage from "./components/Manage";
 import PostDetail from "./components/PostDetail";
 import PostEdit from "./components/PostEdit";
+import MyPostDetail from "./components/MyPostDetail";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/post/new" element={<PostCreate />} />
         <Route path="/post/:id" element={<PostDetail />} />
+        <Route path="/mypost/:id" element={<MyPostDetail />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/developing" element={<Developing />} />

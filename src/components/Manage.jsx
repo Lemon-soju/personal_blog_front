@@ -86,14 +86,16 @@ const Manage = () => {
             {currentPosts && currentPosts.length > 0 ? (
               currentPosts.map((e, index) => (
                 <tr className="post-table-row" key={index}>
-                  <td>{e.postId}</td>
-                  <td onClick={() => navigate(`/post/${e.postId}`)}>
+                  <td style={{ width: "13vw" }}>{e.postId}</td>
+                  <td
+                    style={{ textAlign: "left" }}
+                    onClick={() => navigate(`/mypost/${e.postId}`)}
+                  >
                     {e.title}
                   </td>
-                  <td>{e.createDate.slice(0, 10)}</td>
-                  <td>{e.writer}</td>
+                  <td style={{ width: "10vw" }}>{e.createDate.slice(0, 10)}</td>
+                  <td style={{ width: "10vw" }}>{e.writer}</td>
                   <td>
-                    {" "}
                     <input
                       type={"checkbox"}
                       onChange={() => {
@@ -114,7 +116,7 @@ const Manage = () => {
           style={{
             display: "flex",
             justifyContent: "flex-end",
-            marginRight: "15vh",
+            marginRight: "12vw",
             marginTop: "4vh",
           }}
         >

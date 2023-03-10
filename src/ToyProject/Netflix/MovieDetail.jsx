@@ -28,13 +28,15 @@ const MovieDetail = () => {
 
   return (
     <div className="movie-detail">
-      <img
-        className="movie-detail-poster"
-        alt="poster"
-        src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`}
-      />
+      <div className="movie-detail-poster">
+        <img
+          style={{ width: "100%" }}
+          alt="poster"
+          src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetail.poster_path}`}
+        />
+      </div>
       <div className="movie-detail-description">
-        <h1>{movieDetail.title}</h1>
+        <h1 style={{ marginTop: "10%" }}>{movieDetail.title}</h1>
         <h5 style={{ marginTop: "2vh", marginBottom: "2vh" }}>
           {movieDetail.tagline}
         </h5>
