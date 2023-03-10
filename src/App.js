@@ -19,6 +19,7 @@ import NetflixHome from "./ToyProject/Netflix/NetflixHome";
 import Developing from "./components/Developing";
 import Manage from "./components/Manage";
 import PostDetail from "./components/PostDetail";
+import PostEdit from "./components/PostEdit";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/developing" element={<Developing />} />
         <Route path="/manage" element={<Manage />} />
+        <Route path="/post/edit/:id" element={<PostEdit />} />
 
         {/* Netflix */}
         <Route path="/netflix" element={<NetflixHome />} />

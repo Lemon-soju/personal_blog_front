@@ -76,6 +76,32 @@ const writePost = async (data, accessToken) => {
   return result;
 };
 
+const editPost = async (data, accessToken) => {
+  const url = backend + `/user/post/edit/${data.id}`;
+
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
+
+  console.log("글수정 토큰값: " + accessToken);
+  let result;
+  console.log(`글수정 입력값: ${JSON.stringify(data)}`); //debug
+
+  await axios
+    .post(url, JSON.stringify(data), { headers })
+    .then((response) => {
+      console.log(`글쓰기 반환값: ${JSON.stringify(response.data)}`); //debug
+      result = response;
+    })
+    .catch((error) => {
+      console.log(`글쓰기 오류: ${error}`); //debug
+      result = error;
+    });
+
+  return result;
+};
+
 const deletePosts = async (data, accessToken) => {
   const url = backend + "/user/post/delete";
 
@@ -125,4 +151,4 @@ const readPost = async (data) => {
   return result;
 };
 
-export { signUp, login, writePost, deletePosts, readPost };
+export { signUp, login, writePost, deletePosts, readPost, editPost };
