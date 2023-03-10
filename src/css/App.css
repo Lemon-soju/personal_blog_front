@@ -78,3 +78,13 @@
     }
 
 }
+
+@media screen and (max-width: 375px) {
+    .home-project-card{
+        min-width: 180px;
+        margin-top: 50px;
+        margin-left: 20px;
+        cursor: pointer;
+        height: 130px;
+    }
+}
