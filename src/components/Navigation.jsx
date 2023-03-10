@@ -15,6 +15,13 @@ const Navigation = () => {
     navigate("/login");
   };
 
+  const goToLogout = () => {
+    window.localStorage.removeItem("uid");
+    window.localStorage.removeItem("accessToken");
+    window.alert("로그아웃 성공");
+    navigate("/");
+  };
+
   if (window.location.pathname.startsWith("/netflix"))
     return <NetflixNavigation />;
   return (
@@ -43,11 +50,17 @@ const Navigation = () => {
             </Form>
           </Navbar.Collapse>
         </Container>
-        <div className="login-button" onClick={goToLogin}>
+        <div className="login-button">
           <div>
             <FontAwesomeIcon icon={faUser} />
           </div>
-          <div style={{ marginRight: "3vh", whiteSpace: "nowrap" }}>로그인</div>
+          <div style={{ marginRight: "3vh", whiteSpace: "nowrap" }}>
+            {localStorage.getItem("uid") === null ? (
+              <div onClick={goToLogin}>로그인</div>
+            ) : (
+              <div onClick={goToLogout}>로그아웃</div>
+            )}
+          </div>
         </div>
       </Navbar>
     </div>
