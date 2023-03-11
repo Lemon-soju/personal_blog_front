@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backend = "http://localhost:8080";
+const backend = "http://3.35.179.185:8080";
 
 const signUp = async (data) => {
   const url = backend + "/signup";

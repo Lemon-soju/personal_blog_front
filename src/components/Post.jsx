@@ -88,12 +88,20 @@ const Post = () => {
           justifyContent: "flex-end",
         }}
       >
-        <div
-          className="write-button"
-          style={{ marginBottom: "50px" }}
-          onClick={goToCreatePost}
-        >
-          <button>글쓰기</button>
+        <div className="write-button" style={{ marginBottom: "50px" }}>
+          <button>
+            {localStorage.getItem("uid") === null ? (
+              <div
+                onClick={() => {
+                  window.alert("로그인 후 글쓰기가 가능합니다.");
+                }}
+              >
+                글쓰기
+              </div>
+            ) : (
+              <div onClick={goToCreatePost}>글쓰기</div>
+            )}
+          </button>
         </div>
         <div
           className="manage-button"
