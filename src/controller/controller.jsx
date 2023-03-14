@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const backend = "http://3.35.179.185:8080";
+// const backend = "http://127.0.0.1:8080";
+
 
 const signUp = async (data) => {
   const url = backend + "/signup";
@@ -51,7 +53,7 @@ const login = async (data) => {
 };
 
 const writePost = async (data, accessToken) => {
-  const url = backend + "/user/post";
+  const url = backend + "/post/write";
 
   const headers = {
     "Content-Type": "application/json",
