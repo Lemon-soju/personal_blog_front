@@ -83,7 +83,7 @@
    width: 7vw;
  }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1080px) {
     .post-date{
         width: 9vw;
      }
