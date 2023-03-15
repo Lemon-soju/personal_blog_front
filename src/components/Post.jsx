@@ -50,7 +50,7 @@ const Post = () => {
     if (search === null || search === "") {
       setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
     } else {
-      const filterPosts = currentPosts.filter((e) => e.title.includes(search));
+      const filterPosts = postData.filter((e) => e.title.includes(search));
       setCurrentPosts(filterPosts);
     }
   };
@@ -75,6 +75,7 @@ const Post = () => {
             alt="search"
             className="post-search"
             src={"/search.png"}
+            onClick={(e) => onSearch(e)}
           />
         </form>
       </div>
