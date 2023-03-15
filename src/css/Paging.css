@@ -52,3 +52,17 @@
     height: 30px;
     color: #337ab7;
   }
+
+  @media screen and (max-width: 1080px) {
+    ul.pagination li {
+      width: 23px;
+      height: 23px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  ul.pagination li {
+    width: 20px;
+    height: 20px;
+  }
+}
