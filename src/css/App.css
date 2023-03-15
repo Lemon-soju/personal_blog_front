@@ -77,6 +77,17 @@
         margin-right: 0vh;
     }
 
+    .write-button{
+        font-size: 12px;
+        height: 22px;
+        margin-right: 7px;
+    }
+    
+    .manage-button{
+        height: 20px;
+        width: 20px;
+        margin-right: 15vw;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -87,4 +98,6 @@
         cursor: pointer;
         height: 130px;
     }
+
+
 }
