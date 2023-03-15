@@ -15,6 +15,7 @@ const Post = () => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState(0);
+  const [search, setSearch] = useState("");
 
   const setPage = (e) => {
     setCurrentPage(e);
@@ -44,9 +45,40 @@ const Post = () => {
     navigate("/post/new");
   };
 
+  const onSearch = (event) => {
+    event.preventDefault();
+    if (search === null || search === "") {
+      setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
+    } else {
+      const filterPosts = currentPosts.filter((e) => e.title.includes(search));
+      setCurrentPosts(filterPosts);
+    }
+  };
+
+  const onChangeSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+
   return (
     <div className="post-body">
       <h2 style={{ textAlign: "center", marginTop: "50px" }}> 게시판 </h2>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <form className="post-search-form" onSubmit={(e) => onSearch(e)}>
+          <input
+            type="text"
+            className="post-search-input"
+            onChange={onChangeSearch}
+          ></input>
+          <img
+            type="submit"
+            alt="search"
+            className="post-search"
+            src={"/search.png"}
+          />
+        </form>
+      </div>
+
       <table className="post-table">
         <thead className="post-table-header">
           <tr>
