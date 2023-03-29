@@ -2,7 +2,7 @@ let initialState = {
   postData: [],
 };
 
-const homeReducer = (state = initialState, action) => {
+const homeReducer = (state = initialState, action: any) => {
   let { type, payload } = action;
   switch (type) {
     case "GET_POSTS_SUCCESS":

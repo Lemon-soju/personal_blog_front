@@ -1,7 +1,7 @@
 import homeApi from "../api/homeApi";
 
-const getPosts = () => {
-  return async (dispatch) => {
+const getPosts: any = () => {
+  return async (dispatch: any) => {
     try {
       const postApi = await homeApi.get(`/post`);
       dispatch({
