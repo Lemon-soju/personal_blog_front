@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
 import { deletePosts } from "../controller/controller";
+import { RootState } from "../redux/reducers/index";
 
 const Manage = () => {
   const navigate = useNavigate();
@@ -15,10 +16,10 @@ const Manage = () => {
 
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [currentPosts, setCurrentPosts] = useState(0);
-  const [checkedInputs, setCheckedInputs] = useState([]);
+  const [currentPosts, setCurrentPosts] = useState<any[]>([]);
+  const [checkedInputs, setCheckedInputs] = useState<number[]>([]);
 
-  const changeHandler = async (id) => {
+  const changeHandler = async (id: number) => {
     let checked = checkedInputs.includes(id) ? true : false;
 
     if (!checked) {
@@ -29,13 +30,13 @@ const Manage = () => {
     }
   };
 
-  const setPage = (e) => {
+  const setPage = (e: number) => {
     setCurrentPage(e);
   };
 
-  const deleteSubmit = async (e) => {
+  const deleteSubmit = async (checkedInputs: number[]) => {
     let accessToken = localStorage.getItem("accessToken");
-    const data = { checkedInputs };
+    const data: number[] = checkedInputs;
     let response = await deletePosts(data, accessToken);
 
     if (response.status === 200) {
@@ -47,14 +48,14 @@ const Manage = () => {
     }
   };
 
-  const { postData } = useSelector((state) => state.home);
+  const { postData } = useSelector((state: RootState) => state.home);
 
   useEffect(() => {
     if (postData.length === 0) {
       dispatch(homeAction.getPosts());
     } else {
       let uid = localStorage.getItem("uid");
-      let myPostData = postData.filter((e) => e.writer === uid);
+      let myPostData = postData.filter((e: any) => e.writer === uid);
       setCount(myPostData.length);
       setIndexOfLastPost(currentPage * postPerPage);
       setIndexOfFirstPost(indexOfLastPost - postPerPage);

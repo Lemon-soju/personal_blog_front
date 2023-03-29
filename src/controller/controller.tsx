@@ -1,58 +1,49 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 const backend = "http://3.35.179.185:8080";
 // const backend = "http://127.0.0.1:8080";
 
-
-const signUp = async (data) => {
+const signUp = async (data: { uid: string; pwd: string; name: string }) => {
   const url = backend + "/signup";
 
   const headers = {
     "Content-Type": "application/json",
   };
 
-  let result;
   console.log(`회원가입 입력값: ${JSON.stringify(data)}`); //debug
 
-  await axios
-    .post(url, JSON.stringify(data), { headers })
-    .then((response) => {
-      console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`회원가입 오류: ${error}`); //debug
-      result = error;
-    });
+  const response = await axios.post(url, JSON.stringify(data), { headers });
+  console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
 
-  return result;
+  return response;
 };
 
-const login = async (data) => {
+interface LoginResponse {
+  accessToken: string;
+  uid: string;
+}
+
+const login = async (data: {
+  uid: string;
+  pwd: string;
+}): Promise<AxiosResponse<LoginResponse>> => {
   const url = backend + "/login";
 
   const headers = {
     "Content-Type": "application/json",
   };
 
-  let result;
   console.log(`로그인 입력값: ${JSON.stringify(data)}`); //debug
+  const response = await axios.post(url, JSON.stringify(data), { headers });
+  console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
 
-  await axios
-    .post(url, JSON.stringify(data), { headers })
-    .then((response) => {
-      console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`로그인 오류: ${error}`); //debug
-      result = error;
-    });
-
-  return result;
+  return response;
 };
 
-const writePost = async (data, accessToken) => {
+const writePost = async (
+  data: { title: string; content: string },
+  accessToken: string | null
+) => {
   const url = backend + "/post/write";
 
   const headers = {
@@ -78,7 +69,10 @@ const writePost = async (data, accessToken) => {
   return result;
 };
 
-const editPost = async (data, accessToken) => {
+const editPost = async (
+  data: { id: any; title?: string; content?: string },
+  accessToken: string | null
+) => {
   const url = backend + `/user/post/edit/${data.id}`;
 
   const headers = {
@@ -104,7 +98,10 @@ const editPost = async (data, accessToken) => {
   return result;
 };
 
-const deletePosts = async (data, accessToken) => {
+const deletePosts = async (
+  data: number[],
+  accessToken: string | null
+): Promise<AxiosResponse> => {
   const url = backend + "/user/post/delete";
 
   const headers = {
@@ -112,23 +109,13 @@ const deletePosts = async (data, accessToken) => {
     accessToken: accessToken,
   };
 
-  let result;
   console.log(`글삭제 데이터: ${JSON.stringify(data)}`); //debug
+  const response = await axios.post(url, JSON.stringify(data), { headers });
 
-  await axios
-    .post(url, JSON.stringify(data), { headers })
-    .then((response) => {
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`글삭제 오류: ${error}`); //debug
-      result = error;
-    });
-
-  return result;
+  return response;
 };
 
-const readPost = async (data) => {
+const readPost = async (data: string | undefined) => {
   const url = backend + "/post/detail";
   let accessToken = localStorage.getItem("accessToken");
 

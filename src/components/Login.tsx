@@ -1,33 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../controller/controller";
+import { login } from "../controller/controller";
 
-function SignUp() {
+function Login() {
   const [uid, setUid] = useState("");
   const [pwd, setPwd] = useState("");
-  const [name, setName] = useState("");
 
   const navigate = useNavigate();
 
-  const signUpSubmit = async (event) => {
+  const goToSignUp = () => {
+    navigate("/signup");
+  };
+
+  const loginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = { uid, pwd, name };
-    let response = await signUp(data);
+    const data = { uid, pwd };
+    let response = await login(data);
+    const accessToken = response.data.accessToken;
     if (response.status === 200) {
-      window.alert("회원가입 성공");
+      window.alert("로그인 성공");
+      localStorage.setItem("uid", uid);
+      localStorage.setItem("accessToken", accessToken);
       return navigate("/");
     } else {
-      window.alert("회원가입 실패");
-      console.log(response.status);
+      window.alert("로그인 실패");
       return window.location.reload();
     }
   };
 
   return (
     <div className="main-body">
-      <form onSubmit={(e) => signUpSubmit(e)}>
-        <div className="signup-form">
-          <h3>Sign Up</h3>
+      <form onSubmit={(e) => loginSubmit(e)}>
+        <div className="login-form">
+          <h3>Login</h3>
           <div>
             <label htmlFor="uid">아이디</label>
             <br />
@@ -44,31 +49,21 @@ function SignUp() {
             <label htmlFor="pwd">비밀번호</label> <br />
             <input
               id="pwd"
-              type="text"
+              type="password"
               value={pwd}
               onChange={(event) => {
                 setPwd(event.target.value);
               }}
             />
           </div>
-          <div>
-            <label htmlFor="name">이름</label> <br />
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-          </div>
           <button style={{ marginTop: "2vh" }} type="submit">
-            회원가입
+            로그인
           </button>
+          <p />
+          <button onClick={goToSignUp}>회원가입</button>
         </div>
       </form>
     </div>
   );
 }
-
-export default SignUp;
+export default Login;
