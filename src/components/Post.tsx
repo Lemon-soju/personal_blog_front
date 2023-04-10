@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
+import { RootState } from "../redux/reducers";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -14,14 +15,22 @@ const Post = () => {
 
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [currentPosts, setCurrentPosts] = useState(0);
+  const [currentPosts, setCurrentPosts] = useState<PostData[]>();
   const [search, setSearch] = useState("");
 
-  const setPage = (e) => {
+  interface PostData {
+    postId: number;
+    title: string;
+    content: string;
+    writer: string;
+    createDate: string;
+  }
+
+  const setPage = (e: number) => {
     setCurrentPage(e);
   };
 
-  const { postData } = useSelector((state) => state.home);
+  const { postData } = useSelector((state: RootState) => state.home);
 
   useEffect(() => {
     if (postData.length === 0) {
@@ -45,17 +54,19 @@ const Post = () => {
     navigate("/post/new");
   };
 
-  const onSearch = (event) => {
+  const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (search === null || search === "") {
       setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
     } else {
-      const filterPosts = postData.filter((e) => e.title.includes(search));
+      const filterPosts = postData.filter((e: PostData) =>
+        e.title.includes(search)
+      );
       setCurrentPosts(filterPosts);
     }
   };
 
-  const onChangeSearch = (e) => {
+  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
@@ -64,19 +75,15 @@ const Post = () => {
     <div className="post-body">
       <h2 style={{ textAlign: "center", marginTop: "50px" }}> 게시판 </h2>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <form className="post-search-form" onSubmit={(e) => onSearch(e)}>
+        <form className="post-search-form" onSubmit={onSearch}>
           <input
             type="text"
             className="post-search-input"
             onChange={onChangeSearch}
           ></input>
-          <img
-            type="submit"
-            alt="search"
-            className="post-search"
-            src={"/search.png"}
-            onClick={(e) => onSearch(e)}
-          />
+          <button type="submit">
+            <img alt="search" className="post-search" src={"/search.png"} />
+          </button>
         </form>
       </div>
 

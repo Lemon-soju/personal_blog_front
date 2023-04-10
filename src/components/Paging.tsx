@@ -1,7 +1,13 @@
 import React from "react";
 import Pagination from "react-js-pagination";
 
-const Paging = ({ page, count, setPage }) => {
+interface PagingProps {
+  page: number;
+  count: number;
+  setPage: (pageNumber: number) => void;
+}
+
+const Paging: React.FC<PagingProps> = ({ page, count, setPage }) => {
   return (
     <div style={{ height: "10%" }}>
       <Pagination

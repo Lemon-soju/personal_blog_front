@@ -11,6 +11,9 @@ const MyPostDetail = () => {
   const navigate = useNavigate();
 
   const getPost = useCallback(async () => {
+    if (!params.id) {
+      return;
+    }
     let post = await readPost(params.id);
     setTitle(post.data.title);
     setContent(post.data.content);

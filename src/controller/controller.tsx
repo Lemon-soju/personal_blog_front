@@ -51,22 +51,12 @@ const writePost = async (
     accessToken: accessToken,
   };
 
-  console.log("글쓰기 토큰값: " + accessToken);
-  let result;
-  console.log(`글쓰기 입력값: ${JSON.stringify(data)}`); //debug
-
-  await axios
-    .post(url, JSON.stringify(data), { headers })
-    .then((response) => {
-      console.log(`글쓰기 반환값: ${JSON.stringify(response.data)}`); //debug
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`글쓰기 오류: ${error}`); //debug
-      result = error;
-    });
-
-  return result;
+  try {
+    const response = await axios.post(url, JSON.stringify(data), { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const editPost = async (
@@ -80,22 +70,12 @@ const editPost = async (
     accessToken: accessToken,
   };
 
-  console.log("글수정 토큰값: " + accessToken);
-  let result;
-  console.log(`글수정 입력값: ${JSON.stringify(data)}`); //debug
-
-  await axios
-    .post(url, JSON.stringify(data), { headers })
-    .then((response) => {
-      console.log(`글쓰기 반환값: ${JSON.stringify(response.data)}`); //debug
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`글쓰기 오류: ${error}`); //debug
-      result = error;
-    });
-
-  return result;
+  try {
+    const response = await axios.post(url, JSON.stringify(data), { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const deletePosts = async (
@@ -115,7 +95,7 @@ const deletePosts = async (
   return response;
 };
 
-const readPost = async (data: string | undefined) => {
+const readPost = async (data: string): Promise<AxiosResponse> => {
   const url = backend + "/post/detail";
   let accessToken = localStorage.getItem("accessToken");
 
@@ -124,20 +104,12 @@ const readPost = async (data: string | undefined) => {
     accessToken: accessToken,
   };
 
-  let result;
-
-  await axios
-    .get(url + "?id=" + data, { headers })
-    .then((response) => {
-      // console.log(`글 detail 읽기 반환값: ${JSON.stringify(response.data)}`); //debug
-      result = response;
-    })
-    .catch((error) => {
-      console.log(`글 detail 불러오기 오류: ${error}`); //debug
-      result = error;
-    });
-
-  return result;
+  try {
+    const response = await axios.get(url + "?id=" + data, { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export { signUp, login, writePost, deletePosts, readPost, editPost };

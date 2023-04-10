@@ -1,49 +1,53 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { writePost } from "../controller/controller";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { editPost } from "../controller/controller";
 
-const PostCreate = () => {
+const PostEdit = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
 
-  const postSubmit = async (e) => {
+  const editSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = { title, content };
+    const data = { id: params.id, title, content };
     let accessToken = localStorage.getItem("accessToken");
-    let response = await writePost(data, accessToken);
+    let response = await editPost(data, accessToken);
 
     if (response.status === 200) {
-      window.alert("글쓰기 성공");
+      window.alert("글 수정 성공");
       navigate("/");
       return window.location.reload(); // 최신 글 바로 적용
     } else {
-      window.alert("글쓰기 실패");
+      window.alert("글 수정 실패");
       return window.location.reload();
     }
   };
 
+  useEffect(() => {
+    setTitle(location.state.title);
+    setContent(location.state.content);
+  }, [location.state.title, location.state.content]);
+
   return (
     <div className="main-body">
-      <form onSubmit={(e) => postSubmit(e)}>
+      <form onSubmit={(e) => editSubmit(e)}>
         <div className="post-create">
           <input
             className="post-create-title"
             type="text"
-            placeholder="제목을 입력해주세요."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div
-            style={{ marginTop: "2vh" }}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-          >
+          <div style={{ marginTop: "2vh" }}>
             <textarea
               className="post-create-content"
-              placeholder="내용을 입력해주세요."
+              value={content}
               rows={15}
+              onChange={(e) => setContent(e.target.value)}
             ></textarea>
           </div>
           <div
@@ -61,4 +65,4 @@ const PostCreate = () => {
   );
 };
 
-export default PostCreate;
+export default PostEdit;
