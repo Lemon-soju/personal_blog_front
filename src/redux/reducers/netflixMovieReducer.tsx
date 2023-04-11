@@ -7,7 +7,16 @@ let initialState = {
   movieDetail: {},
 };
 
-const netflixMovieReducer = (state = initialState, action) => {
+interface Action {
+  type:
+    | "GET_MOVIES_REQUEST"
+    | "GET_MOVIES_SUCCESS"
+    | "GET_MOVIES_FAILURE"
+    | "GET_MOVIE_DETAIL";
+  payload?: any;
+}
+
+const netflixMovieReducer = (state = initialState, action: Action) => {
   let { type, payload } = action;
   switch (type) {
     case "GET_MOVIES_REQUEST":

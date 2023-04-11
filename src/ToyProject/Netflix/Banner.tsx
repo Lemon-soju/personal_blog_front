@@ -1,7 +1,12 @@
 import React from "react";
 
-const Banner = ({ movie }) => {
-  // console.log("movie: ", movie);
+interface Movie {
+  poster_path: string;
+  title: string;
+  overview: string;
+}
+
+const Banner = ({ movie }: { movie: Movie }) => {
   return (
     <div
       className="banner"
