@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { netflixMovieAction } from "../../redux/actions/netflixMovieAction";
 import { useParams } from "react-router-dom";
 import { Badge } from "react-bootstrap";
+import { RootState } from "../../redux/reducers";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
 
 const MovieDetail = () => {
   const params = useParams();
-  const { movieDetail } = useSelector((state) => state.netflixMovie);
-  const dispatch = useDispatch();
+  const { movieDetail } = useSelector((state:RootState) => state.netflixMovie);
+  const dispatch = useDispatch<ThunkDispatch<RootState, undefined, AnyAction>>();
   let trivialData = [
     { name: "Budget", value: "$" + movieDetail.budget },
     { name: "Revenue", value: "$" + movieDetail.revenue },

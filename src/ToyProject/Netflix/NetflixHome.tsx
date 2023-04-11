@@ -4,11 +4,40 @@ import { useDispatch, useSelector } from "react-redux";
 import Banner from "./Banner";
 import MovieSlide from "./MovieSlide";
 import ClipLoader from "react-spinners/ClipLoader";
+import { RootState } from "../../redux/reducers";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
+
+export interface Movies {
+  movies: {
+    results: {
+      id: number;
+      poster_path: string;
+      title: string;
+      genre_ids: number[];
+      vote_average: number;
+      release_date: string;
+      adult: boolean;
+    }[];
+  };
+}
+
+export interface Movie {
+  item: {
+    id: number;
+    poster_path: string;
+    title: string;
+    genre_ids: number[];
+    vote_average: number;
+    release_date: string;
+    adult: boolean;
+  };
+}
 
 const NetflixHome = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<RootState, undefined, AnyAction>>();
   const { popularMovies, topRatedMovies, upComingMovies, loading } =
-    useSelector((state) => state.netflixMovie);
+    useSelector((state: RootState) => state.netflixMovie);
 
   useEffect(() => {
     dispatch(netflixMovieAction.getMovies());
