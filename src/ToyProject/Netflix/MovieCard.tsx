@@ -3,24 +3,16 @@ import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/reducers";
+import { Movie } from "./NetflixHome";
 
-interface MovieCardProps {
-  item: {
-    id: number;
-    poster_path: string;
-    title: string;
-    genre_ids: number[];
-    vote_average: number;
-    adult: boolean;
-  };
-}
+
 
 interface Genre {
   id: number;
   name: string;
 }
 
-const MovieCard = ({ item }: MovieCardProps) => {
+const MovieCard = ({ item }: Movie) => {
   const { genreList } = useSelector((state: RootState) => state.netflixMovie);
   const navigate = useNavigate();
   return (

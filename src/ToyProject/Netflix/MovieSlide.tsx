@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
+import { Movies } from "./NetflixHome";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,7 +28,7 @@ const responsive = {
   },
 };
 
-const MovieSlide = ({ movies }) => {
+const MovieSlide = ({ movies }: Movies) => {
   // console.log("movies", movies);
   return (
     <div>
