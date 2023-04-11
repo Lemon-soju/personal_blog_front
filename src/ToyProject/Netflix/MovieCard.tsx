@@ -2,9 +2,26 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../redux/reducers";
 
-const MovieCard = ({ item }) => {
-  const { genreList } = useSelector((state) => state.netflixMovie);
+interface MovieCardProps {
+  item: {
+    id: number;
+    poster_path: string;
+    title: string;
+    genre_ids: number[];
+    vote_average: number;
+    adult: boolean;
+  };
+}
+
+interface Genre {
+  id: number;
+  name: string;
+}
+
+const MovieCard = ({ item }: MovieCardProps) => {
+  const { genreList } = useSelector((state: RootState) => state.netflixMovie);
   const navigate = useNavigate();
   return (
     <div
@@ -20,9 +37,9 @@ const MovieCard = ({ item }) => {
       <div className="overlay">
         <h1>{item.title}</h1>
         <div>
-          {item.genre_ids.map((id) => (
+          {item.genre_ids.map((id: number) => (
             <Badge bg="danger" key={id} style={{ margin: "2px" }}>
-              {genreList.find((item) => item.id === id).name}
+              {genreList.find((item: Genre) => item.id === id).name}
             </Badge>
           ))}
         </div>
