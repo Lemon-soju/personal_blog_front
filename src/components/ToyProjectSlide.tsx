@@ -39,6 +39,19 @@ const ToyProjectSlide = () => {
         autoPlaySpeed={3000}
         responsive={responsive}
       >
+          <NavLink to={"https://klub.kr/"}>
+            <img
+              className="home-project-card"
+              alt="klue"
+              src={"/klue.png"}
+            />
+          </NavLink>
+          <img
+          className="home-project-card"
+          onClick={() => navigate("/netflix")}
+          alt="netflix"
+          src={"/netflix.png"}
+        />
         <NavLink to={"https://lemon-soju.tistory.com/40"}>
           <img
             className="home-project-card"
@@ -46,30 +59,15 @@ const ToyProjectSlide = () => {
             src={"/ransomware.jpg"}
           />
         </NavLink>
-        <img
-          className="home-project-card"
-          onClick={() => navigate("/netflix")}
-          alt="netflix"
-          src={"/netflix.png"}
-        />
+       
         <img
           className="home-project-card"
           onClick={() => navigate("/developing")}
           alt="developing1"
           src={"/개발중1.png"}
         />
-        <img
-          className="home-project-card"
-          onClick={() => navigate("/developing")}
-          alt="developing2"
-          src={"/개발중2.png"}
-        />
-        <img
-          className="home-project-card"
-          onClick={() => navigate("/developing")}
-          alt="developing1"
-          src={"/개발중1.png"}
-        />
+ 
+      
       </Carousel>
     </div>
   );
