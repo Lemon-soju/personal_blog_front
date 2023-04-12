@@ -104,6 +104,19 @@ const About = () => {
       >
         Project Experience.
         <div style={{ marginTop: "20px" }}>
+        <NavLink to={"https://klub.kr/"}>
+            <img
+              className="project-card"
+              alt="klue"
+              src={"/klue.png"}
+            />
+          </NavLink>
+        <img
+            className="project-card"
+            onClick={() => navigate("/netflix")}
+            alt="netflix"
+            src={"/netflix.png"}
+          />
           <NavLink to={"https://lemon-soju.tistory.com/40"}>
             <img
               className="project-card"
@@ -111,12 +124,7 @@ const About = () => {
               src={"/ransomware.jpg"}
             />
           </NavLink>
-          <img
-            className="project-card"
-            onClick={() => navigate("/netflix")}
-            alt="netflix"
-            src={"/netflix.png"}
-          />
+         
         </div>
       </div>
       <hr className="divide-line" />
