@@ -1,6 +1,7 @@
 import React from "react";
 import Post from "./Post";
 import ToyProjectSlide from "./ToyProjectSlide";
+import { Container } from "react-bootstrap";
 
 // 로그인 후 화면
 const Main = () => {
@@ -9,7 +10,9 @@ const Main = () => {
       <h1 style={{ textAlign: "center", marginTop: "15vh" }}>
         창규's 토이 프로젝트
       </h1>
-      <ToyProjectSlide />
+      <Container>
+        <ToyProjectSlide />
+      </Container>
       <Post />
     </div>
   );

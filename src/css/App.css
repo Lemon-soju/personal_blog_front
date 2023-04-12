@@ -1,117 +1,117 @@
-.main-body::before{
-    content: "";
-    background-image: url(/public/background.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    opacity: 0.6;
-    position: absolute;
-    top: 5vh;
-    left: 0px;
-    right: 0px;
-    bottom: -75vh;
-    z-index: -1;
-    margin-left: 5vh;
-    margin-right: 5vh;
+.main-body::before {
+  content: "";
+  background-image: url(/public/background.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  position: absolute;
+  top: 5vh;
+  left: 0px;
+  right: 0px;
+  bottom: -75vh;
+  z-index: -1;
+  margin-left: 5vh;
+  margin-right: 5vh;
 }
-.login-button{
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px;
-    cursor: pointer;
-}
-
-.login-form{
-    margin:7vh;
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  cursor: pointer;
 }
 
-.write-button{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    cursor: pointer;
+.login-form {
+  margin: 7vh;
 }
 
-.manage-button{
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 15vw;
-    cursor: pointer;
+.write-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  cursor: pointer;
 }
 
-.signup-button{
-    display: flex;
-    justify-content: flex-start;
-    margin: 20px;
-    cursor: pointer;
+.manage-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15vw;
+  cursor: pointer;
 }
 
-.signup-form{
-    margin:7vh;
+.signup-button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px;
+  cursor: pointer;
 }
 
-
-.home-project-card{
-    width: 10vw;
-    min-width: 200px;
-    margin-top: 50px;
-    margin-left: 20px;
-    cursor: pointer;
-    height: 150px;
+.signup-form {
+  margin: 7vh;
 }
 
-.home-project-card:hover .app-overlay{
-    opacity: 1;
+.home-project-body {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.app-overlay{
-    opacity: 0;
-    background: rgba(43,41,41,0.9);
-    width: 100%;
-    height: 100%;
+.home-project-card {
+  width: 10vw;
+  min-width: 200px;
+  margin: 25px;
+  cursor: pointer;
+  height: 15vh;
+}
+
+.home-project-card:hover .app-overlay {
+  opacity: 1;
+}
+
+.app-overlay {
+  opacity: 0;
+  background: rgba(43, 41, 41, 0.9);
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 1080px) {
-    .write-button{
-        font-size: 12px;
-        height: 22px;
-        margin-right: 16px;
-        align-items: center;
-    }
-    .manage-button{
-        height: 19px;
-        width: 15px;
-        margin-right: 15vw;
-    }
+  .write-button {
+    font-size: 12px;
+    height: 22px;
+    margin-right: 16px;
+    align-items: center;
+  }
+  .manage-button {
+    height: 19px;
+    width: 15px;
+    margin-right: 15vw;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .main-body::before{
-        margin-left: 0vh;
-        margin-right: 0vh;
-    }
+  .main-body::before {
+    margin-left: 0vh;
+    margin-right: 0vh;
+  }
 
-    .write-button{
-        font-size: 12px;
-        height: 16px;
-        margin-right: 12px;
-        align-items: center;
-    }
-    
-    .manage-button{
-        height: 16px;
-        width: 16px;
-        margin-right: 10vw;
-    }
+  .write-button {
+    font-size: 12px;
+    height: 16px;
+    margin-right: 12px;
+    align-items: center;
+  }
+
+  .manage-button {
+    height: 16px;
+    width: 16px;
+    margin-right: 10vw;
+  }
 }
 
 @media screen and (max-width: 375px) {
-    .home-project-card{
-        min-width: 180px;
-        margin-top: 50px;
-        margin-left: 20px;
-        cursor: pointer;
-        height: 130px;
-    }
-
-
+  .home-project-card {
+    min-width: 180px;
+    margin-top: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    height: 130px;
+  }
 }

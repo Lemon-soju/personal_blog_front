@@ -1,3 +1,4 @@
+import { Box, Card } from "@mui/material";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -32,44 +33,40 @@ const ToyProjectSlide = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container" style={{ width: "70%" }}>
-      <Carousel
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={3000}
-        responsive={responsive}
-      >
+    <Box>
+      <Card style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
+        <Carousel
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          responsive={responsive}
+        >
           <NavLink to={"https://klub.kr/"}>
-            <img
-              className="home-project-card"
-              alt="klue"
-              src={"/klue.png"}
-            />
+            <img className="home-project-card" alt="klue" src={"/klue.png"} />
           </NavLink>
           <img
-          className="home-project-card"
-          onClick={() => navigate("/netflix")}
-          alt="netflix"
-          src={"/netflix.png"}
-        />
-        <NavLink to={"https://lemon-soju.tistory.com/40"}>
+            className="home-project-card"
+            onClick={() => navigate("/netflix")}
+            alt="netflix"
+            src={"/netflix.png"}
+          />
+          <NavLink to={"https://lemon-soju.tistory.com/40"}>
+            <img
+              className="home-project-card"
+              alt="ransomware"
+              src={"/ransomware.jpg"}
+            />
+          </NavLink>
+
           <img
             className="home-project-card"
-            alt="ransomware"
-            src={"/ransomware.jpg"}
+            onClick={() => navigate("/developing")}
+            alt="developing1"
+            src={"/개발중1.png"}
           />
-        </NavLink>
-       
-        <img
-          className="home-project-card"
-          onClick={() => navigate("/developing")}
-          alt="developing1"
-          src={"/개발중1.png"}
-        />
- 
-      
-      </Carousel>
-    </div>
+        </Carousel>
+      </Card>
+    </Box>
   );
 };
 
