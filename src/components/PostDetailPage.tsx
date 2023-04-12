@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { readPost } from "../controller/controller";
-import { useNavigate } from "react-router-dom";
 
-const MyPostDetail = () => {
+const PostDetail = () => {
   const params = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -11,9 +10,8 @@ const MyPostDetail = () => {
   const navigate = useNavigate();
 
   const getPost = useCallback(async () => {
-    if (!params.id) {
-      return;
-    }
+    // params.id가 undefined인 경우
+    if (!params.id) return;
     let post = await readPost(params.id);
     setTitle(post.data.title);
     setContent(post.data.content);
@@ -54,4 +52,4 @@ const MyPostDetail = () => {
   );
 };
 
-export default MyPostDetail;
+export default PostDetail;

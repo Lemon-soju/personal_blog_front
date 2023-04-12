@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap-utilities.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
