@@ -7,13 +7,12 @@ import { Container } from "react-bootstrap";
 const Main = () => {
   return (
     <div className="main-body">
-      <h1 style={{ textAlign: "center", marginTop: "15vh" }}>
-        창규's 토이 프로젝트
-      </h1>
-      <Container>
+      <Container style={{ marginTop: "5vh" }}>
         <ToyProjectSlide />
       </Container>
-      <Post />
+      <Container style={{ marginTop: "5vh" }}>
+        <Post />
+      </Container>
     </div>
   );
 };

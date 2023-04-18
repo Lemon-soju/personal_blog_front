@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NetflixNavigation from "../ToyProject/Netflix/NetflixNavigation";
+import { Button } from "@mui/material";
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -26,7 +27,9 @@ const Navigation = () => {
     <div style={{ display: "flex" }}>
       <Navbar style={{ flexBasis: "100%" }} bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">창규's 블로그</Navbar.Brand>
+          <Navbar.Brand href="/" style={{ marginLeft: "2vw" }}>
+            창규's 블로그
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -34,8 +37,13 @@ const Navigation = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/">Home</Nav.Link>
+              <div className="nav-link-container">
+                <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="https://lemon-soju.tistory.com/">
+                  티스토리 블로그
+                </Nav.Link>
+              </div>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -51,10 +59,13 @@ const Navigation = () => {
             ) : (
               <>
                 <span>{localStorage.getItem("uid")}님</span>
-                <button style={{ marginLeft: "10px" }} onClick={goToLogout}>
-                  {" "}
+                <Button
+                  variant="outlined"
+                  onClick={goToLogout}
+                  sx={{ marginLeft: "10px" }}
+                >
                   로그아웃
-                </button>
+                </Button>
               </>
             )}
           </div>
