@@ -20,11 +20,11 @@ const Main = () => {
           backgroundImage: "url(/background.jpg)",
           opacity: 0.6,
           zIndex: -1,
-          backgroundSize: "cover", // 이미지 크기를 조정합니다.
+          backgroundSize: "cover",
         },
       }}
     >
-      <Container style={{ marginTop: "5vh" }}>
+      <Container style={{ paddingTop: "5vh" }}>
         <ToyProjectSlide />
       </Container>
       <Container style={{ marginTop: "5vh" }}>

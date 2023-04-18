@@ -27,7 +27,15 @@ const Navigation = () => {
     <div style={{ display: "flex" }}>
       <Navbar style={{ flexBasis: "100%" }} bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/" style={{ marginLeft: "2vw", border: "1px solid black", padding: "15px", borderRadius: "5px" }}>
+          <Navbar.Brand
+            href="/"
+            style={{
+              marginLeft: "2vw",
+              border: "1px solid black",
+              padding: "15px",
+              borderRadius: "5px",
+            }}
+          >
             창규's 블로그
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -38,7 +46,7 @@ const Navigation = () => {
               navbarScroll
             >
               <div className="nav-link-container">
-                <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link href="/about">소개</Nav.Link>
                 <Nav.Link href="https://lemon-soju.tistory.com/">
                   티스토리 블로그
                 </Nav.Link>
