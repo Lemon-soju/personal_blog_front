@@ -27,7 +27,7 @@ const Navigation = () => {
     <div style={{ display: "flex" }}>
       <Navbar style={{ flexBasis: "100%" }} bg="light" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/" style={{ marginLeft: "2vw" }}>
+          <Navbar.Brand href="/" style={{ marginLeft: "2vw", border: "1px solid black", padding: "15px", borderRadius: "5px" }}>
             창규's 블로그
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -39,7 +39,6 @@ const Navigation = () => {
             >
               <div className="nav-link-container">
                 <Nav.Link href="/about">About</Nav.Link>
-                <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="https://lemon-soju.tistory.com/">
                   티스토리 블로그
                 </Nav.Link>
@@ -50,12 +49,12 @@ const Navigation = () => {
         <div className="login-button">
           <div style={{ marginRight: "3vh", whiteSpace: "nowrap" }}>
             {localStorage.getItem("uid") === null ? (
-              <>
+              <Button variant="outlined" color="inherit">
                 <span style={{ marginRight: "3px" }}>
                   <FontAwesomeIcon icon={faUser} />
                 </span>
                 <span onClick={goToLogin}>로그인</span>
-              </>
+              </Button>
             ) : (
               <>
                 <span>{localStorage.getItem("uid")}님</span>

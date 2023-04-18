@@ -31,7 +31,6 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "thunk": "^0.0.1",
-    "typescript": "^5.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -59,6 +58,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-js-pagination": "^3.0.4"
+    "@types/react-js-pagination": "^3.0.4",
+    "typescript": "^4.9.5"
   }
 }
