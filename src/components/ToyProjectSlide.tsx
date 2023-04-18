@@ -39,7 +39,7 @@ const ToyProjectSlide = () => {
       }}
     >
       <Typography variant="h4" align="center" sx={{ mt: "3vh", mb: "3vh" }}>
-        창규's 토이 프로젝트
+        프로젝트 목록
       </Typography>
       <Carousel
         infinite={true}

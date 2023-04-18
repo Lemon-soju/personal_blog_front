@@ -1,3 +1,4 @@
+import { Box, Card, CardHeader } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -5,49 +6,48 @@ import { useNavigate } from "react-router-dom";
 const About = () => {
   const navigate = useNavigate();
   return (
-    <div
-      style={{ backgroundColor: "white", height: "100vh", marginLeft: "2.5vw" }}
-    >
-      <div
-        style={{
-          marginLeft: "20px",
-          marginTop: "10vh",
-          fontSize: "1.3rem",
-          color: "#090809",
-        }}
-      >
-        신입 개발자 윤창규입니다.
-      </div>
-      <div style={{ display: "flex", marginTop: "4vh" }}>
-        <div>
-          <img
-            alt="sketch"
-            src={"/sketch.png"}
-            style={{
-              width: "175px",
-              minWidth: "100px",
-              float: "left",
-              marginLeft: "20px",
-            }}
-          />
-        </div>
-        <div
-          className="subhead_2"
-          style={{
-            marginLeft: "75px",
-            marginBottom: "100px",
+    <Box sx={{ m: "2vw" }}>
+      <Card sx={{ m: "1px", minHeight: "50vh" }}>
+        <CardHeader
+          sx={{ ml: "1vw", mt: "4vh" }}
+          title="프로그래머 윤창규입니다."
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: ["column", "row"],
           }}
         >
-          <div>
-            Contact.
+          <Box sx={{ display: "flex", mt: "2vh" }}>
+            <img
+              alt="sketch"
+              src={"/sketch.png"}
+              style={{
+                width: "170px",
+                height: "235px",
+                minWidth: "100px",
+                float: "left",
+                marginLeft: "2vw",
+              }}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              ml: "3vw",
+              display: "flex",
+              flexDirection: "column",
+              mt: "2vh",
+            }}
+          >
+            <div className="subhead_2">Contact.</div>
             <div className="normal_2" style={{ marginTop: "2vh" }}>
               <span>Email. yckk980320@naver.com</span>
               <p>Phone. 010-****-****</p>
             </div>
-          </div>
-
-          <div style={{ marginTop: "50px" }}>
-            Channel.
+            <div className="subhead_2" style={{ marginTop: "3vh" }}>
+              Channel.
+            </div>
             <div className="normal_2" style={{ marginTop: "2vh" }}>
               <span>
                 <a href="http://lemon-soju.tistory.com">
@@ -60,98 +60,74 @@ const About = () => {
                 </a>
               </p>
             </div>
+          </Box>
+        </Box>
+      </Card>
+      <Card sx={{ m: "1px", height: "50vh" }}>
+        <Box className="subhead_1" sx={{ m: "2vw", mt: "12vh" }}>
+          Introduce.
+          <div
+            className="normal_1"
+            style={{
+              marginTop: "50px",
+              marginBottom: "200px",
+              maxWidth: "1000px",
+            }}
+          >
+            <p>
+              자바 스프링 백엔드 개발자를 준비하고 있는 신입 개발자입니다.
+              카페에서 코딩하는 것을 즐기며 이것저것 만들어보면서 백앤드 뿐만
+              아니라 프론트엔드도 같이 공부하고 있습니다.
+            </p>
+            <p>
+              다른 사람들이 제가 만든 프로그램을 사용한다는 상상을 하면 더욱 더
+              빨리 성장하고 싶은 생각이 듭니다.
+            </p>
           </div>
-        </div>
-      </div>
-
-      <hr
-        contentEditable="false"
-        data-ke-type="horizontalRule"
-        data-ke-style="style5"
-      />
-
-      <div
-        className="subhead_1"
-        style={{ marginTop: "100px", marginLeft: "20px" }}
-      >
-        Introduce.
-        <div
-          className="normal_1"
-          style={{ marginTop: "100px", maxWidth: "1000px" }}
-        >
-          <p>
-            자바 스프링 백엔드 개발자를 준비하고 있는 신입 개발자입니다.
-            카페에서 코딩하는 것을 즐기며 이것저것 만들어보면서 백앤드 뿐만
-            아니라 프론트엔드도 같이 공부하고 있습니다.
-          </p>
-          <p>
-            다른 사람들이 제가 만든 프로그램을 사용한다는 상상을 하면 더욱 더
-            빨리 성장하고 싶은 생각이 듭니다.
-          </p>
-        </div>
-      </div>
-
-      <hr
-        contentEditable="false"
-        data-ke-type="horizontalRule"
-        data-ke-style="style5"
-        style={{ marginTop: "100px" }}
-      />
-
-      <div
-        className="subhead_1"
-        style={{ marginTop: "100px", marginLeft: "20px" }}
-      >
-        Project Experience.
-        <div style={{ marginTop: "20px" }}>
-        <NavLink to={"https://klub.kr/"}>
+        </Box>
+      </Card>
+      <Card sx={{ m: "1px", minHeight: "500px" }}>
+        <Box className="subhead_1" sx={{ mt: "12vh", ml: "2vw" }}>
+          Project Experience.
+          <Box sx={{ mt: "2vh" }}>
+            <NavLink to={"https://klub.kr/"}>
+              <img className="project-card" alt="klue" src={"/klue.png"} />
+            </NavLink>
             <img
               className="project-card"
-              alt="klue"
-              src={"/klue.png"}
+              onClick={() => navigate("/netflix")}
+              alt="netflix"
+              src={"/netflix.png"}
             />
-          </NavLink>
-        <img
-            className="project-card"
-            onClick={() => navigate("/netflix")}
-            alt="netflix"
-            src={"/netflix.png"}
-          />
-          <NavLink to={"https://lemon-soju.tistory.com/40"}>
-            <img
-              className="project-card"
-              alt="ransomware"
-              src={"/ransomware.jpg"}
-            />
-          </NavLink>
-         
-        </div>
-      </div>
-      <hr className="divide-line" />
-      <div
-        className="subhead_1"
-        style={{ marginTop: "100px", marginLeft: "20px" }}
-      >
-        Skill.
-        <div className="normal_1" style={{ marginTop: "20px" }}>
-          <p>Front-End: React.js</p>
-          <p>Back-End: Spring Boot</p>
-          <p>Database: PostgreSQL</p>
-        </div>
-      </div>
-
-      <hr />
-
-      <div
-        className="subhead_1"
-        style={{ marginTop: "100px", marginLeft: "20px" }}
-      >
-        Education.
-        <div className="normal_1" style={{ marginTop: "30px" }}>
-          고려대학교 컴퓨터학과 4학년 휴학 중
-        </div>
-      </div>
-    </div>
+            <NavLink to={"https://lemon-soju.tistory.com/40"}>
+              <img
+                className="project-card"
+                alt="ransomware"
+                src={"/ransomware.jpg"}
+              />
+            </NavLink>
+          </Box>
+        </Box>
+      </Card>
+      <Card sx={{ m: "1px", height: "500px" }}>
+        <Box className="subhead_1" sx={{ mt: "15vh", ml: "2vw" }}>
+          Skill.
+          <div className="normal_1" style={{ marginTop: "20px" }}>
+            <p>Front-End: React.js</p>
+            <p>Back-End: Spring Boot</p>
+            <p>Database: PostgreSQL</p>
+          </div>
+        </Box>
+      </Card>
+      <Card sx={{ m: "1px", height: "500px" }}>
+        <Box className="subhead_1" sx={{ mt: "17vh", ml: "2vw" }}>
+          Education.
+          <div className="normal_1" style={{ marginTop: "30px" }}>
+            고려대학교 컴퓨터학과 4학년 휴학 중
+          </div>
+        </Box>
+      </Card>
+    </Box>
   );
 };
 
