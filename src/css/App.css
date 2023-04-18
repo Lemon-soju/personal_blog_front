@@ -10,8 +10,8 @@
   right: 0px;
   bottom: -75vh;
   z-index: -1;
-  margin-left: 5vh;
-  margin-right: 5vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 .login-button {
   display: flex;
@@ -86,19 +86,6 @@
   border-radius: 5px;
   margin-right: 10px;
   flex-grow: 1;
-}
-
-@media screen and (max-width: 1080px) {
-  .manage-button {
-    margin-right: 5vw;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .main-body::before {
-    margin-left: 0vh;
-    margin-right: 0vh;
-  }
 }
 
 @media screen and (max-width: 375px) {

@@ -10,10 +10,15 @@ import {
   IconButton,
   InputBase,
   Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Typography,
 } from "@mui/material";
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
-import SearchIcon from '@mui/icons-material/Search';
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -90,92 +95,121 @@ const Post = () => {
       <Typography variant="h4" align="center" sx={{ mt: "3vh", mb: "3vh" }}>
         게시판
       </Typography>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Paper
-          component="form"
-          sx={{
-            mr: "8vw",
-            p: "2px 4px",
-            display: "flex",
-            alignItems: "center",
-            width: { xs: "100%", sm: "40%", md: "25%", lg: "20%" }
-          }}
-          onSubmit={onSearch}
-        >
-          <InputBase
-            className="post-search-input"
-            sx={{ ml: 1, flex: 1 }}
-            placeholder="제목을 입력해주세요."
-            onChange={onChangeSearch}
-          />
-          <IconButton type="submit" aria-label="search">
-            <SearchIcon />
-          </IconButton>        
-        </Paper>
-      </div>
-      <table className="post-table">
-        <thead className="post-table-header">
-          <tr>
-            <th>글 번호</th>
-            <th>제목</th>
-            <th>등록일</th>
-            <th>작성자</th>
-          </tr>
-        </thead>
-        <tbody className="post-table-column">
-          {currentPosts && currentPosts.length > 0 ? (
-            currentPosts.map((e, index) => (
-              <tr
-                className="post-table-row"
-                key={index}
-                onClick={() => navigate(`/post/${e.postId}`)}
-              >
-                <td className="post-number">{e.postId}</td>
-                <td style={{ textAlign: "left", width: "40vw" }}>
-                  {e.title.slice(0, 26)}
-                </td>
-                <td className="post-date">{e.createDate.slice(0, 10)}</td>
-                <td className="post-writer">{e.writer}</td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td>게시물이 없습니다.</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-      <Paging page={currentPage} count={count} setPage={setPage} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
+
+      <Card
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0)",
+          margin: "30px",
         }}
       >
-        <div className="write-button" style={{ marginBottom: "50px" }}>
-          <Button variant="contained">
-            {localStorage.getItem("uid") === null ? (
-              <div
-                onClick={() => {
-                  window.alert("로그인 후 글쓰기가 가능합니다.");
-                }}
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Paper
+            component="form"
+            sx={{
+              p: "2px 4px",
+              display: "flex",
+              alignItems: "center",
+              width: { xs: "100%", sm: "25%", md: "25%", lg: "25%" },
+            }}
+            onSubmit={onSearch}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="제목을 입력해주세요."
+              onChange={onChangeSearch}
+            />
+            <IconButton type="submit" aria-label="search">
+              <SearchIcon />
+            </IconButton>
+          </Paper>
+        </div>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell
+                sx={{ display: { xs: "none", sm: "none", md: "table-cell" } }}
               >
-                글쓰기
-              </div>
+                글 번호
+              </TableCell>
+              <TableCell>제목</TableCell>
+              <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                등록일
+              </TableCell>
+              <TableCell>작성자</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {currentPosts && currentPosts.length > 0 ? (
+              currentPosts.map((e, index) => (
+                <TableRow
+                  key={index}
+                  hover
+                  onClick={() => navigate(`/post/${e.postId}`)}
+                >
+                  <TableCell
+                    sx={{
+                      display: { xs: "none", sm: "none", md: "table-cell" },
+                    }}
+                  >
+                    {e.postId}
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                      width: { xs: "100%", md: "40vw" },
+                    }}
+                  >
+                    {e.title.slice(0, 26)}
+                  </TableCell>
+                  <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                    {e.createDate.slice(0, 10)}
+                  </TableCell>
+                  <TableCell>{e.writer}</TableCell>
+                </TableRow>
+              ))
             ) : (
-              <div onClick={goToCreatePost}>글쓰기</div>
+              <TableRow>
+                <TableCell>게시물이 없습니다.</TableCell>
+              </TableRow>
             )}
-          </Button>
-        </div>
+          </TableBody>
+        </Table>
+
+        <Paging page={currentPage} count={count} setPage={setPage} />
         <div
-          className="manage-button"
-          style={{ marginBottom: "50px", marginLeft: "10px" }}
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
         >
-          <SettingsOutlinedIcon fontSize="large" onClick={() => {
-              navigate("/manage");
-            }}/>
+          <div className="write-button" style={{ marginBottom: "50px" }}>
+            <Button variant="contained">
+              {localStorage.getItem("uid") === null ? (
+                <div
+                  onClick={() => {
+                    window.alert("로그인 후 글쓰기가 가능합니다.");
+                  }}
+                >
+                  글쓰기
+                </div>
+              ) : (
+                <div onClick={goToCreatePost}>글쓰기</div>
+              )}
+            </Button>
+          </div>
+          <div
+            className="manage-button"
+            style={{ marginBottom: "50px", marginLeft: "10px" }}
+          >
+            <SettingsOutlinedIcon
+              fontSize="large"
+              onClick={() => {
+                navigate("/manage");
+              }}
+            />
+          </div>
         </div>
-      </div>
+      </Card>
     </Card>
   );
 };
