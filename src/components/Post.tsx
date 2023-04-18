@@ -12,6 +12,8 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Post = () => {
   const navigate = useNavigate();
@@ -92,22 +94,23 @@ const Post = () => {
         <Paper
           component="form"
           sx={{
-            mr: "4vw",
+            mr: "8vw",
             p: "2px 4px",
             display: "flex",
             alignItems: "center",
-            width: 300,
+            width: { xs: "100%", sm: "40%", md: "25%", lg: "20%" }
           }}
           onSubmit={onSearch}
         >
           <InputBase
+            className="post-search-input"
             sx={{ ml: 1, flex: 1 }}
             placeholder="제목을 입력해주세요."
             onChange={onChangeSearch}
           />
-          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
-            <img alt="search" className="post-search" src={"/search.png"} />
-          </IconButton>
+          <IconButton type="submit" aria-label="search">
+            <SearchIcon />
+          </IconButton>        
         </Paper>
       </div>
       <table className="post-table">
@@ -168,14 +171,9 @@ const Post = () => {
           className="manage-button"
           style={{ marginBottom: "50px", marginLeft: "10px" }}
         >
-          <img
-            width="30"
-            alt="manage"
-            src={"/manage.png"}
-            onClick={() => {
+          <SettingsOutlinedIcon fontSize="large" onClick={() => {
               navigate("/manage");
-            }}
-          />
+            }}/>
         </div>
       </div>
     </Card>
