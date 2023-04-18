@@ -1,4 +1,4 @@
-import { Box, Card } from "@mui/material";
+import { Card, Typography } from "@mui/material";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -17,14 +17,14 @@ const responsive = {
   },
   notebook: {
     breakpoint: { max: 1439, min: 1024 },
-    items: 3,
+    items: 4,
   },
   tablet: {
-    breakpoint: { max: 1023, min: 640 },
-    items: 2,
+    breakpoint: { max: 1023, min: 768 },
+    items: 3,
   },
   mobile: {
-    breakpoint: { max: 639, min: 0 },
+    breakpoint: { max: 767, min: 0 },
     items: 1,
   },
 };
@@ -33,40 +33,46 @@ const ToyProjectSlide = () => {
   const navigate = useNavigate();
 
   return (
-    <Box>
-      <Card style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
-        <Carousel
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={3000}
-          responsive={responsive}
-        >
-          <NavLink to={"https://klub.kr/"}>
-            <img className="home-project-card" alt="klue" src={"/klue.png"} />
-          </NavLink>
+    <Card
+      sx={{
+        backgroundColor: "rgba(255, 255, 255, 0.5)",
+      }}
+    >
+      <Typography variant="h4" align="center" sx={{ mt: "3vh", mb: "3vh" }}>
+        창규's 토이 프로젝트
+      </Typography>
+      <Carousel
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        responsive={responsive}
+        className="home-carousel"
+      >
+        <NavLink to={"https://klub.kr/"}>
+          <img className="home-project-card" alt="klue" src={"/klue.png"} />
+        </NavLink>
+        <img
+          className="home-project-card"
+          onClick={() => navigate("/netflix")}
+          alt="netflix"
+          src={"/netflix.png"}
+        />
+        <NavLink to={"https://lemon-soju.tistory.com/40"}>
           <img
             className="home-project-card"
-            onClick={() => navigate("/netflix")}
-            alt="netflix"
-            src={"/netflix.png"}
+            alt="ransomware"
+            src={"/ransomware.jpg"}
           />
-          <NavLink to={"https://lemon-soju.tistory.com/40"}>
-            <img
-              className="home-project-card"
-              alt="ransomware"
-              src={"/ransomware.jpg"}
-            />
-          </NavLink>
+        </NavLink>
 
-          <img
-            className="home-project-card"
-            onClick={() => navigate("/developing")}
-            alt="developing1"
-            src={"/개발중1.png"}
-          />
-        </Carousel>
-      </Card>
-    </Box>
+        <img
+          className="home-project-card"
+          onClick={() => navigate("/developing")}
+          alt="developing1"
+          src={"/개발중1.png"}
+        />
+      </Carousel>
+    </Card>
   );
 };
 

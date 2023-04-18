@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
 import { RootState } from "../redux/reducers";
+import {
+  Button,
+  Card,
+  IconButton,
+  InputBase,
+  Paper,
+  Typography,
+} from "@mui/material";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -72,21 +80,36 @@ const Post = () => {
   };
 
   return (
-    <div className="post-body">
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}> 게시판 </h2>
+    <Card
+      sx={{
+        backgroundColor: "rgba(255, 255, 255, 0.5)",
+      }}
+    >
+      <Typography variant="h4" align="center" sx={{ mt: "3vh", mb: "3vh" }}>
+        게시판
+      </Typography>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <form className="post-search-form" onSubmit={onSearch}>
-          <input
-            type="text"
-            className="post-search-input"
+        <Paper
+          component="form"
+          sx={{
+            mr: "4vw",
+            p: "2px 4px",
+            display: "flex",
+            alignItems: "center",
+            width: 300,
+          }}
+          onSubmit={onSearch}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="제목을 입력해주세요."
             onChange={onChangeSearch}
-          ></input>
-          <button type="submit">
+          />
+          <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
             <img alt="search" className="post-search" src={"/search.png"} />
-          </button>
-        </form>
+          </IconButton>
+        </Paper>
       </div>
-
       <table className="post-table">
         <thead className="post-table-header">
           <tr>
@@ -119,9 +142,7 @@ const Post = () => {
           )}
         </tbody>
       </table>
-
       <Paging page={currentPage} count={count} setPage={setPage} />
-
       <div
         style={{
           display: "flex",
@@ -129,7 +150,7 @@ const Post = () => {
         }}
       >
         <div className="write-button" style={{ marginBottom: "50px" }}>
-          <button>
+          <Button variant="contained">
             {localStorage.getItem("uid") === null ? (
               <div
                 onClick={() => {
@@ -141,7 +162,7 @@ const Post = () => {
             ) : (
               <div onClick={goToCreatePost}>글쓰기</div>
             )}
-          </button>
+          </Button>
         </div>
         <div
           className="manage-button"
@@ -157,7 +178,7 @@ const Post = () => {
           />
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

@@ -34,7 +34,7 @@
 .manage-button {
   display: flex;
   justify-content: flex-end;
-  margin-right: 15vw;
+  margin-right: 4vw;
   cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .home-project-card {
-  width: 10vw;
+  width: 9vw;
   min-width: 200px;
   margin: 25px;
   cursor: pointer;
@@ -70,6 +70,22 @@
   background: rgba(43, 41, 41, 0.9);
   width: 100%;
   height: 100%;
+}
+
+.home-carousel {
+  text-align: center;
+}
+
+.nav-link-container {
+  display: flex;
+}
+
+.nav-link-container a {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  flex-grow: 1;
 }
 
 @media screen and (max-width: 1080px) {

@@ -1,12 +1,9 @@
 .post-body {
   background-color: rgba(255, 255, 255, 0.5);
-  margin: 15vh;
 }
 .post-table {
-  width: 80%;
   margin: 0 auto;
   text-align: center;
-  border-spacing: 0;
   margin-top: 2vh;
 }
 
@@ -84,16 +81,7 @@
 }
 
 .post-search {
-  height: 1.5rem;
-}
-.post-search-input {
-  width: 8.5vw;
-  font-size: 1.1rem;
-  margin-right: 7px;
-}
-.post-search-form {
-  margin-right: 11%;
-  margin-top: 5vh;
+  height: 1.2rem;
 }
 
 @media screen and (max-width: 1080px) {
@@ -113,9 +101,7 @@
   .post-writer {
     width: 7vw;
   }
-  .post-body {
-    margin: 3vh;
-  }
+
   .post-title {
     font-size: 40px;
   }
@@ -142,9 +128,7 @@
   .post-table-header {
     font-size: 0.6rem;
   }
-  .post-body {
-    margin: 1vh;
-  }
+
   .post-number {
     width: 8vw;
   }
