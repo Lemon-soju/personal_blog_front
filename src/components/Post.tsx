@@ -145,6 +145,7 @@ const Post = () => {
                   key={index}
                   hover
                   onClick={() => navigate(`/post/${e.postId}`)}
+                  sx={{ cursor: "pointer" }}
                 >
                   <TableCell
                     sx={{
