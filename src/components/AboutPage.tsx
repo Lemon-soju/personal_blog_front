@@ -1,4 +1,4 @@
-import { Box, Card, CardHeader } from "@mui/material";
+import { Box, Card, CardHeader, Typography } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -63,26 +63,18 @@ const About = () => {
           </Box>
         </Box>
       </Card>
-      <Card sx={{ m: "1px", height: "50vh" }}>
+      <Card sx={{ m: "1px", minHeight: "50vh" }}>
         <Box className="subhead_1" sx={{ m: "2vw", mt: "12vh" }}>
           Introduce.
-          <div
-            className="normal_1"
-            style={{
-              marginTop: "50px",
-              marginBottom: "200px",
-              maxWidth: "1000px",
-            }}
-          >
-            <p>
+          <div className="normal_1">
+            <Typography sx={{ mt: "100px", mb: "150px", maxWidth: "1000px" }}>
               자바 스프링 백엔드 개발자를 준비하고 있는 신입 개발자입니다.
               카페에서 코딩하는 것을 즐기며 이것저것 만들어보면서 백앤드 뿐만
               아니라 프론트엔드도 같이 공부하고 있습니다.
-            </p>
-            <p>
+              <p />
               다른 사람들이 제가 만든 프로그램을 사용한다는 상상을 하면 더욱 더
               빨리 성장하고 싶은 생각이 듭니다.
-            </p>
+            </Typography>
           </div>
         </Box>
       </Card>
