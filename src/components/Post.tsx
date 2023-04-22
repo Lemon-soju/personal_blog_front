@@ -31,7 +31,7 @@ const Post = () => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState<PostData[]>();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(String);
 
   interface PostData {
     postId: number;
@@ -48,37 +48,28 @@ const Post = () => {
   const { postData } = useSelector((state: RootState) => state.home);
 
   useEffect(() => {
-    if (postData.length === 0) {
-      dispatch(homeAction.getPosts());
-    } else {
-      setCount(postData.length);
-      setIndexOfLastPost(currentPage * postPerPage);
-      setIndexOfFirstPost(indexOfLastPost - postPerPage);
-      setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
-    }
-  }, [
-    dispatch,
-    currentPage,
-    indexOfFirstPost,
-    indexOfLastPost,
-    postPerPage,
-    postData,
-  ]);
+    dispatch(homeAction.getPosts());
+  }, [dispatch]);
+
+  useEffect(() => {
+    setCount(postData.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
+  }, [postData, currentPage, indexOfFirstPost, indexOfLastPost, postPerPage]);
 
   const goToCreatePost = () => {
     navigate("/post/new");
   };
 
   const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log(search);
     event.preventDefault();
-    if (search === null || search === "") {
-      setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
-    } else {
-      const filterPosts = postData.filter((e: PostData) =>
-        e.title.includes(search)
-      );
-      setCurrentPosts(filterPosts);
-    }
+    dispatch(homeAction.getPosts(search));
+    setCount(postData.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
   };
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
