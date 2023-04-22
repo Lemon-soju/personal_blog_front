@@ -12,7 +12,7 @@ const Paging: React.FC<PagingProps> = ({ page, count, setPage }) => {
     <div style={{ height: "10%" }}>
       <Pagination
         activePage={page}
-        itemsCountPerPage={15}
+        itemsCountPerPage={10}
         totalItemsCount={count}
         pageRangeDisplayed={5}
         prevPageText={"‹"}

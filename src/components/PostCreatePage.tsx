@@ -15,14 +15,19 @@ const PostCreate = () => {
     const data = { title, content };
     let accessToken = localStorage.getItem("accessToken");
     let response = await writePost(data, accessToken);
-
+    console.log(response);
     if (response.status === 200) {
       window.alert("글쓰기 성공");
       navigate("/");
-      return window.location.reload(); // 최신 글 바로 적용
+      return;
+    }
+    if (response.status === 401) {
+      window.alert("로그인이 필요합니다.");
+      navigate("/login");
+      return;
     } else {
       window.alert("글쓰기 실패");
-      return window.location.reload();
+      return;
     }
   };
 

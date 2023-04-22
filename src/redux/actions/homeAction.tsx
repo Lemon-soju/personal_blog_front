@@ -11,7 +11,7 @@ const getPosts: any = (search: string) => {
       dispatch({
         type: "GET_POSTS_SUCCESS",
         payload: {
-          postData: postApi.data,
+          postData: postApi.data.reverse(),
         },
       });
     } catch (error) {
