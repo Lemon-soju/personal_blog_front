@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
-const backend = "http://3.35.179.185:8080";
-// const backend = "http://127.0.0.1:8080";
+// const backend = "http://3.35.179.185:8080";
+const backend = "http://127.0.0.1:8080";
 
 const signUp = async (data: { uid: string; pwd: string; name: string }) => {
   const url = backend + "/signup";
@@ -54,8 +54,14 @@ const writePost = async (
   try {
     const response = await axios.post(url, JSON.stringify(data), { headers });
     return response;
-  } catch (error) {
-    throw error;
+  } catch (error: any) {
+    if (error.response && error.response.status === 401) {
+      const { status, message } = error.response;
+      const loginUrl = "/login";
+      return { message, loginUrl, status };
+    } else {
+      return Promise.reject(error);
+    }
   }
 };
 
