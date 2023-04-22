@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { readPost } from "../controller/controller";
+import { Box, Card, Typography } from "@mui/material";
 
 const PostDetail = () => {
   const params = useParams();
@@ -22,11 +23,35 @@ const PostDetail = () => {
   }, [getPost]);
 
   return (
-    <div>
-      <div className="post-title-background">
-        <div className="post-title">{title}</div>
-      </div>
-      <div className="post-content">{content}</div>
+    <Box>
+      <Card sx={{ backgroundColor: "rgba(155, 155, 155, 1)" }}>
+        <Typography
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: { xs: "80%", sm: "70%", md: "60%" },
+            fontSize: { xs: "30px", sm: "40px", md: "50px" },
+            color: "white",
+            mx: "auto",
+            height: "30vh",
+          }}
+        >
+          {title}
+        </Typography>
+      </Card>
+      <Box>
+        <Typography
+          sx={{
+            fontSize: "18px",
+            width: { xs: "80%", sm: "70%", md: "60%" },
+            mt: "10vh",
+            mx: "auto",
+          }}
+        >
+          {content}
+        </Typography>
+      </Box>
       <div
         style={{
           display: "flex",
@@ -48,7 +73,7 @@ const PostDetail = () => {
           수정
         </button>
       </div>
-    </div>
+    </Box>
   );
 };
 
