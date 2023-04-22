@@ -11,24 +11,3 @@
   width: 50%;
   height: 50vh;
 }
-.post-title-background {
-  background-color: rgba(155, 155, 155, 1);
-}
-
-.post-title {
-  display: flex;
-  align-items: center;
-  width: 60%;
-  font-size: 50px;
-  color: #eceaea;
-  margin-left: 20%;
-  height: 30vh;
-}
-
-.post-content {
-  color: #383838;
-  font-size: 18px;
-  margin-top: 7%;
-  margin-left: 20%;
-  margin-right: 20%;
-}
