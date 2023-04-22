@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { writePost } from "../controller/controller";
+import ReactQuill from "react-quill";
+import { Box, Button, TextField } from "@mui/material";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
@@ -34,33 +36,42 @@ const PostCreate = () => {
   return (
     <div className="main-body">
       <form onSubmit={(e) => postSubmit(e)}>
-        <div className="post-create">
-          <input
-            className="post-create-title"
+        <Box
+          sx={{
+            display: "flex",
+            mt: "10vh",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <TextField
             type="text"
             placeholder="제목을 입력해주세요."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            sx={{ width: "60%", backgroundColor: "rgba(255, 255, 255, 0.5)" }}
           />
-          <div style={{ marginTop: "2vh" }}>
-            <textarea
-              className="post-create-content"
-              placeholder="내용을 입력해주세요."
-              value={content}
-              rows={15}
-              onChange={(e) => setContent(e.target.value)}
-            ></textarea>
-          </div>
-          <div
+          <ReactQuill
+            placeholder="내용을 입력해주세요."
+            value={content}
+            onChange={(e) => setContent(e)}
             style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              marginRight: "26%",
+              height: "50vh",
+              width: "60%",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}
-          >
-            <button>완료</button>
-          </div>
-        </div>
+          />
+          <Box sx={{ display: "flex", width: "60%" }}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ marginLeft: "auto" }}
+            >
+              작성 완료
+            </Button>
+          </Box>
+        </Box>
       </form>
     </div>
   );
