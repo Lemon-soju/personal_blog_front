@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../controller/controller";
+import { Box, Button } from "@mui/material";
 
 function Login() {
   const [uid, setUid] = useState("");
@@ -31,9 +32,9 @@ function Login() {
   return (
     <div className="main-body">
       <form onSubmit={(e) => loginSubmit(e)}>
-        <div className="login-form">
+        <Box style={{ margin: "7vh" }}>
           <h3>Login</h3>
-          <div>
+          <Box>
             <label htmlFor="uid">아이디</label>
             <br />
             <input
@@ -44,8 +45,8 @@ function Login() {
                 setUid(event.target.value);
               }}
             />
-          </div>
-          <div>
+          </Box>
+          <Box>
             <label htmlFor="pwd">비밀번호</label> <br />
             <input
               id="pwd"
@@ -55,13 +56,20 @@ function Login() {
                 setPwd(event.target.value);
               }}
             />
-          </div>
-          <button style={{ marginTop: "2vh" }} type="submit">
+          </Box>
+          <Button
+            variant="outlined"
+            color="inherit"
+            type="submit"
+            sx={{ mt: "2vh" }}
+          >
             로그인
-          </button>
+          </Button>
           <p />
-          <button onClick={goToSignUp}>회원가입</button>
-        </div>
+          <Button variant="outlined" color="inherit" onClick={goToSignUp}>
+            회원가입
+          </Button>
+        </Box>
       </form>
     </div>
   );

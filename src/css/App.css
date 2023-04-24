@@ -20,10 +20,6 @@
   cursor: pointer;
 }
 
-.login-form {
-  margin: 7vh;
-}
-
 .write-button {
   display: flex;
   justify-content: flex-end;

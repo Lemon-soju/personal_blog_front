@@ -9,17 +9,15 @@ interface PagingProps {
 
 const Paging: React.FC<PagingProps> = ({ page, count, setPage }) => {
   return (
-    <div style={{ height: "10%" }}>
-      <Pagination
-        activePage={page}
-        itemsCountPerPage={10}
-        totalItemsCount={count}
-        pageRangeDisplayed={5}
-        prevPageText={"‹"}
-        nextPageText={"›"}
-        onChange={setPage}
-      />
-    </div>
+    <Pagination
+      activePage={page}
+      itemsCountPerPage={10}
+      totalItemsCount={count}
+      pageRangeDisplayed={5}
+      prevPageText={"‹"}
+      nextPageText={"›"}
+      onChange={setPage}
+    />
   );
 };
 
