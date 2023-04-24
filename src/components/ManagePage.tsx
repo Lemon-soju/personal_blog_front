@@ -5,6 +5,17 @@ import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
 import { deletePosts } from "../controller/controller";
 import { RootState } from "../redux/reducers/index";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
 const Manage = () => {
   const navigate = useNavigate();
@@ -73,56 +84,108 @@ const Manage = () => {
   return (
     <div className="main-body">
       <div className="post-body">
-        <h2 style={{ textAlign: "center", marginTop: "50px" }}> 내가 쓴 글 </h2>
-        <table className="post-table">
-          <thead className="post-table-header">
-            <tr>
-              <th>글 번호</th>
-              <th>제목</th>
-              <th>등록일</th>
-              <th>작성자</th>
-            </tr>
-          </thead>
-          <tbody className="post-table-column">
-            {currentPosts && currentPosts.length > 0 ? (
-              currentPosts.map((e, index) => (
-                <tr className="post-table-row" key={index}>
-                  <td style={{ width: "13vw" }}>{e.postId}</td>
-                  <td
-                    style={{ textAlign: "left" }}
-                    onClick={() => navigate(`/mypost/${e.postId}`)}
-                  >
-                    {e.title}
-                  </td>
-                  <td style={{ width: "10vw" }}>{e.createDate.slice(0, 10)}</td>
-                  <td style={{ width: "10vw" }}>{e.writer}</td>
-                  <td>
-                    <input
-                      type={"checkbox"}
-                      onChange={() => {
-                        changeHandler(e.postId);
+        <Container sx={{ mt: "100px" }}>
+          <Card
+            sx={{
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}
+          >
+            <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+              내가 쓴 글
+            </h2>
+
+            <Card
+              sx={{
+                backgroundColor: "rgba(255, 255, 255, 0)",
+                margin: "30px",
+              }}
+            >
+              {" "}
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableCell
+                      sx={{
+                        display: { xs: "none", sm: "none", md: "table-cell" },
                       }}
-                    />
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td>게시물이 없습니다.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginRight: "12vw",
-            marginTop: "4vh",
-          }}
-        >
-          <button onClick={() => deleteSubmit(checkedInputs)}>삭제</button>
-        </div>
+                    >
+                      글 번호
+                    </TableCell>
+                    <TableCell>제목</TableCell>
+                    <TableCell
+                      sx={{ display: { xs: "none", sm: "table-cell" } }}
+                    >
+                      등록일
+                    </TableCell>
+                    <TableCell>작성자</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {currentPosts && currentPosts.length > 0 ? (
+                    currentPosts.map((e, index) => (
+                      <TableRow className="post-table-row" key={index}>
+                        <TableCell
+                          sx={{
+                            display: {
+                              xs: "none",
+                              sm: "none",
+                              md: "table-cell",
+                            },
+                          }}
+                        >
+                          {e.postId}
+                        </TableCell>{" "}
+                        <TableCell
+                          sx={{
+                            textAlign: "left",
+                            width: { xs: "100%", md: "40vw" },
+                            cursor: "pointer",
+                          }}
+                          onClick={() => navigate(`/post/${e.postId}`)}
+                        >
+                          {e.title.slice(0, 26)}
+                        </TableCell>
+                        <TableCell
+                          sx={{ display: { xs: "none", sm: "table-cell" } }}
+                        >
+                          {e.createDate.slice(0, 10)}
+                        </TableCell>
+                        <TableCell>{e.writer}</TableCell>
+                        <TableCell>
+                          <input
+                            type={"checkbox"}
+                            onChange={() => {
+                              changeHandler(e.postId);
+                            }}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell>게시물이 없습니다.</TableCell>
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </Card>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Button
+                sx={{ mr: "30px", mb: "10px" }}
+                variant="outlined"
+                color="inherit"
+                onClick={() => deleteSubmit(checkedInputs)}
+              >
+                삭제
+              </Button>
+            </Box>
+          </Card>
+        </Container>
 
         <Paging page={currentPage} count={count} setPage={setPage} />
       </div>
