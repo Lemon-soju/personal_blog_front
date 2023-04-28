@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { writePost } from "../controller/controller";
 import ReactQuill from "react-quill";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
@@ -36,7 +36,7 @@ const PostCreate = () => {
   return (
     <div className="main-body">
       <form onSubmit={(e) => postSubmit(e)}>
-        <Box
+        <Container
           sx={{
             display: "flex",
             mt: "10vh",
@@ -49,19 +49,29 @@ const PostCreate = () => {
             placeholder="제목을 입력해주세요."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            sx={{ width: "60%", backgroundColor: "rgba(255, 255, 255, 0.5)" }}
-          />
-          <ReactQuill
-            placeholder="내용을 입력해주세요."
-            value={content}
-            onChange={(e) => setContent(e)}
-            style={{
-              height: "50vh",
-              width: "60%",
+            sx={{
+              width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" },
               backgroundColor: "rgba(255, 255, 255, 0.5)",
             }}
           />
-          <Box sx={{ display: "flex", width: "60%" }}>
+          <Box sx={{ width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" } }}>
+            <ReactQuill
+              placeholder="내용을 입력해주세요."
+              value={content}
+              onChange={(e) => setContent(e)}
+              style={{
+                height: "50vh",
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+              }}
+            />
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" },
+            }}
+          >
             <Button
               type="submit"
               variant="contained"
@@ -71,7 +81,7 @@ const PostCreate = () => {
               작성 완료
             </Button>
           </Box>
-        </Box>
+        </Container>
       </form>
     </div>
   );
