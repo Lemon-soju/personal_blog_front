@@ -42,15 +42,14 @@ const PostDetail = () => {
       </Card>
       <Box>
         <Typography
+          dangerouslySetInnerHTML={{ __html: content }}
           sx={{
             fontSize: "18px",
             width: { xs: "80%", sm: "70%", md: "60%" },
             mt: "10vh",
             mx: "auto",
           }}
-        >
-          {content}
-        </Typography>
+        ></Typography>
       </Box>
       <div
         style={{
