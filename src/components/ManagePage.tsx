@@ -46,8 +46,8 @@ const Manage = () => {
   };
 
   const deleteSubmit = async (checkedInputs: number[]) => {
+    const data = { checkedInputs };
     let accessToken = localStorage.getItem("accessToken");
-    const data: number[] = checkedInputs;
     let response = await deletePosts(data, accessToken);
 
     if (response.status === 200) {

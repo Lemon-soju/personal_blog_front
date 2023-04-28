@@ -69,7 +69,7 @@ const editPost = async (
   data: { id: any; title?: string; content?: string },
   accessToken: string | null
 ) => {
-  const url = backend + `/user/post/edit/${data.id}`;
+  const url = backend + `/member/post/edit/${data.id}`;
 
   const headers = {
     "Content-Type": "application/json",
@@ -85,10 +85,10 @@ const editPost = async (
 };
 
 const deletePosts = async (
-  data: number[],
+  data: { checkedInputs: number[] },
   accessToken: string | null
 ): Promise<AxiosResponse> => {
-  const url = backend + "/user/post/delete";
+  const url = backend + "/member/post/delete";
 
   const headers = {
     "Content-Type": "application/json",
