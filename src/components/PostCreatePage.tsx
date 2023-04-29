@@ -33,6 +33,15 @@ const PostCreate = () => {
     }
   };
 
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+    ],
+  };
+
   return (
     <div className="main-body">
       <form onSubmit={(e) => postSubmit(e)}>
@@ -63,6 +72,7 @@ const PostCreate = () => {
                 height: "50vh",
                 backgroundColor: "rgba(255, 255, 255, 0.5)",
               }}
+              modules={modules}
             />
           </Box>
 

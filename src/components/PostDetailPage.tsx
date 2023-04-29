@@ -7,6 +7,8 @@ const PostDetail = () => {
   const params = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [author, setAuthor] = useState("");
+  const [createDate, setCreateDate] = useState("");
 
   const navigate = useNavigate();
 
@@ -14,8 +16,11 @@ const PostDetail = () => {
     // params.id가 undefined인 경우
     if (!params.id) return;
     let post = await readPost(params.id);
+    console.log(post);
     setTitle(post.data.title);
     setContent(post.data.content);
+    setAuthor(post.data.author);
+    setCreateDate(post.data.createDate);
   }, [params.id]);
 
   useEffect(() => {
@@ -29,7 +34,6 @@ const PostDetail = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
             width: { xs: "80%", sm: "70%", md: "60%" },
             fontSize: { xs: "30px", sm: "40px", md: "50px" },
             color: "white",
@@ -39,6 +43,33 @@ const PostDetail = () => {
         >
           {title}
         </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: { xs: "80%", sm: "70%", md: "60%" },
+            color: "white",
+            mx: "auto",
+          }}
+        >
+          <Typography>by {author}</Typography>
+          <Typography sx={{ mx: "4px" }}>·</Typography>
+          <Typography>{createDate.slice(0, 10)}</Typography>
+          <Typography sx={{ mx: "4px" }}>·</Typography>
+          <Typography
+            sx={{ color: "white", cursor: "pointer" }}
+            onClick={(e) =>
+              navigate(`/post/edit/${params.id}`, {
+                state: {
+                  title: title,
+                  content: content,
+                },
+              })
+            }
+          >
+            수정
+          </Typography>
+        </Box>
       </Card>
       <Box>
         <Typography
@@ -58,20 +89,7 @@ const PostDetail = () => {
           marginRight: "20%",
           marginTop: "8vh",
         }}
-      >
-        <button
-          onClick={(e) =>
-            navigate(`/post/edit/${params.id}`, {
-              state: {
-                title: title,
-                content: content,
-              },
-            })
-          }
-        >
-          수정
-        </button>
-      </div>
+      ></div>
     </Box>
   );
 };
