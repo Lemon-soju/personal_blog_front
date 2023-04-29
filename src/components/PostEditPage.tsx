@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../controller/controller";
-import { Box, Button, Card, Container, TextField } from "@mui/material";
-import ReactQuill from "react-quill";
+import { Box, Button, Container, TextField } from "@mui/material";
+import ReactQuill, { Quill } from "react-quill";
+import ImageResize from "quill-image-resize";
+import { modules } from "../utils/editor";
+Quill.register("modules/ImageResize", ImageResize);
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
@@ -33,15 +36,6 @@ const PostEdit = () => {
     setTitle(location.state.title);
     setContent(location.state.content);
   }, [location.state.title, location.state.content]);
-
-  const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }],
-      ["bold", "italic", "underline", "strike"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
-    ],
-  };
 
   return (
     <div className="main-body">
