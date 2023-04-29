@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../controller/controller";
+import { Box, Button, Card, Container, TextField } from "@mui/material";
+import ReactQuill from "react-quill";
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
@@ -32,34 +34,66 @@ const PostEdit = () => {
     setContent(location.state.content);
   }, [location.state.title, location.state.content]);
 
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+    ],
+  };
+
   return (
     <div className="main-body">
       <form onSubmit={(e) => editSubmit(e)}>
-        <div className="post-create">
-          <input
-            className="post-create-title"
+        <Container
+          sx={{
+            display: "flex",
+            mt: "10vh",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <TextField
             type="text"
+            placeholder="제목을 입력해주세요."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            sx={{
+              width: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+            }}
           />
-          <div style={{ marginTop: "2vh" }}>
-            <textarea
-              className="post-create-content"
-              value={content}
-              rows={15}
-              onChange={(e) => setContent(e.target.value)}
-            ></textarea>
-          </div>
-          <div
+
+          <ReactQuill
+            placeholder="내용을 입력해주세요."
+            value={content}
+            onChange={(e) => setContent(e)}
             style={{
+              height: "80vh",
+              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              width: "100%",
+              overflow: "hidden",
+            }}
+            modules={modules}
+          />
+
+          <Box
+            sx={{
               display: "flex",
-              justifyContent: "flex-end",
-              marginRight: "26%",
+              width: "100%",
             }}
           >
-            <button>완료</button>
-          </div>
-        </div>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              sx={{ marginLeft: "auto" }}
+            >
+              작성 완료
+            </Button>
+          </Box>
+        </Container>
       </form>
     </div>
   );
