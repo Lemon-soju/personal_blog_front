@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { writePost } from "../controller/controller";
 import ReactQuill from "react-quill";
 import { Box, Button, Container, TextField } from "@mui/material";
+import { modules } from "../utils/editor";
 
 const PostCreate = () => {
   const [title, setTitle] = useState("");
@@ -31,15 +32,6 @@ const PostCreate = () => {
       window.alert("글쓰기 실패");
       return;
     }
-  };
-
-  const modules = {
-    toolbar: [
-      [{ header: "1" }, { header: "2" }],
-      ["bold", "italic", "underline", "strike"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
-    ],
   };
 
   return (
