@@ -43,7 +43,7 @@ const PostEdit = () => {
         <Container
           sx={{
             display: "flex",
-            mt: "10vh",
+            mt: "5vh",
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -68,6 +68,7 @@ const PostEdit = () => {
               backgroundColor: "rgba(255, 255, 255, 0.5)",
               width: "100%",
               overflow: "hidden",
+              paddingBottom: "3rem", // 여백 값 추가
             }}
             modules={modules}
           />
