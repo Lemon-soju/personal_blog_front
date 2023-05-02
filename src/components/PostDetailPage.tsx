@@ -28,7 +28,7 @@ const PostDetail = () => {
   }, [getPost]);
 
   return (
-    <Box>
+    <Card>
       <Card sx={{ backgroundColor: "rgba(155, 155, 155, 1)" }}>
         <Typography
           sx={{
@@ -46,7 +46,6 @@ const PostDetail = () => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",
             width: { xs: "80%", sm: "70%", md: "60%" },
             color: "white",
             mx: "auto",
@@ -79,6 +78,12 @@ const PostDetail = () => {
             width: { xs: "80%", sm: "70%", md: "60%" },
             mt: "10vh",
             mx: "auto",
+            "& img": {
+              maxWidth: "100%",
+            },
+            "& iframe": {
+              maxWidth: "100%",
+            },
           }}
         ></Typography>
       </Box>
@@ -90,7 +95,7 @@ const PostDetail = () => {
           marginTop: "8vh",
         }}
       ></div>
-    </Box>
+    </Card>
   );
 };
 
