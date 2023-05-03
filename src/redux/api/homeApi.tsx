@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const homeApi = axios.create({
-  baseURL: "http://3.35.179.185:8080",
+  baseURL: process.env.REACT_APP_BASE_URL,
   // baseURL: "http://127.0.0.1:8080",
   headers: { "Content-type": "application/json" },
 });
