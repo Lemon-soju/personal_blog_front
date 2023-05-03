@@ -39,6 +39,7 @@ const Post = () => {
     content: string;
     writer: string;
     createDate: string;
+    imagePreview: string;
   }
 
   const setPage = (e: number) => {
@@ -90,7 +91,7 @@ const Post = () => {
       <Card
         sx={{
           backgroundColor: "rgba(255, 255, 255, 0)",
-          margin: "30px",
+          margin: { xs: "3px", sm: "30px" },
         }}
       >
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
@@ -117,16 +118,14 @@ const Post = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{ display: { xs: "none", sm: "none", md: "table-cell" } }}
-              >
-                글 번호
-              </TableCell>
+              <TableCell></TableCell>
               <TableCell>제목</TableCell>
               <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
                 등록일
               </TableCell>
-              <TableCell>작성자</TableCell>
+              <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                작성자
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -138,25 +137,48 @@ const Post = () => {
                   onClick={() => navigate(`/post/${e.postId}`)}
                   sx={{ cursor: "pointer" }}
                 >
-                  <TableCell
-                    sx={{
-                      display: { xs: "none", sm: "none", md: "table-cell" },
-                    }}
-                  >
-                    {e.postId}
+                  <TableCell>
+                    {e.imagePreview ? (
+                      <Card
+                        sx={{
+                          width: { xs: "7vh", sm: "10vh" },
+                          height: { xs: "7vh", sm: "10vh" },
+                        }}
+                      >
+                        <img
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                          }}
+                          src={e.imagePreview}
+                          alt=""
+                        />
+                      </Card>
+                    ) : (
+                      <span></span>
+                    )}
                   </TableCell>
                   <TableCell
                     sx={{
                       textAlign: "left",
-                      width: { xs: "100%", md: "40vw" },
+                      width: { md: "50vw" },
                     }}
                   >
                     {e.title.slice(0, 26)}
                   </TableCell>
-                  <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+
+                  <TableCell
+                    sx={{
+                      textAlign: "left",
+                      width: { md: "15vw" },
+                      display: { xs: "none", sm: "table-cell" },
+                    }}
+                  >
                     {e.createDate.slice(0, 10)}
                   </TableCell>
-                  <TableCell>{e.writer}</TableCell>
+                  <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                    {e.writer}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (

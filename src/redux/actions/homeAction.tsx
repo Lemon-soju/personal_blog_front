@@ -14,6 +14,7 @@ const getPosts: any = (search: string) => {
           postData: postApi.data.reverse(),
         },
       });
+      console.log(postApi);
     } catch (error) {
       console.log("getPosts Action error", error);
     }

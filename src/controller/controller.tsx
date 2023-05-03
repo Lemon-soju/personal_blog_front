@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
-const backend = "http://3.35.179.185:8080";
-// const backend = "http://127.0.0.1:8080";
+// const backend = "http://3.35.179.185:8080";
+const backend = "http://127.0.0.1:8080";
 
 const signUp = async (data: { uid: string; pwd: string; name: string }) => {
   const url = backend + "/signup";
@@ -10,10 +10,10 @@ const signUp = async (data: { uid: string; pwd: string; name: string }) => {
     "Content-Type": "application/json",
   };
 
-  console.log(`회원가입 입력값: ${JSON.stringify(data)}`); //debug
+  // console.log(`회원가입 입력값: ${JSON.stringify(data)}`); //debug
 
   const response = await axios.post(url, JSON.stringify(data), { headers });
-  console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
+  // console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
 
   return response;
 };
@@ -33,9 +33,9 @@ const login = async (data: {
     "Content-Type": "application/json",
   };
 
-  console.log(`로그인 입력값: ${JSON.stringify(data)}`); //debug
+  // console.log(`로그인 입력값: ${JSON.stringify(data)}`); //debug
   const response = await axios.post(url, JSON.stringify(data), { headers });
-  console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
+  // console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
 
   return response;
 };
