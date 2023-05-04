@@ -26,7 +26,7 @@ function SignUp() {
   return (
     <div className="main-body">
       <form onSubmit={(e) => signUpSubmit(e)}>
-        <div className="signup-form">
+        <div style={{ margin: "7vh" }}>
           <h3>Sign Up</h3>
           <div>
             <label htmlFor="uid">아이디</label>

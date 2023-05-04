@@ -5,6 +5,7 @@ import Paging from "./Paging";
 import { homeAction } from "../redux/actions/homeAction";
 import { RootState } from "../redux/reducers";
 import {
+  Box,
   Button,
   Card,
   IconButton,
@@ -155,7 +156,7 @@ const Post = () => {
                         />
                       </Card>
                     ) : (
-                      <span></span>
+                      <Box sx={{ height: { xs: "7vh", sm: "10vh" } }} />
                     )}
                   </TableCell>
                   <TableCell
