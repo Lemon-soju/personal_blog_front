@@ -82,114 +82,128 @@ const Manage = () => {
   ]);
 
   return (
-    <div className="main-body">
-      <div className="post-body">
-        <Container sx={{ mt: "100px" }}>
+    <Box
+      sx={{
+        position: "relative",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url(/background.jpg)",
+          opacity: 0.6,
+          zIndex: -1,
+          backgroundSize: "cover",
+        },
+        paddingTop: "30px",
+      }}
+    >
+      <Container>
+        <Card
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+          }}
+        >
+          <h2 style={{ textAlign: "center", marginTop: "150px" }}>
+            내가 쓴 글
+          </h2>
+
           <Card
             sx={{
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 0)",
+              margin: "30px",
             }}
           >
-            <h2 style={{ textAlign: "center", marginTop: "50px" }}>
-              내가 쓴 글
-            </h2>
-
-            <Card
-              sx={{
-                backgroundColor: "rgba(255, 255, 255, 0)",
-                margin: "30px",
-              }}
-            >
-              {" "}
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell
-                      sx={{
-                        display: { xs: "none", sm: "none", md: "table-cell" },
-                      }}
-                    >
-                      글 번호
-                    </TableCell>
-                    <TableCell>제목</TableCell>
-                    <TableCell
-                      sx={{ display: { xs: "none", sm: "table-cell" } }}
-                    >
-                      등록일
-                    </TableCell>
-                    <TableCell>작성자</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {currentPosts && currentPosts.length > 0 ? (
-                    currentPosts.map((e, index) => (
-                      <TableRow className="post-table-row" key={index}>
-                        <TableCell
-                          sx={{
-                            display: {
-                              xs: "none",
-                              sm: "none",
-                              md: "table-cell",
-                            },
+            {" "}
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    sx={{
+                      display: { xs: "none", sm: "none", md: "table-cell" },
+                    }}
+                  >
+                    글 번호
+                  </TableCell>
+                  <TableCell>제목</TableCell>
+                  <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
+                    등록일
+                  </TableCell>
+                  <TableCell>작성자</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {currentPosts && currentPosts.length > 0 ? (
+                  currentPosts.map((e, index) => (
+                    <TableRow className="post-table-row" key={index}>
+                      <TableCell
+                        sx={{
+                          display: {
+                            xs: "none",
+                            sm: "none",
+                            md: "table-cell",
+                          },
+                        }}
+                      >
+                        {e.postId}
+                      </TableCell>{" "}
+                      <TableCell
+                        sx={{
+                          textAlign: "left",
+                          width: { xs: "100%", md: "40vw" },
+                          cursor: "pointer",
+                        }}
+                        onClick={() => navigate(`/post/${e.postId}`)}
+                      >
+                        {e.title.slice(0, 26)}
+                      </TableCell>
+                      <TableCell
+                        sx={{ display: { xs: "none", sm: "table-cell" } }}
+                      >
+                        {e.createDate.slice(0, 10)}
+                      </TableCell>
+                      <TableCell>{e.writer}</TableCell>
+                      <TableCell>
+                        <input
+                          type={"checkbox"}
+                          onChange={() => {
+                            changeHandler(e.postId);
                           }}
-                        >
-                          {e.postId}
-                        </TableCell>{" "}
-                        <TableCell
-                          sx={{
-                            textAlign: "left",
-                            width: { xs: "100%", md: "40vw" },
-                            cursor: "pointer",
-                          }}
-                          onClick={() => navigate(`/post/${e.postId}`)}
-                        >
-                          {e.title.slice(0, 26)}
-                        </TableCell>
-                        <TableCell
-                          sx={{ display: { xs: "none", sm: "table-cell" } }}
-                        >
-                          {e.createDate.slice(0, 10)}
-                        </TableCell>
-                        <TableCell>{e.writer}</TableCell>
-                        <TableCell>
-                          <input
-                            type={"checkbox"}
-                            onChange={() => {
-                              changeHandler(e.postId);
-                            }}
-                          />
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell>게시물이 없습니다.</TableCell>
+                        />
+                      </TableCell>
                     </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </Card>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Button
-                sx={{ mr: "30px", mb: "10px" }}
-                variant="outlined"
-                color="inherit"
-                onClick={() => deleteSubmit(checkedInputs)}
-              >
-                삭제
-              </Button>
-            </Box>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell>게시물이 없습니다.</TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
           </Card>
-        </Container>
-
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button
+              sx={{ mr: "30px", mb: "10px" }}
+              variant="outlined"
+              color="inherit"
+              onClick={() => deleteSubmit(checkedInputs)}
+            >
+              삭제
+            </Button>
+          </Box>
+        </Card>
+      </Container>
+      <Box sx={{ padding: "20px" }}>
         <Paging page={currentPage} count={count} setPage={setPage} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
