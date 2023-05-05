@@ -40,6 +40,21 @@ const login = async (data: {
   return response;
 };
 
+const refreshToken = async (
+  accessToken: string | null
+): Promise<AxiosResponse<LoginResponse>> => {
+  const url = backend + "/refreshToken";
+
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
+
+  const response = await axios.get(url, { headers });
+
+  return response;
+};
+
 const writePost = async (
   data: { title: string; content: string },
   accessToken: string | null
@@ -117,4 +132,12 @@ const readPost = async (data: string): Promise<AxiosResponse> => {
   }
 };
 
-export { signUp, login, writePost, deletePosts, readPost, editPost };
+export {
+  signUp,
+  login,
+  writePost,
+  deletePosts,
+  readPost,
+  editPost,
+  refreshToken,
+};
