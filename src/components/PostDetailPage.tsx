@@ -16,7 +16,6 @@ const PostDetail = () => {
     // params.id가 undefined인 경우
     if (!params.id) return;
     let post = await readPost(params.id);
-    console.log(post);
     setTitle(post.data.title);
     setContent(post.data.content);
     setAuthor(post.data.author);
