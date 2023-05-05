@@ -95,7 +95,6 @@ const deletePosts = async (
     accessToken: accessToken,
   };
 
-  console.log(`글삭제 데이터: ${JSON.stringify(data)}`); //debug
   const response = await axios.post(url, JSON.stringify(data), { headers });
 
   return response;

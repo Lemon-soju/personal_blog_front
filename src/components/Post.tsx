@@ -65,7 +65,6 @@ const Post = () => {
   };
 
   const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(search);
     event.preventDefault();
     dispatch(homeAction.getPosts(search));
     setCount(postData.length);

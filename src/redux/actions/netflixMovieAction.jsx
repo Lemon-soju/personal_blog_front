@@ -46,7 +46,6 @@ const getMovieDetail = (movie_id) => {
       type: "GET_MOVIE_DETAIL",
       payload: { movieDetail: movieDetailApi.data },
     });
-    console.log("movieDetail reducer", movieDetailApi);
   };
 };
 

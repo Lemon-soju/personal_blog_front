@@ -15,7 +15,7 @@ homeApi.interceptors.request.use(
   },
   function (error) {
     // Do something with request error
-    console.log("request error: ", error);
+    // console.log("request error: ", error);
     return Promise.reject(error);
   }
 );
@@ -31,7 +31,7 @@ homeApi.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    console.log("response error: ", error);
+    // console.log("response error: ", error);
     return Promise.reject(error);
   }
 );

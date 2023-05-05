@@ -9,12 +9,12 @@ const netflixApi = axios.create({
 netflixApi.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    console.log("request: ", config);
+    // console.log("request: ", config);
     return config;
   },
   function (error) {
     // Do something with request error
-    console.log("request error: ", error);
+    // console.log("request error: ", error);
     return Promise.reject(error);
   }
 );
@@ -30,7 +30,7 @@ netflixApi.interceptors.response.use(
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    console.log("response error: ", error);
+    // console.log("response error: ", error);
     return Promise.reject(error);
   }
 );

@@ -18,7 +18,6 @@ function SignUp() {
       return navigate("/");
     } else {
       window.alert("회원가입 실패");
-      console.log(response.status);
       return window.location.reload();
     }
   };

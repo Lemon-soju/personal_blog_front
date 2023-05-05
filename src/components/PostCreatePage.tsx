@@ -18,7 +18,6 @@ const PostCreate = () => {
     const data = { title, content };
     let accessToken = localStorage.getItem("accessToken");
     let response = await writePost(data, accessToken);
-    console.log(response);
     if (response.status === 200) {
       window.alert("글쓰기 성공");
       navigate("/");
