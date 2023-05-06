@@ -80,6 +80,15 @@
   flex-grow: 1;
 }
 
+.about-project-card {
+  width: 15vw;
+  min-width: 200px;
+  float: left;
+  margin: 20px;
+  cursor: pointer;
+  height: 17vh;
+}
+
 @media screen and (max-width: 375px) {
   .home-project-card {
     min-width: 180px;
