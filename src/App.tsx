@@ -9,7 +9,6 @@ import Navigation from "./components/Navigation";
 import About from "./components/AboutPage";
 import MovieDetail from "./ToyProject/Netflix/MovieDetail";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/About.css";
 import "./css/App.css";
 import "./css/Netflix.css";
 import "./css/Paging.css";
