@@ -1,7 +1,20 @@
-import { Box, Card, Link, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  Link,
+  ThemeProvider,
+  Typography,
+  createTheme,
+} from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["ONE-Mobile-Title"].join(","),
+  },
+});
 
 const About = () => {
   const navigate = useNavigate();
@@ -9,9 +22,20 @@ const About = () => {
     <Box sx={{ m: "2vw" }}>
       <Card sx={{ m: "1px", minHeight: "50vh" }}>
         <Box sx={{ ml: "2vw" }}>
-          <Box sx={{ mt: "4vh", mb: "2vh", fontSize: "1.5rem" }}>
-            프로그래머 윤창규입니다.
-          </Box>
+          <ThemeProvider theme={theme}>
+            <Box
+              sx={{
+                mt: "4vh",
+                mb: "2vh",
+                fontSize: "1.8rem",
+                fontFamily: "omyu_pretty",
+              }}
+            >
+              기술에 구애받지 않는 맥가이버,
+              <br />
+              개발자 윤창규입니다.
+            </Box>
+          </ThemeProvider>
           <Box
             sx={{
               display: "flex",
@@ -78,16 +102,26 @@ const About = () => {
               sx={{
                 mt: "100px",
                 mb: "150px",
-                maxWidth: "1000px",
+                maxWidth: "50vw",
                 color: "black",
               }}
             >
-              자바 스프링 백엔드 개발자를 준비하고 있는 신입 개발자입니다.
-              카페에서 코딩하는 것을 즐기며 이것저것 만들어보면서 백앤드 뿐만
-              아니라 프론트엔드도 같이 공부하고 있습니다.
-              <p />
-              다른 사람들이 제가 만든 프로그램을 사용한다는 상상을 하면 더욱 더
-              빨리 성장하고 싶은 생각이 듭니다.
+              <p>
+                저는 조용한 카페에서 코딩하는 것을 즐기며 호기심이 많은
+                사람입니다. 교내 서비스 개발팀에서 프로젝트를 진행하며 팀 내
+                분위기와 소통의 중요성을 깨달았습니다. 코딩 실력 뿐만 아니라
+                개발의 전체적인 흐름을 이해하기 위해 프론트엔드와 컨벤션 등도
+                함께 공부하고 있습니다. 실제 서비스를 운영해보고 싶어서 AWS EC2
+                서비스를 통해 개인 블로그를 운영하고 있으며, 다른 프로젝트를
+                진행하면서 공부한 내용들은 개인 블로그 코드에 적용하면서
+                연구하고 있습니다.
+              </p>
+              <br />
+              <p>
+                코딩을 할 때는 문제를 해결해냈다는 성취감 그리고 사람들이 내가
+                만든 프로그램을 사용한다는 상상을 하면서 느끼는 설레는 감정 두
+                가지를 발판 삼아 더 열정적으로 코딩하는 중입니다.
+              </p>
             </Typography>
           </div>
         </Box>
@@ -137,7 +171,7 @@ const About = () => {
               >
                 <Typography
                   variant="h4"
-                  color="#7e7e7e"
+                  color="#555555"
                   sx={{
                     ":hover": { textDecoration: "underline" },
                   }}
@@ -151,11 +185,34 @@ const About = () => {
                 고려대학교 교내 동아리 운영진 및 가입자에게 리쿠르팅, 명단, 출석
                 관리, 홍보(Coming soon) 서비스를 제공합니다.
               </Typography>
+              <br />
+              <Box sx={{ display: "flex" }}>
+                <Typography color="#222222" mr={1}>
+                  프론트엔드
+                </Typography>
+                <Typography>2023.03~2023.04</Typography>
+              </Box>
+              <Typography>
+                - 회원 및 활동을 더 효율적으로 관리하기 위해{" "}
+                <Link
+                  href="https://lemon-soju.tistory.com/475"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  학기 개념 추가
+                </Link>
+              </Typography>
+              <Typography>
+                - git flow 전략을 사용하면서 체계적인 협업 경험
+              </Typography>
+              <Typography>
+                - 상호간에 github 코드 리뷰를 통한 실력 증진 및 같은 목표 추구
+              </Typography>
 
               <Typography
                 onClick={() => navigate("/netflix")}
                 variant="h4"
-                color="#7e7e7e"
+                color="#555555"
                 sx={{
                   mt: "10vh",
                   cursor: "pointer",
@@ -180,7 +237,7 @@ const About = () => {
               >
                 <Typography
                   variant="h4"
-                  color="#7e7e7e"
+                  color="#555555"
                   sx={{
                     mt: "10vh",
                     ":hover": { textDecoration: "underline" },
@@ -193,6 +250,18 @@ const About = () => {
               <Typography sx={{ mt: "2vh" }}>
                 실제 실무환경과 유사한 인프라를 구축 후 시나리오를 구성하여
                 모의해킹 그리고 침해대응 및 분석까지 진행한 프로젝트 입니다.
+              </Typography>
+              <br />
+
+              <Box sx={{ display: "flex" }}>
+                <Typography color="#222222" mr={1}>
+                  공격팀
+                </Typography>
+                <Typography>2021.03~2021.06</Typography>
+              </Box>
+              <Typography>
+                - 가상 환경에 실제 실무 환경과 유사한 인프라 구축(라우터, IPS,
+                AD 서버 담당)
               </Typography>
             </Box>
           </Box>
