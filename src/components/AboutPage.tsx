@@ -218,6 +218,14 @@ const About = () => {
               <Typography>
                 - 상호간에 github 코드 리뷰를 통한 실력 증진 및 같은 목표 추구
               </Typography>
+              <Box sx={{ display: "flex", mt: "5vh" }}>
+                <Typography color="#222222" mr={1}>
+                  백엔드
+                </Typography>
+                <Typography>2023.05~2023.xx</Typography>
+              </Box>
+              <Typography>- DB 관리 도구를 통한 QA 진행</Typography>
+
               <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemonsoju.blog"
@@ -247,7 +255,9 @@ const About = () => {
                 </Typography>
                 <Typography>2022.07~2023.06</Typography>
               </Box>
-              <Typography>- MUI를 통한 사용자 인터페이스 구축</Typography>
+              <Typography>
+                - MUI 라이브러리를 통한 사용자 인터페이스 구축
+              </Typography>
               <Typography>- 타입 스크립트를 통한 타입 안정성 향상</Typography>
 
               <Box sx={{ display: "flex", mt: "5vh" }}>
@@ -257,7 +267,8 @@ const About = () => {
                 <Typography>2022.07~2023.06</Typography>
               </Box>
               <Typography>
-                - MVC 패턴을 이용하여 블로그 CRUD 기능 구현
+                - MVC 디자인 패턴에 따른 설계 및 Spring Data JPA를 통한 블로그
+                CRUD 기능 구현
               </Typography>
               <Typography>- JWT를 통한 로그인 및 로그아웃 기능 구현</Typography>
               <Typography>
