@@ -1,6 +1,7 @@
 import {
   Box,
   Card,
+  Divider,
   Link,
   ThemeProvider,
   Typography,
@@ -19,8 +20,8 @@ const theme = createTheme({
 const About = () => {
   const navigate = useNavigate();
   return (
-    <Box sx={{ m: "2vw" }}>
-      <Card sx={{ m: "1px", minHeight: "50vh" }}>
+    <Box sx={{ m: "2vw", fontFamily: "omyu_pretty" }}>
+      <Card sx={{ m: "1px", minHeight: "58vh", fontFamily: "omyu_pretty" }}>
         <Box sx={{ ml: "2vw" }}>
           <ThemeProvider theme={theme}>
             <Box
@@ -28,7 +29,6 @@ const About = () => {
                 mt: "4vh",
                 mb: "2vh",
                 fontSize: "1.8rem",
-                fontFamily: "omyu_pretty",
               }}
             >
               기술에 구애받지 않는 맥가이버,
@@ -44,11 +44,11 @@ const About = () => {
           >
             <Box sx={{ display: "flex", mt: "2vh" }}>
               <img
-                alt="sketch"
-                src={"/sketch.png"}
+                alt="profile"
+                src={"/profile.jpg"}
                 style={{
-                  width: "170px",
-                  height: "235px",
+                  width: "240px",
+                  height: "320px",
                 }}
               />
             </Box>
@@ -58,8 +58,8 @@ const About = () => {
                 ml: "3vw",
                 display: "flex",
                 flexDirection: "column",
-                mt: "2vh",
-                fontSize: "1.5rem",
+                mt: "5vh",
+                fontSize: "1.8rem",
                 color: "#5b8bd9",
               }}
             >
@@ -72,7 +72,7 @@ const About = () => {
                 </Box>
               </Box>
               <Box>
-                <Box sx={{ mt: "3vh" }}>Channel.</Box>
+                <Box sx={{ mt: "7vh" }}>Channel.</Box>
                 <Box sx={{ fontSize: "0.85rem", color: "#7e7e7e", mt: "2vh" }}>
                   <a href="http://lemon-soju.tistory.com">
                     Blog. https://lemon-soju.tistory.com
@@ -111,7 +111,7 @@ const About = () => {
                 사람입니다. 교내 서비스 개발팀에서 프로젝트를 진행하며 팀 내
                 분위기와 소통의 중요성을 깨달았습니다. 코딩 실력 뿐만 아니라
                 개발의 전체적인 흐름을 이해하기 위해 프론트엔드와 컨벤션 등도
-                함께 공부하고 있습니다. 실제 서비스를 운영해보고 싶어서 AWS EC2
+                함께 공부하고 있습니다. 실제 서비스를 운영해보고 싶어서 AWS
                 서비스를 통해 개인 블로그를 운영하고 있으며, 다른 프로젝트를
                 진행하면서 공부한 내용들은 개인 블로그 코드에 적용하면서
                 연구하고 있습니다.
@@ -164,6 +164,8 @@ const About = () => {
               </NavLink>
             </Card>
             <Box sx={{ mt: "20vh", color: "#7e7e7e", mb: "10vh" }}>
+              <Divider sx={{ m: "5vh" }} />
+
               <Link
                 href="https://klub.kr/"
                 target="_blank"
@@ -181,7 +183,15 @@ const About = () => {
               </Link>
 
               <Typography sx={{ mt: "2vh" }}>
-                KLUB은 기존의 구글 시트 기반 회원 관리를 대체할 서비스입니다.
+                <Link
+                  href="https://hijihyo.notion.site/KLUB-32acaba216114f37b3c1edd32bb080fe"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  klub이란?
+                  <br />
+                </Link>
+                - KLUB은 기존의 구글 시트 기반 회원 관리를 대체할 서비스입니다.
                 고려대학교 교내 동아리 운영진 및 가입자에게 리쿠르팅, 명단, 출석
                 관리, 홍보(Coming soon) 서비스를 제공합니다.
               </Typography>
@@ -208,7 +218,53 @@ const About = () => {
               <Typography>
                 - 상호간에 github 코드 리뷰를 통한 실력 증진 및 같은 목표 추구
               </Typography>
+              <Divider sx={{ m: "5vh" }} />
+              <Link
+                href="https://lemonsoju.blog"
+                target="_blank"
+                sx={{ textDecoration: "none" }}
+              >
+                <Typography
+                  variant="h4"
+                  color="#555555"
+                  sx={{
+                    mt: "10vh",
+                    ":hover": { textDecoration: "underline" },
+                  }}
+                >
+                  개인 블로그 프로젝트
+                </Typography>
+              </Link>
 
+              <Typography sx={{ mt: "2vh" }}>
+                리액트, 자바 스프링, PostgreSQL을 조합하여 블로그를 만드는
+                프로젝트입니다.
+              </Typography>
+
+              <Box sx={{ display: "flex", mt: "5vh" }}>
+                <Typography color="#222222" mr={1}>
+                  프론트엔드
+                </Typography>
+                <Typography>2022.07~2023.06</Typography>
+              </Box>
+              <Typography>- MUI를 통한 사용자 인터페이스 구축</Typography>
+              <Typography>- 타입 스크립트를 통한 타입 안정성 향상</Typography>
+
+              <Box sx={{ display: "flex", mt: "5vh" }}>
+                <Typography color="#222222" mr={1}>
+                  백엔드
+                </Typography>
+                <Typography>2022.07~2023.06</Typography>
+              </Box>
+              <Typography>
+                - MVC 패턴을 이용하여 블로그 CRUD 기능 구현
+              </Typography>
+              <Typography>- JWT를 통한 로그인 및 로그아웃 기능 구현</Typography>
+              <Typography>
+                - 도메인 구매 및 https 적용을 통해 브라우저에서 접근 가능하도록
+                설정
+              </Typography>
+              <Divider sx={{ m: "5vh" }} />
               <Typography
                 onClick={() => navigate("/netflix")}
                 variant="h4"
@@ -230,6 +286,7 @@ const About = () => {
                 정보를 제공합니다.
               </Typography>
 
+              <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemon-soju.tistory.com/40"
                 target="_blank"
@@ -279,7 +336,7 @@ const About = () => {
           Skill.
           <Typography sx={{ color: "black", mt: "5vh", fontSize: "1.1rem" }}>
             <p>Front-End: React.js</p>
-            <p>Back-End: Spring Boot</p>
+            <p>Back-End: Spring Boot, AWS(EC2, RDS, Route 53)</p>
             <p>Database: PostgreSQL</p>
           </Typography>
         </Box>
