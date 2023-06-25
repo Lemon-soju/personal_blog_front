@@ -4,6 +4,7 @@ import { writePost } from "../controller/controller";
 import { Box, Button, Card, Container, TextField } from "@mui/material";
 import TextEditor from "./TextEditor";
 import { Editor } from "@toast-ui/react-editor";
+import Footer from "./Footer";
 
 const PostCreate = () => {
   const editorRef = useRef<Editor>(null);
@@ -34,12 +35,28 @@ const PostCreate = () => {
   };
 
   return (
-    <div className="main-body">
+    <Box
+      sx={{
+        position: "relative",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url(/background.jpg)",
+          opacity: 0.6,
+          zIndex: -1,
+          backgroundSize: "cover",
+        },
+      }}
+    >
       <form onSubmit={(e) => postSubmit(e)}>
         <Container
           sx={{
             display: "flex",
-            mt: "10vh",
+            paddingTop: 10,
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -97,7 +114,8 @@ const PostCreate = () => {
           </Box>
         </Container>
       </form>
-    </div>
+      <Footer />
+    </Box>
   );
 };
 

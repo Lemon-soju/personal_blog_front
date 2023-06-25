@@ -272,9 +272,17 @@ const About = () => {
               </Typography>
               <Typography>- JWT를 통한 로그인 및 로그아웃 기능 구현</Typography>
               <Typography>
-                - 도메인 구매 및 https 적용을 통해 브라우저에서 접근 가능하도록
-                설정
+                <Link
+                  href="https://lemon-soju.tistory.com/497"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - 도메인 구매 및 https 적용
+                </Link>
+                을 통해 브라우저에서 접근 가능하도록 설정
               </Typography>
+              <Typography>- AWS S3를 통한 이미지 저장 구현</Typography>
+
               <Divider sx={{ m: "5vh" }} />
               <Typography
                 onClick={() => navigate("/netflix")}
@@ -347,7 +355,7 @@ const About = () => {
           Skill.
           <Typography sx={{ color: "black", mt: "5vh", fontSize: "1.1rem" }}>
             <p>Front-End: React.js</p>
-            <p>Back-End: Spring Boot, AWS(EC2, RDS, Route 53)</p>
+            <p>Back-End: Spring Boot, AWS(EC2, RDS, Route 53, S3)</p>
             <p>Database: PostgreSQL</p>
           </Typography>
         </Box>
