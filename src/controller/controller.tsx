@@ -56,7 +56,7 @@ const refreshToken = async (
 };
 
 const writePost = async (
-  data: { title: string; content: string },
+  data: { title: string; content: any },
   accessToken: string | null
 ) => {
   const url = backend + "/post/write";
