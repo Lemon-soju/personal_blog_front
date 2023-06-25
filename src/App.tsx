@@ -20,6 +20,7 @@ import Developing from "./components/DevelopingPage";
 import Manage from "./components/ManagePage";
 import PostDetail from "./components/PostDetailPage";
 import PostEdit from "./components/PostEditPage";
+import PrivacyPolicyPage from "./content/policy/PrivacyPolicyPage";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/developing" element={<Developing />} />
         <Route path="/manage" element={<Manage />} />
         <Route path="/post/edit/:id" element={<PostEdit />} />
+        <Route path="/policy" element={<PrivacyPolicyPage />} />
 
         {/* Netflix */}
         <Route path="/netflix" element={<NetflixHome />} />

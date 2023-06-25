@@ -3,6 +3,7 @@ import Post from "./Post";
 import ToyProjectSlide from "./ToyProjectSlide";
 import { Container } from "react-bootstrap";
 import { Box } from "@mui/material";
+import Footer from "./Footer";
 
 // 로그인 후 화면
 const Main = () => {
@@ -30,6 +31,7 @@ const Main = () => {
       <Container style={{ marginTop: "5vh" }}>
         <Post />
       </Container>
+      <Footer />
     </Box>
   );
 };
