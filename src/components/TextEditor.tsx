@@ -45,9 +45,11 @@ const TextEditor: React.FC<TextEditorProps> = ({
     const imageUrl = await uploadImage(blob);
     callback(imageUrl, "첨부 이미지");
 
-    document.querySelectorAll("img").forEach((img) => {
-      img.style.maxWidth = "100%";
-    });
+    setTimeout(() => {
+      document.querySelectorAll("img").forEach((img) => {
+        img.style.maxWidth = "100%";
+      });
+    }, 100);
 
     return false;
   };

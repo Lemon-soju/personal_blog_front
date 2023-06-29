@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../controller/controller";
-import { Box, Button, Container, TextField } from "@mui/material";
-import ReactQuill, { Quill } from "react-quill";
-import ImageResize from "quill-image-resize";
-import { modules } from "../utils/editor";
-Quill.register("modules/ImageResize", ImageResize);
+import { Box, Button, Card, Container, TextField } from "@mui/material";
+import TextEditor from "./TextEditor";
+import { Editor } from "@toast-ui/react-editor";
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
@@ -15,6 +13,7 @@ const PostEdit = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
+  const editorRef = useRef<Editor>(null);
 
   const editSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,24 +53,35 @@ const PostEdit = () => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             sx={{
-              width: "100%",
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
+              width: { xs: "100%", sm: "100%", md: "80%", lg: "80%" },
+              backgroundColor: "rgba(255, 255, 255, 1)",
+              mb: "2vh",
             }}
           />
 
-          <ReactQuill
-            placeholder="내용을 입력해주세요."
-            value={content}
-            onChange={(e) => setContent(e)}
-            style={{
-              height: "80vh",
-              backgroundColor: "rgba(255, 255, 255, 0.5)",
-              width: "100%",
-              overflow: "hidden",
-              paddingBottom: "3rem", // 여백 값 추가
+          <Card
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "100%",
+                md: "80%",
+                lg: "80%",
+                height: "70vh",
+              },
             }}
-            modules={modules}
-          />
+          >
+            <TextEditor
+              initialValue={location.state.content}
+              editorRef={editorRef}
+              toolbarItems={[
+                ["heading", "bold", "italic", "strike"],
+                ["hr", "quote"],
+                ["ul", "ol", "task"],
+                ["table", "link"],
+                ["code", "codeblock"],
+              ]}
+            />
+          </Card>
 
           <Box
             sx={{
