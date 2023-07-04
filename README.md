@@ -35,6 +35,7 @@ npm start
 # 배포
 
 - main : `AWS ec2` 사용하여 배포 중(https://lemonsoju.blog)
+- develop : `Github Page` 사용하여 배포 중(https://lemon-soju.github.io)
 - nohup으로 백그라운드에서 서버 실행
 
 # 가이드라인
