@@ -70,7 +70,6 @@ const PostEdit = () => {
                 sm: "100%",
                 md: "80%",
                 lg: "80%",
-                height: "70vh",
               },
             }}
           >
@@ -90,7 +89,7 @@ const PostEdit = () => {
           <Box
             sx={{
               display: "flex",
-              width: "100%",
+              width: { xs: "100%", sm: "100%", md: "80%", lg: "80%" },
             }}
           >
             <Button
