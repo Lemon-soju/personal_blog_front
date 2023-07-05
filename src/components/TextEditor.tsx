@@ -58,7 +58,9 @@ const TextEditor: React.FC<TextEditorProps> = ({
     <div>
       <Editor
         previewStyle={window.innerWidth > 1000 ? "vertical" : "tab"}
-        height={window.innerWidth > 1000 ? "80vh" : "60vh"}
+        height={
+          window.innerWidth > 1000 ? "calc(80vh - 30px)" : "calc(60vh - 30px)"
+        }
         initialEditType="wysiwyg"
         ref={editorRef}
         language="ko-KR"

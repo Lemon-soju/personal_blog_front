@@ -80,7 +80,6 @@ const PostCreate = () => {
                 sm: "100%",
                 md: "80%",
                 lg: "80%",
-                height: "70vh",
               },
             }}
           >
