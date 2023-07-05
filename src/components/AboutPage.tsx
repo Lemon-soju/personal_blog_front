@@ -224,7 +224,7 @@ const About = () => {
                 </Typography>
                 <Typography>2023.05~2023.xx</Typography>
               </Box>
-              <Typography>- DB 관리 도구를 통한 QA 진행</Typography>
+              <Typography>- 리팩토링을 통한 유지보수성 개선</Typography>
 
               <Divider sx={{ m: "5vh" }} />
               <Link
@@ -270,7 +270,16 @@ const About = () => {
                 - MVC 디자인 패턴에 따른 설계 및 Spring Data JPA를 통한 블로그
                 CRUD 기능 구현
               </Typography>
-              <Typography>- JWT를 통한 로그인 및 로그아웃 기능 구현</Typography>
+              <Typography>
+                {" "}
+                <Link
+                  href="https://lemon-soju.tistory.com/512"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - JWT을 통한 로그인 및 로그아웃 기능 구현{" "}
+                </Link>
+              </Typography>
               <Typography>
                 <Link
                   href="https://lemon-soju.tistory.com/497"

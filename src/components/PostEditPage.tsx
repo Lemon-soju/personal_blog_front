@@ -8,7 +8,6 @@ import { Editor } from "@toast-ui/react-editor";
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,6 +16,12 @@ const PostEdit = () => {
 
   const editSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    let content = "";
+    if (editorRef.current) {
+      content = editorRef.current.getInstance().getHTML();
+    }
+
     const data = { id: params.id, title, content };
     let accessToken = localStorage.getItem("accessToken");
     let response = await editPost(data, accessToken);
@@ -33,8 +38,7 @@ const PostEdit = () => {
 
   useEffect(() => {
     setTitle(location.state.title);
-    setContent(location.state.content);
-  }, [location.state.title, location.state.content]);
+  }, [location.state.title]);
 
   return (
     <div className="main-body">
