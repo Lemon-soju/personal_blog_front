@@ -69,7 +69,7 @@ const PostDetail = () => {
           </Typography>
         </Box>
       </Card>
-      <Box>
+      <Box sx={{ minHeight: "50vh" }}>
         <Typography
           dangerouslySetInnerHTML={{ __html: content }}
           sx={{

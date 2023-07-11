@@ -1,28 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../controller/controller";
 import { Box, Button, Card, Container, TextField } from "@mui/material";
 import TextEditor from "./TextEditor";
 import { Editor } from "@toast-ui/react-editor";
+import { readPost } from "../controller/controller";
 
 const PostEdit = () => {
   const [title, setTitle] = useState("");
 
   const navigate = useNavigate();
-  const location = useLocation();
   const params = useParams();
   const editorRef = useRef<Editor>(null);
 
   const editSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let content = "";
-    if (editorRef.current) {
-      content = editorRef.current.getInstance().getHTML();
-    }
-
-    const data = { id: params.id, title, content };
+    const data = {
+      id: params.id,
+      title,
+      content: editorRef.current?.getInstance().getHTML(),
+    };
     let accessToken = localStorage.getItem("accessToken");
     let response = await editPost(data, accessToken);
 
@@ -36,9 +35,17 @@ const PostEdit = () => {
     }
   };
 
+  const getPost = useCallback(async () => {
+    // params.id가 undefined인 경우
+    if (!params.id) return;
+    let post = await readPost(params.id);
+    setTitle(post.data.title);
+    editorRef.current?.getInstance().setHTML(post.data.content);
+  }, [params.id]);
+
   useEffect(() => {
-    setTitle(location.state.title);
-  }, [location.state.title]);
+    getPost();
+  }, [getPost]);
 
   return (
     <div className="main-body">
@@ -74,7 +81,7 @@ const PostEdit = () => {
             }}
           >
             <TextEditor
-              initialValue={location.state.content}
+              initialValue=""
               editorRef={editorRef}
               toolbarItems={[
                 ["heading", "bold", "italic", "strike"],
