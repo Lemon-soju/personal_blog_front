@@ -43,7 +43,7 @@ const login = async (data: {
 const refreshToken = async (
   accessToken: string | null
 ): Promise<AxiosResponse<LoginResponse>> => {
-  const url = backend + "/refreshToken";
+  const url = backend + "/auth/refreshToken";
 
   const headers = {
     "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const writePost = async (
   data: { title: string; content: any },
   accessToken: string | null
 ) => {
-  const url = backend + "/post/write";
+  const url = backend + "/auth/post";
 
   const headers = {
     "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const editPost = async (
   data: { id: any; title?: string; content?: string },
   accessToken: string | null
 ) => {
-  const url = backend + `/member/post/edit/${data.id}`;
+  const url = backend + `/auth/post/${data.id}`;
 
   const headers = {
     "Content-Type": "application/json",
@@ -92,7 +92,11 @@ const editPost = async (
   };
 
   try {
-    const response = await axios.post(url, JSON.stringify(data), { headers });
+    const response = await axios.patch(
+      url,
+      JSON.stringify({ title: data.title, content: data.content }),
+      { headers }
+    );
     return response;
   } catch (error) {
     throw error;
@@ -103,7 +107,7 @@ const deletePosts = async (
   data: { checkedInputs: number[] },
   accessToken: string | null
 ): Promise<AxiosResponse> => {
-  const url = backend + "/member/post/delete";
+  const url = backend + "/auth/post/delete";
 
   const headers = {
     "Content-Type": "application/json",
@@ -116,7 +120,7 @@ const deletePosts = async (
 };
 
 const readPost = async (data: string): Promise<AxiosResponse> => {
-  const url = backend + "/post/detail";
+  const url = backend + "/post/" + data;
   let accessToken = localStorage.getItem("accessToken");
 
   const headers = {
@@ -125,7 +129,7 @@ const readPost = async (data: string): Promise<AxiosResponse> => {
   };
 
   try {
-    const response = await axios.get(url + "?id=" + data, { headers });
+    const response = await axios.get(url, { headers });
     return response;
   } catch (error) {
     throw error;
