@@ -147,6 +147,15 @@ const About = () => {
               </NavLink>
             </Card>
             <Card sx={{ m: "16px" }}>
+              <NavLink to={"https://lemonsoju.blog"}>
+                <img
+                  className="about-project-card"
+                  alt="myblog"
+                  src={"/myblog.png"}
+                />
+              </NavLink>
+            </Card>
+            <Card sx={{ m: "16px" }}>
               <img
                 className="about-project-card"
                 onClick={() => navigate("/netflix")}

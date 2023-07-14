@@ -48,8 +48,11 @@ const ToyProjectSlide = () => {
         responsive={responsive}
         className="home-carousel"
       >
-        <NavLink to={"https://klub.kr/"}>
+        <NavLink to={"https://klub.kr"}>
           <img className="home-project-card" alt="klue" src={"/klue.png"} />
+        </NavLink>
+        <NavLink to={"https://lemonsoju.blog"}>
+          <img className="home-project-card" alt="klue" src={"/myblog.png"} />
         </NavLink>
         <img
           className="home-project-card"
