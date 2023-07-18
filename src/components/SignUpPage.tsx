@@ -43,7 +43,7 @@ function SignUp() {
             <label htmlFor="pwd">비밀번호</label> <br />
             <input
               id="pwd"
-              type="text"
+              type="password"
               value={pwd}
               onChange={(event) => {
                 setPwd(event.target.value);
