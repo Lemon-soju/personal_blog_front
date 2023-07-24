@@ -52,7 +52,7 @@ const ToyProjectSlide = () => {
           <img className="home-project-card" alt="klue" src={"/klue.png"} />
         </NavLink>
         <NavLink to={"https://lemonsoju.blog"}>
-          <img className="home-project-card" alt="klue" src={"/myblog.png"} />
+          <img className="home-project-card" alt="blog" src={"/myblog.png"} />
         </NavLink>
         <img
           className="home-project-card"

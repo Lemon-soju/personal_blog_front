@@ -174,7 +174,6 @@ const About = () => {
             </Card>
             <Box sx={{ mt: "20vh", color: "#7e7e7e", mb: "10vh" }}>
               <Divider sx={{ m: "5vh" }} />
-
               <Link
                 href="https://klub.kr/"
                 target="_blank"
@@ -190,7 +189,6 @@ const About = () => {
                   klub 프로젝트
                 </Typography>
               </Link>
-
               <Typography sx={{ mt: "2vh" }}>
                 <Link
                   href="https://hijihyo.notion.site/KLUB-32acaba216114f37b3c1edd32bb080fe"
@@ -203,6 +201,10 @@ const About = () => {
                 - KLUB은 기존의 구글 시트 기반 회원 관리를 대체할 서비스입니다.
                 고려대학교 교내 동아리 운영진 및 가입자에게 리쿠르팅, 명단, 출석
                 관리, 홍보(Coming soon) 서비스를 제공합니다.
+              </Typography>
+              <Typography>
+                - KLUB 프로젝트에 참가하면서 전체적인 협업 프로세스를 경험하였고
+                다른 팀원들과 소통하는 법에 대해서 배울 수 있었습니다.
               </Typography>
               <br />
               <Box sx={{ display: "flex" }}>
@@ -234,7 +236,6 @@ const About = () => {
                 <Typography>2023.05~2023.xx</Typography>
               </Box>
               <Typography>- 리팩토링을 통한 유지보수성 개선</Typography>
-
               <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemonsoju.blog"
@@ -252,12 +253,14 @@ const About = () => {
                   개인 블로그 프로젝트
                 </Typography>
               </Link>
-
               <Typography sx={{ mt: "2vh" }}>
-                리액트, 자바 스프링, PostgreSQL을 조합하여 블로그를 만드는
+                - 리액트, 자바 스프링, PostgreSQL을 조합하여 블로그를 만드는
                 프로젝트입니다.
               </Typography>
-
+              <Typography>
+                - 다른 곳에서 배운 기술들을 개인 블로그 프로젝트에 적용하면서
+                실력을 향상시킬 수 있었습니다.
+              </Typography>
               <Box sx={{ display: "flex", mt: "5vh" }}>
                 <Typography color="#222222" mr={1}>
                   프론트엔드
@@ -268,27 +271,12 @@ const About = () => {
                 - MUI 라이브러리를 통한 사용자 인터페이스 구축
               </Typography>
               <Typography>- 타입 스크립트를 통한 타입 안정성 향상</Typography>
-
               <Box sx={{ display: "flex", mt: "5vh" }}>
                 <Typography color="#222222" mr={1}>
                   백엔드
                 </Typography>
                 <Typography>2022.07~2023.06</Typography>
               </Box>
-              <Typography>
-                - MVC 디자인 패턴에 따른 설계 및 Spring Data JPA를 통한 블로그
-                CRUD 기능 구현
-              </Typography>
-              <Typography>
-                {" "}
-                <Link
-                  href="https://lemon-soju.tistory.com/512"
-                  target="_blank"
-                  sx={{ textDecoration: "none" }}
-                >
-                  - JWT을 통한 로그인 및 로그아웃 기능 구현{" "}
-                </Link>
-              </Typography>
               <Typography>
                 <Link
                   href="https://lemon-soju.tistory.com/497"
@@ -297,10 +285,26 @@ const About = () => {
                 >
                   - 도메인 구매 및 https 적용
                 </Link>
-                을 통해 브라우저에서 접근 가능하도록 설정
+                을 통해 여러 브라우저에서 접근 가능하도록 설정
               </Typography>
-              <Typography>- AWS S3를 통한 이미지 저장 구현</Typography>
-
+              <Typography>- GitHub Actions를 이용한 CI/CD 구축</Typography>
+              <Typography>
+                - Spring REST Docs와 테스트 코드를 활용한 API 문서 자동화
+              </Typography>
+              <Typography>
+                <Link
+                  href="https://lemon-soju.tistory.com/512"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - JWT을 통한 로그인 및 로그아웃 기능 구현
+                </Link>
+              </Typography>
+              <Typography>- AWS S3를 이용한 이미지 저장 구현</Typography>
+              <Typography>
+                - MVC 디자인 패턴에 따른 설계 및 Spring Data JPA를 통한 블로그
+                CRUD 기능 구현
+              </Typography>
               <Divider sx={{ m: "5vh" }} />
               <Typography
                 onClick={() => navigate("/netflix")}
@@ -316,13 +320,16 @@ const About = () => {
               >
                 넷플릭스 클론 프로젝트
               </Typography>
-
               <Typography sx={{ mt: "2vh" }}>
-                The Movie Database (TMDB) api를 활용하여 현재 영화 순위를
+                - The Movie Database (TMDB) api를 활용하여 현재 영화 순위를
                 알려주는 서비스 입니다. 영화 개봉일, 제작비, 상영 시간 등의
                 정보를 제공합니다.
               </Typography>
-
+              <Typography>
+                - React.js를 이용하여 프로젝트를 진행하면서 프론트엔드 포지션의
+                역할을 경험할 수 있었습니다. 해당 경험을 통해 전체적인 개발
+                프로세스에 대해 더 깊은 통찰을 얻을 수 있었습니다.
+              </Typography>
               <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemon-soju.tistory.com/40"
@@ -340,13 +347,16 @@ const About = () => {
                   시나리오 기반 모의해킹 프로젝트
                 </Typography>
               </Link>
-
               <Typography sx={{ mt: "2vh" }}>
-                실제 실무환경과 유사한 인프라를 구축 후 시나리오를 구성하여
+                - 실제 실무환경과 유사한 인프라를 구축 후 시나리오를 구성하여
                 모의해킹 그리고 침해대응 및 분석까지 진행한 프로젝트 입니다.
               </Typography>
+              <Typography>
+                - VMware ESXi를 통해 라우터, IDX, IPS, 방화벽, 웹방화벽, AD 서버
+                등을 구성하면서 가상환경에서 인프라를 구축하는 경험을
+                하였습니다.
+              </Typography>
               <br />
-
               <Box sx={{ display: "flex" }}>
                 <Typography color="#222222" mr={1}>
                   공격팀
