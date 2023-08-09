@@ -102,8 +102,8 @@ const About = () => {
               sx={{
                 mt: "100px",
                 mb: "150px",
-                maxWidth: "50vw",
                 color: "black",
+                width: { xs: "100%", sm: "100%", md: "60%", lg: "60%" },
               }}
             >
               <p>
