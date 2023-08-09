@@ -236,6 +236,15 @@ const About = () => {
                 <Typography>2023.05~2023.xx</Typography>
               </Box>
               <Typography>- 리팩토링을 통한 유지보수성 개선</Typography>
+              <Typography>
+                <Link
+                  href="https://lemon-soju.tistory.com/515"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - jest를 이용한 테스트 코드 도입
+                </Link>
+              </Typography>
               <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemonsoju.blog"
