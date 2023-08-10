@@ -24,7 +24,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
   const backend = process.env.REACT_APP_BASE_URL;
 
   const uploadImage = async (blob: Blob | File) => {
-    const url = backend + "/post/uploadImage";
+    const url = backend + "/auth/uploadImage";
 
     const headers = {
       "Content-Type": "multipart/form-data",
