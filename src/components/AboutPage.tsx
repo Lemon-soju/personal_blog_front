@@ -21,14 +21,20 @@ const About = () => {
   const navigate = useNavigate();
   return (
     <Box sx={{ m: "2vw", fontFamily: "omyu_pretty" }}>
-      <Card sx={{ m: "1px", minHeight: "58vh", fontFamily: "omyu_pretty" }}>
+      <Card
+        sx={{
+          m: "1px",
+          minHeight: { xs: "95vh", sm: "65vh", md: "65vh", lg: "65vh" },
+          fontFamily: "omyu_pretty",
+        }}
+      >
         <Box sx={{ ml: "2vw" }}>
           <ThemeProvider theme={theme}>
             <Box
               sx={{
                 mt: "4vh",
                 mb: "2vh",
-                fontSize: "1.8rem",
+                fontSize: "1.76rem",
               }}
             >
               기술에 구애받지 않는 맥가이버,
@@ -68,7 +74,7 @@ const About = () => {
                 <Box sx={{ fontSize: "0.85rem", color: "#7e7e7e", mt: "2vh" }}>
                   Email. yckk980320@naver.com
                   <br />
-                  Phone. 010-****-****
+                  Phone. 010-4227-1654
                 </Box>
               </Box>
               <Box>
@@ -87,7 +93,7 @@ const About = () => {
           </Box>
         </Box>
       </Card>
-      <Card sx={{ m: "1px", minHeight: "50vh" }}>
+      <Card sx={{ m: "2px", minHeight: "50vh" }}>
         <Box
           sx={{
             m: "2vw",
@@ -126,7 +132,7 @@ const About = () => {
           </div>
         </Box>
       </Card>
-      <Card sx={{ m: "1px", minHeight: "50vh" }}>
+      <Card sx={{ m: "2px", minHeight: "50vh" }}>
         <Box
           sx={{
             mt: "12vh",
@@ -236,15 +242,7 @@ const About = () => {
                 <Typography>2023.05~2023.xx</Typography>
               </Box>
               <Typography>- 리팩토링을 통한 유지보수성 개선</Typography>
-              <Typography>
-                <Link
-                  href="https://lemon-soju.tistory.com/515"
-                  target="_blank"
-                  sx={{ textDecoration: "none" }}
-                >
-                  - jest를 이용한 테스트 코드 도입
-                </Link>
-              </Typography>
+              <Typography>- jest를 이용한 테스트 코드 도입</Typography>
               <Divider sx={{ m: "5vh" }} />
               <Link
                 href="https://lemonsoju.blog"
@@ -296,7 +294,15 @@ const About = () => {
                 </Link>
                 을 통해 여러 브라우저에서 접근 가능하도록 설정
               </Typography>
-              <Typography>- GitHub Actions를 이용한 CI/CD 구축</Typography>
+              <Typography>
+                <Link
+                  href="https://lemon-soju.tistory.com/514"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - GitHub Actions를 이용한 CI/CD 구축
+                </Link>
+              </Typography>
               <Typography>
                 - Spring REST Docs와 테스트 코드를 활용한 API 문서 자동화
               </Typography>
@@ -380,7 +386,7 @@ const About = () => {
           </Box>
         </Box>
       </Card>
-      <Card sx={{ m: "1px", minHeight: "50vh" }}>
+      <Card sx={{ m: "2px", minHeight: "50vh" }}>
         <Box
           sx={{
             mt: "15vh",
@@ -408,7 +414,8 @@ const About = () => {
         >
           Education.
           <Typography sx={{ color: "black", mt: "5vh", fontSize: "1.1rem" }}>
-            고려대학교 컴퓨터학과 4학년 휴학 중
+            고려대학교 컴퓨터학과 4학년
+            <Typography>2017.03~2024.02 (졸업 예정)</Typography>
           </Typography>
         </Box>
       </Card>
