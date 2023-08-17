@@ -39,6 +39,10 @@ const PostEdit = () => {
     // params.id가 undefined인 경우
     if (!params.id) return;
     let post = await readPost(params.id);
+    if (post.data.author !== localStorage.getItem("uid")) {
+      window.alert("권한이 없습니다.");
+      return window.history.back();
+    }
     setTitle(post.data.title);
     editorRef.current?.getInstance().setHTML(post.data.content);
   }, [params.id]);
