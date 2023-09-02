@@ -312,7 +312,13 @@ const About = () => {
                 </Link>
               </Typography>
               <Typography>
-                - Spring REST Docs와 테스트 코드를 활용한 API 문서 자동화
+                <Link
+                  href="https://lemonsoju.blog:8080/docs/index.html"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - Spring REST Docs와 테스트 코드를 활용한 API 문서 자동화
+                </Link>
               </Typography>
               <Typography>
                 <Link
