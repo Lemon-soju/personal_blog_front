@@ -24,7 +24,7 @@ const About = () => {
       <Card
         sx={{
           m: "1px",
-          minHeight: { xs: "95vh", sm: "65vh", md: "65vh", lg: "65vh" },
+          minHeight: { xs: "100vh", sm: "75vh", md: "75vh", lg: "65vh" },
           fontFamily: "omyu_pretty",
         }}
       >
