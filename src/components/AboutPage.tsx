@@ -24,7 +24,6 @@ const About = () => {
       <Card
         sx={{
           m: "1px",
-          minHeight: { xs: "95vh", sm: "65vh", md: "65vh", lg: "65vh" },
           fontFamily: "omyu_pretty",
         }}
       >
@@ -46,6 +45,7 @@ const About = () => {
             sx={{
               display: "flex",
               flexDirection: ["column", "row"],
+              mb: { xs: "5vh", sm: "5vh", md: "10vh" },
             }}
           >
             <Box sx={{ display: "flex", mt: "2vh" }}>
@@ -61,11 +61,11 @@ const About = () => {
 
             <Box
               sx={{
-                ml: "3vw",
+                ml: "5vw",
                 display: "flex",
                 flexDirection: "column",
-                mt: "5vh",
-                fontSize: "1.8rem",
+                mt: "7vh",
+                fontSize: "1.9rem",
                 color: "#5b8bd9",
               }}
             >
