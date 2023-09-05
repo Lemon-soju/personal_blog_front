@@ -201,7 +201,12 @@ const Manage = () => {
         </Card>
       </Container>
       <Box sx={{ padding: "20px" }}>
-        <Paging page={currentPage} count={count} setPage={setPage} />
+        <Paging
+          page={currentPage}
+          count={count}
+          setPage={setPage}
+          unit={postPerPage}
+        />
       </Box>
     </Box>
   );
