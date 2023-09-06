@@ -189,7 +189,12 @@ const Post = () => {
           </TableBody>
         </Table>
 
-        <Paging page={currentPage} count={count} setPage={setPage} />
+        <Paging
+          page={currentPage}
+          count={count}
+          setPage={setPage}
+          unit={postPerPage}
+        />
         <div
           style={{
             display: "flex",
