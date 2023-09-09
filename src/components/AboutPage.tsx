@@ -294,6 +294,16 @@ const About = () => {
               </Box>
               <Typography>
                 <Link
+                  href="https://lemon-soju.tistory.com/520"
+                  target="_blank"
+                  sx={{ textDecoration: "none" }}
+                >
+                  - fetch join 및 캐싱 적용을 통한 전체 글 불러오기 성능 개선
+                  (6000ms -{">"} 100ms 이하)
+                </Link>
+              </Typography>
+              <Typography>
+                <Link
                   href="https://lemon-soju.tistory.com/497"
                   target="_blank"
                   sx={{ textDecoration: "none" }}
@@ -329,7 +339,6 @@ const About = () => {
                   - JWT을 통한 로그인 및 로그아웃 기능 구현
                 </Link>
               </Typography>
-              <Typography>- AWS S3를 이용한 이미지 저장 구현</Typography>
               <Typography>
                 - MVC 디자인 패턴에 따른 설계 및 Spring Data JPA를 통한 블로그
                 CRUD 기능 구현
