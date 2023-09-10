@@ -52,6 +52,7 @@ const Manage = () => {
 
     if (response.status === 200) {
       window.alert("글삭제 성공");
+      dispatch(homeAction.getPosts());
       return window.location.reload();
     } else {
       window.alert("글삭제 실패");
