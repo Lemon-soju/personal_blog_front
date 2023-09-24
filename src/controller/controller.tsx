@@ -136,6 +136,40 @@ const readPost = async (data: string): Promise<AxiosResponse> => {
   }
 };
 
+const createLike = async (data: number): Promise<AxiosResponse> => {
+  const url = backend + "/like/post/" + data;
+  let accessToken = localStorage.getItem("accessToken");
+
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
+
+  try {
+    const response = await axios.post(url, null, { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const deleteLike = async (data: number): Promise<AxiosResponse> => {
+  const url = backend + "/like/post/" + data;
+  let accessToken = localStorage.getItem("accessToken");
+
+  const headers = {
+    "Content-Type": "application/json",
+    accessToken: accessToken,
+  };
+
+  try {
+    const response = await axios.delete(url, { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export {
   signUp,
   login,
@@ -144,4 +178,6 @@ export {
   readPost,
   editPost,
   refreshToken,
+  createLike,
+  deleteLike,
 };
