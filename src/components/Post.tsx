@@ -20,6 +20,8 @@ import {
 } from "@mui/material";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchIcon from "@mui/icons-material/Search";
+import LikeBtn from "./LikeBtn";
+import { createLike, deleteLike } from "../controller/controller";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -28,10 +30,9 @@ const Post = () => {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); //현재페이지
   const [postPerPage] = useState(10); //페이지당 아이템 개수
-
   const [indexOfLastPost, setIndexOfLastPost] = useState(0);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
-  const [currentPosts, setCurrentPosts] = useState<PostData[]>();
+  const [currentPosts, setCurrentPosts] = useState<PostData[]>([]);
   const [search, setSearch] = useState(String);
 
   interface PostData {
@@ -41,6 +42,7 @@ const Post = () => {
     writer: string;
     createDate: string;
     imagePreview: string;
+    isLiked: boolean;
   }
 
   const setPage = (e: number) => {
@@ -50,7 +52,8 @@ const Post = () => {
   const { postData } = useSelector((state: RootState) => state.home);
 
   useEffect(() => {
-    dispatch(homeAction.getPosts());
+    let accessToken = localStorage.getItem("accessToken");
+    dispatch(homeAction.getPosts(null, accessToken));
   }, [dispatch]);
 
   useEffect(() => {
@@ -66,7 +69,8 @@ const Post = () => {
 
   const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(homeAction.getPosts(search));
+    let accessToken = localStorage.getItem("accessToken");
+    dispatch(homeAction.getPosts(search, accessToken));
     setCount(postData.length);
     setIndexOfLastPost(currentPage * postPerPage);
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
@@ -76,6 +80,34 @@ const Post = () => {
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearch(e.target.value);
+  };
+
+  const handleLike = async (
+    event: React.MouseEvent<HTMLButtonElement>,
+    post: PostData
+  ) => {
+    event.preventDefault();
+    let accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      window.alert("권한이 없습니다.");
+      return;
+    }
+    if (!post.isLiked) {
+      createLike(post.postId);
+    } else {
+      deleteLike(post.postId);
+    }
+    setCurrentPosts((currentPosts) => {
+      return currentPosts.map((e) => {
+        if (e.postId === post.postId) {
+          return {
+            ...e,
+            isLiked: !post.isLiked,
+          };
+        }
+        return e;
+      });
+    });
   };
 
   return (
@@ -119,6 +151,7 @@ const Post = () => {
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
+              <TableCell></TableCell>
               <TableCell>제목</TableCell>
               <TableCell sx={{ display: { xs: "none", sm: "table-cell" } }}>
                 등록일
@@ -137,6 +170,15 @@ const Post = () => {
                   onClick={() => navigate(`/post/${e.postId}`)}
                   sx={{ cursor: "pointer" }}
                 >
+                  <TableCell>
+                    <LikeBtn
+                      handleLike={(event) => {
+                        event.stopPropagation();
+                        handleLike(event, e);
+                      }}
+                      isLike={e.isLiked}
+                    />
+                  </TableCell>
                   <TableCell>
                     {e.imagePreview ? (
                       <Card
