@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
-import { homeAction } from "../redux/actions/homeAction";
-import { RootState } from "../redux/reducers";
 import {
   Box,
   Button,
@@ -21,19 +18,16 @@ import {
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import LikeBtn from "./LikeBtn";
-import { createLike, deleteLike } from "../controller/controller";
+import { createLike, deleteLike, readAllPosts } from "../controller/controller";
 
 const Post = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); //현재페이지
   const [postPerPage] = useState(10); //페이지당 아이템 개수
-  const [indexOfLastPost, setIndexOfLastPost] = useState(0);
-  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState<PostData[]>([]);
   const [search, setSearch] = useState(String);
+  const [totalItemsCount, setTotalItemsCount] = useState(0);
 
   interface PostData {
     postId: number;
@@ -45,23 +39,43 @@ const Post = () => {
     isLiked: boolean;
   }
 
-  const setPage = (e: number) => {
-    setCurrentPage(e);
+  useEffect(() => {
+    getPosts(search);
+    // eslint-disable-next-line
+  }, [currentPage]);
+
+  useEffect(() => {
+    const initPosts = async () => {
+      let accessToken = localStorage.getItem("accessToken");
+      const response = await readAllPosts(
+        currentPage,
+        postPerPage,
+        accessToken,
+        null
+      );
+      setCurrentPosts(response.data.posts);
+      setTotalItemsCount(response.data.totalItemsCount);
+      setCurrentPage(1);
+    };
+    initPosts();
+    // eslint-disable-next-line
+  }, []);
+
+  const getPosts = async (search?: string | null) => {
+    let accessToken = localStorage.getItem("accessToken");
+    const response = await readAllPosts(
+      currentPage,
+      postPerPage,
+      accessToken,
+      search
+    );
+    setCurrentPosts(response.data.posts);
+    setTotalItemsCount(response.data.totalItemsCount);
   };
 
-  const { postData } = useSelector((state: RootState) => state.home);
-
-  useEffect(() => {
-    let accessToken = localStorage.getItem("accessToken");
-    dispatch(homeAction.getPosts(null, accessToken));
-  }, [dispatch]);
-
-  useEffect(() => {
-    setCount(postData.length);
-    setIndexOfLastPost(currentPage * postPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postPerPage);
-    setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
-  }, [postData, currentPage, indexOfFirstPost, indexOfLastPost, postPerPage]);
+  const setPage = async (e: number) => {
+    setCurrentPage(e);
+  };
 
   const goToCreatePost = () => {
     navigate("/post/new");
@@ -69,12 +83,8 @@ const Post = () => {
 
   const onSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    let accessToken = localStorage.getItem("accessToken");
-    dispatch(homeAction.getPosts(search, accessToken));
-    setCount(postData.length);
-    setIndexOfLastPost(currentPage * postPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postPerPage);
-    setCurrentPosts(postData.slice(indexOfFirstPost, indexOfLastPost));
+    setCurrentPage(1);
+    getPosts(search);
   };
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -233,7 +243,7 @@ const Post = () => {
 
         <Paging
           page={currentPage}
-          count={count}
+          count={totalItemsCount}
           setPage={setPage}
           unit={postPerPage}
         />

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
-import { homeAction } from "../redux/actions/homeAction";
-import { deletePosts } from "../controller/controller";
-import { RootState } from "../redux/reducers/index";
+import { deletePosts, readAllPosts } from "../controller/controller";
 import {
   Box,
   Button,
@@ -19,16 +16,12 @@ import {
 
 const Manage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1); //현재페이지
   const [postPerPage] = useState(20); //페이지당 아이템 개수
-
-  const [indexOfLastPost, setIndexOfLastPost] = useState(0);
-  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0);
   const [currentPosts, setCurrentPosts] = useState<any[]>([]);
   const [checkedInputs, setCheckedInputs] = useState<number[]>([]);
+  const [totalItemsCount, setTotalItemsCount] = useState(0);
 
   const changeHandler = async (id: number) => {
     let checked = checkedInputs.includes(id) ? true : false;
@@ -36,7 +29,6 @@ const Manage = () => {
     if (!checked) {
       setCheckedInputs([...checkedInputs, id]);
     } else {
-      // 체크 해제
       setCheckedInputs(checkedInputs.filter((el) => el !== id));
     }
   };
@@ -52,7 +44,7 @@ const Manage = () => {
 
     if (response.status === 200) {
       window.alert("글삭제 성공");
-      dispatch(homeAction.getPosts());
+      getMyPosts();
       return window.location.reload();
     } else {
       window.alert("글삭제 실패");
@@ -60,27 +52,24 @@ const Manage = () => {
     }
   };
 
-  const { postData } = useSelector((state: RootState) => state.home);
+  const getMyPosts = async (search?: string | null) => {
+    let accessToken = localStorage.getItem("accessToken");
+    let writer = localStorage.getItem("uid");
+    const response = await readAllPosts(
+      currentPage,
+      postPerPage,
+      accessToken,
+      search,
+      writer
+    );
+    setCurrentPosts(response.data.posts);
+    setTotalItemsCount(response.data.totalItemsCount);
+  };
 
   useEffect(() => {
-    if (postData.length === 0) {
-      dispatch(homeAction.getPosts());
-    } else {
-      let uid = localStorage.getItem("uid");
-      let myPostData = postData.filter((e: any) => e.writer === uid);
-      setCount(myPostData.length);
-      setIndexOfLastPost(currentPage * postPerPage);
-      setIndexOfFirstPost(indexOfLastPost - postPerPage);
-      setCurrentPosts(myPostData.slice(indexOfFirstPost, indexOfLastPost));
-    }
-  }, [
-    dispatch,
-    currentPage,
-    indexOfFirstPost,
-    indexOfLastPost,
-    postPerPage,
-    postData,
-  ]);
+    getMyPosts();
+    // eslint-disable-next-line
+  }, [currentPage]);
 
   return (
     <Box
@@ -204,7 +193,7 @@ const Manage = () => {
       <Box sx={{ padding: "20px" }}>
         <Paging
           page={currentPage}
-          count={count}
+          count={totalItemsCount}
           setPage={setPage}
           unit={postPerPage}
         />

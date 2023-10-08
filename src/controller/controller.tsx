@@ -5,16 +5,10 @@ const backend = process.env.REACT_APP_BASE_URL;
 
 const signUp = async (data: { uid: string; pwd: string; name: string }) => {
   const url = backend + "/signup";
-
   const headers = {
     "Content-Type": "application/json",
   };
-
-  // console.log(`회원가입 입력값: ${JSON.stringify(data)}`); //debug
-
   const response = await axios.post(url, JSON.stringify(data), { headers });
-  // console.log(`회원가입 반환값: ${JSON.stringify(response.data)}`); //debug
-
   return response;
 };
 
@@ -28,15 +22,10 @@ const login = async (data: {
   pwd: string;
 }): Promise<AxiosResponse<LoginResponse>> => {
   const url = backend + "/login";
-
   const headers = {
     "Content-Type": "application/json",
   };
-
-  // console.log(`로그인 입력값: ${JSON.stringify(data)}`); //debug
   const response = await axios.post(url, JSON.stringify(data), { headers });
-  // console.log(`로그인 반환값: ${JSON.stringify(response.data)}`); //debug
-
   return response;
 };
 
@@ -44,14 +33,11 @@ const refreshToken = async (
   accessToken: string | null
 ): Promise<AxiosResponse<LoginResponse>> => {
   const url = backend + "/auth/refreshToken";
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   const response = await axios.get(url, { headers });
-
   return response;
 };
 
@@ -60,12 +46,10 @@ const writePost = async (
   accessToken: string | null
 ) => {
   const url = backend + "/auth/post";
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   try {
     const response = await axios.post(url, JSON.stringify(data), { headers });
     return response;
@@ -85,12 +69,10 @@ const editPost = async (
   accessToken: string | null
 ) => {
   const url = backend + `/auth/post/${data.id}`;
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   try {
     const response = await axios.patch(
       url,
@@ -108,28 +90,47 @@ const deletePosts = async (
   accessToken: string | null
 ): Promise<AxiosResponse> => {
   const url = backend + "/auth/post/delete";
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   const response = await axios.post(url, JSON.stringify(data), { headers });
-
   return response;
 };
 
 const readPost = async (data: string): Promise<AxiosResponse> => {
   const url = backend + "/post/" + data;
   let accessToken = localStorage.getItem("accessToken");
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   try {
     const response = await axios.get(url, { headers });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const readAllPosts = async (
+  page: number,
+  count: number,
+  accessToken?: string | null,
+  search?: string | null,
+  writer?: string | null
+): Promise<AxiosResponse> => {
+  const url = backend + "/post";
+  try {
+    const response = await axios.get(url, {
+      params: {
+        search,
+        page,
+        count,
+        writer,
+      },
+      headers: accessToken ? { accessToken } : {},
+    });
     return response;
   } catch (error) {
     throw error;
@@ -139,12 +140,10 @@ const readPost = async (data: string): Promise<AxiosResponse> => {
 const createLike = async (data: number): Promise<AxiosResponse> => {
   const url = backend + "/like/post/" + data;
   let accessToken = localStorage.getItem("accessToken");
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
   };
-
   try {
     const response = await axios.post(url, null, { headers });
     return response;
@@ -156,7 +155,6 @@ const createLike = async (data: number): Promise<AxiosResponse> => {
 const deleteLike = async (data: number): Promise<AxiosResponse> => {
   const url = backend + "/like/post/" + data;
   let accessToken = localStorage.getItem("accessToken");
-
   const headers = {
     "Content-Type": "application/json",
     accessToken: accessToken,
@@ -180,4 +178,5 @@ export {
   refreshToken,
   createLike,
   deleteLike,
+  readAllPosts,
 };
