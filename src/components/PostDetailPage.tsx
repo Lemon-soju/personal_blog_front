@@ -69,12 +69,14 @@ const PostDetail = () => {
           </Typography>
         </Box>
       </Card>
-      <Box sx={{ minHeight: "50vh" }}>
+      <Box sx={{ minHeight: "50vh", overflowX: "hidden" }}>
         <Typography
           dangerouslySetInnerHTML={{ __html: content }}
           sx={{
             fontSize: "18px",
             width: { xs: "90%", sm: "70%", md: "60%" },
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
             mt: "10vh",
             mx: "auto",
             lineHeight: "1.5",
@@ -84,6 +86,9 @@ const PostDetail = () => {
             },
             "& iframe": {
               maxWidth: "100%",
+            },
+            "& pre": {
+              overflowX: "auto",
             },
           }}
         ></Typography>
