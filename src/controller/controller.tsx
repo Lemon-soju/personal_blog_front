@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
 const backend = process.env.REACT_APP_BASE_URL;
-// const backend = "http://127.0.0.1:8080";
 
 const signUp = async (data: { uid: string; pwd: string; name: string }) => {
   const url = backend + "/signup";
@@ -117,8 +116,7 @@ const readAllPosts = async (
   page: number,
   count: number,
   accessToken?: string | null,
-  search?: string | null,
-  writer?: string | null
+  search?: string | null
 ): Promise<AxiosResponse> => {
   const url = backend + "/post";
   try {
@@ -127,7 +125,28 @@ const readAllPosts = async (
         search,
         page,
         count,
-        writer,
+      },
+      headers: accessToken ? { accessToken } : {},
+    });
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const readAllPostsManage = async (
+  page: number,
+  count: number,
+  accessToken?: string | null,
+  search?: string | null
+): Promise<AxiosResponse> => {
+  const url = backend + "/auth/post/manage";
+  try {
+    const response = await axios.get(url, {
+      params: {
+        search,
+        page,
+        count,
       },
       headers: accessToken ? { accessToken } : {},
     });
@@ -179,4 +198,5 @@ export {
   createLike,
   deleteLike,
   readAllPosts,
+  readAllPostsManage,
 };

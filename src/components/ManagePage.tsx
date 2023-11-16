@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Paging from "./Paging";
-import { deletePosts, readAllPosts } from "../controller/controller";
+import { deletePosts, readAllPostsManage } from "../controller/controller";
 import {
   Box,
   Button,
@@ -44,7 +44,7 @@ const Manage = () => {
 
     if (response.status === 200) {
       window.alert("글삭제 성공");
-      getMyPosts();
+      getPostsManage();
       return window.location.reload();
     } else {
       window.alert("글삭제 실패");
@@ -52,22 +52,20 @@ const Manage = () => {
     }
   };
 
-  const getMyPosts = async (search?: string | null) => {
+  const getPostsManage = async (search?: string | null) => {
     let accessToken = localStorage.getItem("accessToken");
-    let writer = localStorage.getItem("uid");
-    const response = await readAllPosts(
+    const response = await readAllPostsManage(
       currentPage,
       postPerPage,
       accessToken,
-      search,
-      writer
+      search
     );
     setCurrentPosts(response.data.posts);
     setTotalItemsCount(response.data.totalItemsCount);
   };
 
   useEffect(() => {
-    getMyPosts();
+    getPostsManage();
     // eslint-disable-next-line
   }, [currentPage]);
 
