@@ -7,7 +7,7 @@ const PostDetail = () => {
   const params = useParams();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState("");
+  const [writer, setWriter] = useState("");
   const [createDate, setCreateDate] = useState("");
 
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const PostDetail = () => {
     let post = await readPost(params.id);
     setTitle(post.data.title);
     setContent(post.data.content);
-    setAuthor(post.data.author);
+    setWriter(post.data.writer);
     setCreateDate(post.data.createDate);
   }, [params.id]);
 
@@ -50,7 +50,7 @@ const PostDetail = () => {
             mx: "auto",
           }}
         >
-          <Typography>by {author}</Typography>
+          <Typography>by {writer}</Typography>
           <Typography sx={{ mx: "4px" }}>·</Typography>
           <Typography>{createDate.slice(0, 10)}</Typography>
           <Typography sx={{ mx: "4px" }}>·</Typography>
