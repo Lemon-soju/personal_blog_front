@@ -204,9 +204,9 @@ const About = () => {
                   klub이란?
                   <br />
                 </Link>
-                - KLUB은 기존의 구글 시트 기반 회원 관리를 대체할 서비스입니다.
-                고려대학교 교내 동아리 운영진 및 가입자에게 리쿠르팅, 명단, 출석
-                관리, 홍보(Coming soon) 서비스를 제공합니다.
+                - KLUB은 고려대학교 교내 동아리를 홍보하는 서비스입니다.
+                홍보뿐만 아니라 동아리 운영진에게 회원 모집, 회원 명단, 출석
+                관리 등의 서비스를 제공합니다.
               </Typography>
               <Typography>
                 - KLUB 프로젝트에 참가하면서 전체적인 협업 프로세스를 경험하였고
@@ -239,8 +239,9 @@ const About = () => {
                 <Typography color="#222222" mr={1}>
                   백엔드
                 </Typography>
-                <Typography>2023.05~2023.xx</Typography>
+                <Typography>2023.05~2023.12</Typography>
               </Box>
+              <Typography>- Nestjs를 이용한 백엔드 api 개발</Typography>
               <Typography>- 리팩토링을 통한 유지보수성 개선</Typography>
               <Typography>
                 <Link
@@ -248,7 +249,7 @@ const About = () => {
                   target="_blank"
                   sx={{ textDecoration: "none" }}
                 >
-                  - jest를 이용한 테스트 코드 도입
+                  - Jest를 이용한 테스트 코드 도입
                 </Link>
               </Typography>
               <Divider sx={{ m: "5vh" }} />
